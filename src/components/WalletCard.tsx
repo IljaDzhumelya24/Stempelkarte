@@ -26,7 +26,8 @@ export default function WalletCard({
   className = "",
   showQR = false,
   size = "md",
-}: WalletCardProps & { size?: "sm" | "md" | "lg" }) {
+  interactive = true,
+}: WalletCardProps & { size?: "sm" | "md" | "lg"; interactive?: boolean }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
   const s = sizeMap[size];
@@ -56,15 +57,15 @@ export default function WalletCard({
   return (
     <motion.div
       ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      onMouseMove={interactive ? handleMouseMove : undefined}
+      onMouseLeave={interactive ? handleMouseLeave : undefined}
       className={`${s.width} ${s.height} relative rounded-[1.75rem] overflow-hidden select-none ${className}`}
       style={{
         background: `linear-gradient(145deg, ${colorFrom} 0%, ${colorTo} 100%)`,
-        rotateX: prefersReducedMotion ? 0 : rotateX,
-        rotateY: prefersReducedMotion ? 0 : rotateY,
-        transformPerspective: 1200,
-        transformStyle: "preserve-3d",
+        rotateX: interactive && !prefersReducedMotion ? rotateX : 0,
+        rotateY: interactive && !prefersReducedMotion ? rotateY : 0,
+        transformPerspective: interactive ? 1200 : undefined,
+        transformStyle: interactive ? "preserve-3d" : "flat",
       }}
     >
       {/* Noise overlay for texture */}

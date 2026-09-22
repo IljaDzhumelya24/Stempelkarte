@@ -7,38 +7,38 @@ const industries = [
   {
     id: "cafe",
     title: "Cafés",
-    subtitle: "Der zehnte Kaffee geht aufs Haus.",
-    desc: "Ersetze die zerknitterte Papierkarte. Kunden haben deine Stempelkarte immer griffbereit im Smartphone.",
+    subtitle: "Mach aus Gästen Stammgäste.",
+    desc: "Belohne regelmäßige Kaffeebesuche mit einer Prämie, die zu deinem Café passt. Dein Team stempelt direkt an der Theke.",
     img: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=1600",
-    stat: "↑ 34%",
-    statLabel: "mehr Wiederkäufe",
+    stat: "Treue",
+    statLabel: "belohnen",
   },
   {
     id: "salon",
     title: "Salons",
-    subtitle: "Treue, die gut aussieht.",
-    desc: "Belohne regelmäßige Besuche vollautomatisch mit Rabatten auf den nächsten Schnitt.",
+    subtitle: "Gib Kunden einen Grund zurückzukommen.",
+    desc: "Lege fest, nach wie vielen Besuchen du eine Behandlung oder ein Produkt als Dankeschön vergibst.",
     img: "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&q=80&w=1600",
-    stat: "↑ 52%",
-    statLabel: "Kundenbindung",
+    stat: "Besuche",
+    statLabel: "belohnen",
   },
   {
     id: "retail",
-    title: "Retail",
-    subtitle: "Komm wieder, kauf lokal.",
-    desc: "Kioske, Boutiquen und Concept Stores stärken die lokale Bindung. Wer oft kommt, wird belohnt.",
+    title: "Einzelhandel",
+    subtitle: "Stärke die Bindung zu deinem Laden.",
+    desc: "Ob Kiosk oder Boutique: Gib deinen Kunden mit jeder Stempelkarte einen Anreiz für den nächsten Einkauf bei dir.",
     img: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=1600",
-    stat: "↑ 28%",
-    statLabel: "Umsatzsteigerung",
+    stat: "Lokal",
+    statLabel: "binden",
   },
   {
     id: "gastro",
     title: "Gastro",
     subtitle: "Vom Gast zum Stammgast.",
-    desc: "Restaurants und Food-Trucks nutzen digitale Karten für das Mittagsmenü. Jeder 10. Lunch gratis.",
+    desc: "Mache deinen Mittagstisch zur festen Anlaufstelle. Du bestimmst, nach wie vielen Besuchen es ein Dessert oder Menü als Prämie gibt.",
     img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=1600",
-    stat: "↑ 41%",
-    statLabel: "Stammkundenrate",
+    stat: "Stammgäste",
+    statLabel: "gewinnen",
   }
 ];
 
@@ -59,7 +59,7 @@ export default function IndustryShowcase() {
             transition={{ duration: 0.8 }}
             className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/40 mb-10 lg:mb-16"
           >
-            Funktioniert für jede Branche
+            Für deinen Geschäftsalltag
           </motion.h2>
           
           <div className="flex flex-col gap-1">

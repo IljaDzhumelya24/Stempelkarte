@@ -3,7 +3,7 @@ import ClientKontaktPage from './ClientPage';
 
 export const metadata: Metadata = {
   title: 'Kontakt | Stempelkarte',
-  description: 'Nimm Kontakt mit uns auf. Wir helfen dir gerne weiter.',
+  description: 'Fragen zur digitalen Stempelkarte für dein Geschäft? Sprich mit uns über Einrichtung, Tarife und den Einsatz in deinem Betrieb.',
 };
 
 export default function KontaktPage() {

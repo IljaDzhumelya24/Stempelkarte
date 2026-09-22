@@ -10,11 +10,11 @@ export const branchen: BrancheData[] = [
     currentStamps: 7,
     colorFrom: '#f59e0b',
     colorTo: '#d97706',
-    description: 'Stammkunden belohnen, die täglich vorbeikommen. Ob Kaffee, Snack oder Getränk – mit digitalen Stempelkarten kommen sie immer wieder.',
+    description: 'Gib deinen Kunden einen Anlass für den nächsten Einkauf bei dir. Belohne regelmäßige Besuche mit einem Getränk oder Snack aus deinem Sortiment.',
     benefits: [
       'Perfekt für tägliche Einkäufe',
       'QR-Code direkt an der Kasse',
-      'Kunden sammeln bei jedem Besuch',
+      'Dein Team vergibt Stempel an der Kasse',
       'Gratis-Getränk oder Snack als Belohnung',
     ],
     ctaText: 'Demo für Kioske ansehen',
@@ -28,12 +28,12 @@ export const branchen: BrancheData[] = [
     currentStamps: 5,
     colorFrom: '#92400e',
     colorTo: '#78350f',
-    description: 'Der zehnte Kaffee ist gratis – ein Klassiker, der mit digitalen Stempelkarten endlich zuverlässig funktioniert.',
+    description: 'Mach aus Laufkundschaft Stammgäste. Mit deiner digitalen Kaffeekarte belohnst du regelmäßige Besuche – direkt an der Theke und im Design deines Cafés.',
     benefits: [
       'Klassische Kaffeekarte, digital',
-      'Kein Vergessen, keine verlorenen Karten',
-      'Branding in euren Farben',
-      'Kunden sehen den Fortschritt im Wallet',
+      'Weniger Papierkarten an deiner Theke',
+      'Dein Logo und deine Farben',
+      'Deine Prämie bleibt für Gäste sichtbar',
     ],
     ctaText: 'Demo für Cafés ansehen',
   },
@@ -46,10 +46,10 @@ export const branchen: BrancheData[] = [
     currentStamps: 8,
     colorFrom: '#1e293b',
     colorTo: '#0f172a',
-    description: 'Kunden, die alle vier Wochen kommen, verdienen eine Belohnung. Digitale Stempelkarten machen Kundenbindung zum Standard.',
+    description: 'Stärke die Bindung zu deinem Barbershop. Du legst fest, nach wie vielen Besuchen du Stammkunden mit einem Extra oder einer Behandlung belohnst.',
     benefits: [
       'Premium-Look für Premium-Service',
-      'Kunden werden an Termine erinnert',
+      'Deine Prämien für regelmäßige Besuche',
       'Belohnung nach regelmäßigen Besuchen',
       'Stärkt die Kundenbindung nachhaltig',
     ],
@@ -64,7 +64,7 @@ export const branchen: BrancheData[] = [
     currentStamps: 9,
     colorFrom: '#b45309',
     colorTo: '#92400e',
-    description: 'Ob Brötchen am Morgen oder Kuchen am Nachmittag – belohne treue Kunden, die jeden Tag vorbeischauen.',
+    description: 'Gib deinen Kunden einen Grund, ihr Frühstück wieder bei dir zu holen. Dein Team vergibt Stempel an der Theke, du bestimmst die passende Prämie.',
     benefits: [
       'Ideal für tägliche Besuche',
       'Schneller Stempel an der Theke',
@@ -82,7 +82,7 @@ export const branchen: BrancheData[] = [
     currentStamps: 4,
     colorFrom: '#7c2d12',
     colorTo: '#431407',
-    description: 'Stammgäste sind das Fundament jedes Restaurants. Belohne ihre Treue mit einer digitalen Stempelkarte.',
+    description: 'Mach deinen Mittagstisch zur Gewohnheit. Belohne wiederkehrende Gäste mit einer Prämie, die zu deinem Restaurant und deiner Kalkulation passt.',
     benefits: [
       'Perfekt für Mittagstisch-Stammgäste',
       'Elegante Karte im Restaurant-Branding',
@@ -100,12 +100,12 @@ export const branchen: BrancheData[] = [
     currentStamps: 6,
     colorFrom: '#be185d',
     colorTo: '#9d174d',
-    description: 'Friseurbesuche sind regelmäßig – perfekt für eine Stempelkarte. Belohne treue Kundinnen und Kunden.',
+    description: 'Pflege die Bindung zu deinem Salon. Belohne regelmäßige Termine mit einer Behandlung oder einem Produkt – im Design deiner Marke.',
     benefits: [
       'Stärkt langfristige Kundenbeziehungen',
-      'Karte in eurem Salon-Design',
+      'Karte im Design deines Salons',
       'Behandlung oder Produkt als Belohnung',
-      'Kunden tragen die Karte immer dabei',
+      'Dein Salon bleibt in der Wallet präsent',
     ],
     ctaText: 'Demo für Friseure ansehen',
   },
@@ -113,28 +113,28 @@ export const branchen: BrancheData[] = [
 
 export const storytellingSteps: StorytellingStep[] = [
   {
-    title: 'QR-Code\nscannen',
-    description: 'Der Kunde scannt den QR-Code an der Kasse oder am Tresen.',
+    title: 'Karte\nbereitstellen',
+    description: 'Platziere den QR-Code deines Geschäfts gut sichtbar an der Kasse oder am Tresen.',
     icon: 'scan',
   },
   {
-    title: 'Karte\nerstellen',
-    description: 'In Sekunden wird eine persönliche digitale Stempelkarte erstellt.',
+    title: 'Kunden\neinladen',
+    description: 'Lade deine Kunden ein, die digitale Stempelkarte deines Geschäfts zu nutzen.',
     icon: 'card',
   },
   {
-    title: 'Im Wallet\nspeichern',
-    description: 'Die Karte wird direkt in Apple Wallet oder Google Wallet gespeichert.',
+    title: 'Im Alltag\npräsent bleiben',
+    description: 'Deine Kunden speichern deine Karte in ihrer Wallet – mit deinem Logo und deinen Belohnungen.',
     icon: 'wallet',
   },
   {
-    title: 'Stempel\nsammeln',
-    description: 'Bei jedem Besuch scannt der Mitarbeiter die Karte – neuer Stempel.',
+    title: 'Stempel\nvergeben',
+    description: 'Dein Team scannt die Kundenkarte und vergibt einen Stempel für den Einkauf oder Besuch.',
     icon: 'stamp',
   },
   {
-    title: 'Belohnung\nerhalten',
-    description: 'Nach der festgelegten Anzahl wird die Belohnung freigeschaltet.',
+    title: 'Treue\nbelohnen',
+    description: 'Ist die festgelegte Stempelanzahl erreicht, gibt dein Team die vereinbarte Prämie aus.',
     icon: 'gift',
   },
 ];
@@ -145,28 +145,28 @@ export const faqItems: FAQItem[] = [
     answer: 'Nein. Die Stempelkarte wird direkt in Apple Wallet oder Google Wallet gespeichert. Keine App-Installation nötig, keine Registrierung. Einfach QR-Code scannen und los.',
   },
   {
-    question: 'Wie funktioniert das Stempeln?',
+    question: 'Wie vergibt mein Team Stempel?',
     answer: 'Der Kunde zeigt seine Wallet-Karte vor. Dein Mitarbeiter scannt den QR-Code auf der Karte mit einem beliebigen Smartphone oder Tablet. Der Stempel wird automatisch vergeben.',
   },
   {
-    question: 'Was passiert, wenn die Karte voll ist?',
+    question: 'Wie löst mein Team eine Belohnung ein?',
     answer: 'Sobald alle Stempel gesammelt sind, wird die Belohnung automatisch auf der Karte angezeigt. Dein Mitarbeiter kann die Belohnung einlösen und die Karte wird zurückgesetzt.',
   },
   {
-    question: 'Kann ich das Design der Karte anpassen?',
+    question: 'Kann ich die Karte an mein Geschäft anpassen?',
     answer: 'Ja. Du wählst Farben, Logo, Geschäftsname, Belohnung und Anzahl der Stempel. Die Karte sieht aus wie deine Marke – nicht wie unsere.',
   },
   {
     question: 'Wie lange dauert die Einrichtung?',
-    answer: 'Wenige Minuten. Karte konfigurieren, QR-Code ausdrucken, fertig. Kein technisches Wissen nötig.',
+    answer: 'Du legst Logo, Farben, Stempelanzahl und Belohnung fest und platzierst deinen QR-Code im Geschäft. In der Demo zeigen wir dir den Ablauf für deinen Betrieb.',
   },
   {
     question: 'Was kostet der Service?',
     answer: 'Wir bieten verschiedene Pakete an, die sich nach der Anzahl der aktiven Karten richten. Für Pilotpartner in Bremen ist der Start kostenlos.',
   },
   {
-    question: 'Funktioniert das mit jedem Smartphone?',
-    answer: 'Ja. Apple Wallet ist auf jedem iPhone vorinstalliert. Google Wallet ist auf den meisten Android-Geräten verfügbar. Zusammen deckt das über 95% aller Smartphones ab.',
+    question: 'Welche Smartphones können meine Kunden nutzen?',
+    answer: 'Deine Kunden benötigen ein Smartphone mit Apple Wallet oder Google Wallet. In der Demo besprechen wir die Nutzung und Voraussetzungen für dein Geschäft.',
   },
   {
     question: 'Kann ich sehen, wie viele Kunden die Karte nutzen?',
@@ -187,7 +187,7 @@ export const pricingTiers: PricingTier[] = [
     name: 'Starter',
     price: '29',
     period: 'pro Monat',
-    description: 'Perfekt für den Einstieg. Eine Stempelkarte, volles Dashboard.',
+    description: 'Für dein erstes Treueangebot: eine Stempelkarte im Design deines Geschäfts und Übersicht über die Nutzung.',
     features: [
       '1 Stempelkarte',
       'Bis zu 200 aktive Kunden',
@@ -202,7 +202,7 @@ export const pricingTiers: PricingTier[] = [
     name: 'Professional',
     price: '59',
     period: 'pro Monat',
-    description: 'Für wachsende Geschäfte. Mehrere Karten, volle Kontrolle.',
+    description: 'Für Betriebe mit mehreren Treueangeboten oder Standorten. Verwalte deine Karten zentral.',
     features: [
       'Bis zu 5 Stempelkarten',
       'Unbegrenzte aktive Kunden',
@@ -219,7 +219,7 @@ export const pricingTiers: PricingTier[] = [
     name: 'Enterprise',
     price: 'Individuell',
     period: '',
-    description: 'Für Ketten und Franchise. Maßgeschneidert für euch.',
+    description: 'Für Filialbetriebe und Franchise-Unternehmen mit individuellen Anforderungen.',
     features: [
       'Unbegrenzte Stempelkarten',
       'Unbegrenzte Kunden',
@@ -235,20 +235,20 @@ export const pricingTiers: PricingTier[] = [
 
 export const benefitStatements: BenefitStatement[] = [
   {
-    text: 'Keine App nötig.',
-    subtext: 'Apple Wallet und Google Wallet sind vorinstalliert. Deine Kunden brauchen nichts herunterzuladen.',
+    text: 'Einfach für deine Kunden.',
+    subtext: 'Deine Kunden nutzen deine Karte in Apple Wallet oder Google Wallet. Eine zusätzliche Stempelkarten-App brauchen sie nicht.',
   },
   {
-    text: 'In Minuten eingerichtet.',
-    subtext: 'Karte konfigurieren, QR-Code drucken, an die Kasse kleben. Das war\'s.',
+    text: 'Passend zu deinem Betrieb.',
+    subtext: 'Lege dein Kartendesign und deine Prämie fest. Den QR-Code stellst du direkt an deiner Kasse bereit.',
   },
   {
-    text: 'Ein Stempel dauert Sekunden.',
-    subtext: 'Karte vorzeigen, scannen, fertig. Kein Suchen, kein Fragen, kein Warten.',
+    text: 'Einfach für dein Team.',
+    subtext: 'Dein Team scannt die Kundenkarte und vergibt den Stempel. So wird Kundenbindung Teil deines Kassenalltags.',
   },
   {
     text: 'Belohnungen, die Kunden wiederbringen.',
-    subtext: 'Ein Gratis-Kaffee, ein Gratis-Haarschnitt – einfache Anreize mit großer Wirkung.',
+    subtext: 'Wähle Prämien, die deine Kunden ansprechen und zu deiner Kalkulation passen. Du bestimmst die Spielregeln.',
   },
 ];
 

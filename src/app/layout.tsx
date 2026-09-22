@@ -10,8 +10,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Stempelkarte | Digitale Kundenbindung",
-  description: "Die nächste Generation der Kundenbindung für lokale Geschäfte.",
+  title: "Stempelkarte | Digitale Stempelkarten für dein Geschäft",
+  description: "Mach aus Besuchern Stammkunden. Digitale Stempelkarten für Cafés, Läden und Salons – mit deinem Logo, deinen Belohnungen und Übersicht für dein Team.",
 };
 
 export default function RootLayout({

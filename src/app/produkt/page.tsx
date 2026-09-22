@@ -83,34 +83,34 @@ function TiltCard({ children, className = "" }: { children: React.ReactNode, cla
 const steps = [
   {
     num: "01",
-    title: "QR-Code scannen",
-    desc: "Dein Kunde scannt einen QR-Code an der Kasse. Die Stempelkarte wird sofort in Apple Wallet oder Google Pay gespeichert.",
+    title: "Karte bereitstellen",
+    desc: "Platziere den QR-Code deines Geschäfts an der Kasse. Deine Kunden speichern darüber die Karte in ihrer Wallet.",
     card: { stamps: 1, total: 10, name: "CAFE NORD", reward: "Willkommen!", from: "#3b82f6", to: "#1e3a8a" },
   },
   {
     num: "02",
-    title: "Stempel sammeln",
-    desc: "Bei jedem Besuch wird automatisch ein Stempel hinzugefügt. Push-Benachrichtigungen halten die Motivation hoch.",
+    title: "Stempel vergeben",
+    desc: "Dein Team scannt die Kundenkarte beim Besuch und vergibt einen Stempel. So belohnst du Einkäufe direkt im Betriebsalltag.",
     card: { stamps: 6, total: 10, name: "CAFE NORD", reward: "Noch 4!", from: "#f59e0b", to: "#b45309" },
   },
   {
     num: "03",
-    title: "Belohnung einlösen",
-    desc: "Karte voll? Der Kunde löst seine Belohnung ein. Gratis-Kaffee, Rabatt – du entscheidest.",
+    title: "Treue belohnen",
+    desc: "Du bestimmst Prämie und Stempelanzahl. Ist die Karte voll, löst dein Team die Belohnung ein.",
     card: { stamps: 10, total: 10, name: "CAFE NORD", reward: "🎉 Gratis Kaffee!", from: "#10b981", to: "#047857" },
   },
 ];
 
 // ─── FEATURES DATA ─────────────────────────────────────────────────
 const features = [
-  { title: "Apple Wallet", desc: "Volle native Integration. Die Karte liegt direkt neben deiner Kreditkarte.", icon: "🍎" },
-  { title: "Google Pay", desc: "Kompatibel mit allen Android-Geräten über Google Pay Passes.", icon: "🤖" },
-  { title: "Push Alerts", desc: "Sende Angebote direkt auf den Lockscreen deiner Kunden.", icon: "🔔" },
-  { title: "NFC Scanning", desc: "Ein Tap genügt. Kompatibel mit Apple & Google Pay Terminals.", icon: "⚡" },
-  { title: "Location Based", desc: "Die Karte öffnet sich automatisch, wenn der Kunde in der Nähe ist.", icon: "📍" },
-  { title: "Echtzeit Analytics", desc: "Verstehe genau, wer wie oft kommt und was funktioniert.", icon: "📊" },
-  { title: "Custom Branding", desc: "Dein Logo, deine Farben. Sieht aus wie deine eigene App.", icon: "🎨" },
-  { title: "DSGVO Konform", desc: "Komplett anonym über sichere Token. Keine Datensammelei.", icon: "🔒" },
+  { title: "Apple Wallet", desc: "Deine Kunden speichern die Karte deines Geschäfts in Apple Wallet.", icon: "🍎" },
+  { title: "Google Wallet", desc: "Erreiche auch Kunden, die Google Wallet auf ihrem Android-Smartphone nutzen.", icon: "🤖" },
+  { title: "Kunden erreichen", desc: "Informiere deine Kunden mit Wallet-Mitteilungen über Angebote deines Geschäfts.", icon: "🔔" },
+  { title: "Stempel vergeben", desc: "Dein Team scannt die Karte per Smartphone oder Tablet an der Kasse.", icon: "⚡" },
+  { title: "Vor Ort präsent", desc: "Erinnere Kunden in der Nähe an die Karte deines Geschäfts.", icon: "📍" },
+  { title: "Nutzung auswerten", desc: "Behalte aktive Karten, vergebene Stempel und eingelöste Prämien im Blick.", icon: "📊" },
+  { title: "Dein Markendesign", desc: "Gestalte deine Kundenkarte mit dem Logo und den Farben deines Geschäfts.", icon: "🎨" },
+  { title: "Deine Belohnungen", desc: "Lege Prämie und Stempelanzahl passend zu deinem Sortiment fest.", icon: "🔒" },
 ];
 
 // ─── STICKY SCROLL PHONE SECTION ──────────────────────────────────
@@ -331,14 +331,14 @@ export default function ProduktPage() {
         />
 
         <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1, duration: 0.8 }} className="mt-10 text-lg md:text-xl text-black/40 font-medium max-w-xl leading-relaxed">
-          Von der Installation bis zur ersten Belohnung – in drei Schritten.
+          So nutzt dein Team die digitale Stempelkarte – von der Ausgabe bis zur Belohnung.
         </motion.p>
       </section>
 
       {/* ─── SCROLL WORD REVEAL ────────────────────────────────────── */}
       <section className="w-full py-24 md:py-40 flex justify-center px-6">
         <ScrollRevealText
-          text="Vergiss Papierkarten. Vergiss Apps, die niemand installiert. Deine Kunden haben ihre Stempelkarte immer dabei – direkt im Smartphone, genau da, wo sie bezahlen."
+          text="Dein Geschäft, deine Karte, deine Regeln. Belohne regelmäßige Besuche und behalte die Nutzung im Blick – mit einem Treueangebot, das dein Team an der Kasse einsetzen kann."
           className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tighter leading-[1.1] text-[#111] max-w-[1100px] text-center"
         />
       </section>
@@ -353,7 +353,7 @@ export default function ProduktPage() {
             Alles drin. <span className="text-black/20">Ohne Kompromisse.</span>
           </motion.h2>
           <motion.p initial={{ opacity: 0 }} animate={featInView ? { opacity: 1 } : {}} transition={{ delay: 0.2 }} className="text-lg text-black/40 font-medium mb-20 max-w-lg">
-            Jede Funktion, die du brauchst.
+            Die Werkzeuge für dein Treueangebot.
           </motion.p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -380,7 +380,7 @@ export default function ProduktPage() {
               Volle Kontrolle. <br /><span className="text-white/25">In Echtzeit.</span>
             </h2>
             <p className="text-lg text-white/35 font-medium mb-20 max-w-lg">
-              Dein Dashboard zeigt dir alles: aktive Karten, Scan-Rate, Einlösungen und Wiederkehr-Quoten.
+              Sieh im Dashboard, wie dein Treueangebot genutzt wird: aktive Karten, vergebene Stempel und eingelöste Belohnungen.
             </p>
 
             {/* Stats */}
@@ -414,15 +414,15 @@ export default function ProduktPage() {
           Bereit für <span className="text-transparent bg-clip-text bg-gradient-to-br from-amber-400 to-amber-600">moderne</span> Kundenbindung?
         </h2>
         <p className="mt-8 text-lg text-black/40 font-medium max-w-md">
-          Starte kostenlos. Keine Kreditkarte. In 5 Minuten live.
+          Lerne die Stempelkarte für deinen Betrieb kennen. Frage eine unverbindliche Demo an.
         </p>
         <div className="mt-14 flex flex-col sm:flex-row gap-4 sm:gap-5 w-full sm:w-auto">
           <Link href="/demo" className="w-full sm:w-auto relative bg-[#111] text-white px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest text-center hover:scale-105 transition-transform shadow-[0_15px_40px_rgba(0,0,0,0.25)] overflow-hidden group block">
-            <span className="relative z-10 group-hover:text-black transition-colors duration-500">Kostenlos Starten</span>
+            <span className="relative z-10 group-hover:text-black transition-colors duration-500">Demo anfragen</span>
             <motion.div className="absolute inset-0 bg-amber-500 origin-left" initial={{ scaleX: 0 }} whileHover={{ scaleX: 1 }} transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }} />
           </Link>
-          <Link href="/demo" className="w-full sm:w-auto bg-white border border-black/10 text-[#111] px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest text-center hover:bg-black/5 hover:scale-105 transition-all duration-300 block">
-            Demo Ansehen
+          <Link href="/preise" className="w-full sm:w-auto bg-white border border-black/10 text-[#111] px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest text-center hover:bg-black/5 hover:scale-105 transition-all duration-300 block">
+            Tarife ansehen
           </Link>
         </div>
       </section>

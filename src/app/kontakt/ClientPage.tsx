@@ -54,7 +54,7 @@ export default function ClientKontaktPage() {
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7, duration: 0.8 }} 
             className="text-xl md:text-2xl text-black/40 font-medium max-w-md leading-relaxed mb-16"
           >
-            Fragen zu Preisen, Funktionen oder individuellen Anpassungen? Wir helfen dir gerne weiter.
+            Du möchtest Stammkunden belohnen oder hast Fragen zur Einführung in deinem Betrieb? Erzähle uns von deinem Geschäft.
           </motion.p>
 
           <motion.div 
@@ -122,7 +122,7 @@ export default function ClientKontaktPage() {
               <div className="flex flex-col gap-2">
                 <label htmlFor="message" className="text-[10px] font-bold uppercase tracking-widest text-black/40 pl-4">Nachricht</label>
                 <textarea 
-                  id="message" rows={5} required placeholder="Wie können wir dir helfen?"
+                  id="message" rows={5} required placeholder="Was möchtest du in deinem Geschäft mit der Stempelkarte erreichen?"
                   className="w-full bg-black/[0.03] border border-black/5 focus:border-amber-500/50 focus:bg-white rounded-2xl px-6 py-4 text-[#111] outline-none transition-all resize-none placeholder:text-black/20 font-medium"
                 />
               </div>

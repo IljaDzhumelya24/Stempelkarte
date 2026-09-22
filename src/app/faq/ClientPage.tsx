@@ -85,7 +85,7 @@ export default function ClientFaqPage() {
           className="inline-flex items-center gap-3 mb-8 px-5 py-2.5 rounded-full bg-black/5 border border-black/5"
         >
           <span className="w-2 h-2 rounded-full bg-[#111]" />
-          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#111]">Support & Hilfe</span>
+          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#111]">Fragen aus dem Geschäftsalltag</span>
         </motion.div>
         
         <CharReveal text="Alle Fragen." className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.9]" delay={0.1} />
@@ -117,7 +117,7 @@ export default function ClientFaqPage() {
           
           <h2 className="text-5xl md:text-7xl font-bold tracking-tighter relative z-10">Noch Fragen offen?</h2>
           <p className="mt-6 text-xl text-white/40 font-medium max-w-xl relative z-10">
-            Wir sind für dich da. Schreib uns einfach eine Nachricht und wir klären den Rest.
+            Du möchtest wissen, wie die Stempelkarte in deinen Betrieb passt? Schreib uns, was dein Geschäft braucht.
           </p>
           <div className="mt-12 relative z-10">
             <Link 

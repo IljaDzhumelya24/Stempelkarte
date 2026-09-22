@@ -53,7 +53,7 @@ export default function Footer() {
               Stempelkarte<span className="text-amber-500">.</span>
             </Link>
             <p className="text-[13px] text-white/30 font-medium leading-relaxed max-w-[240px]">
-              Digitale Stempelkarten direkt in Apple&nbsp;Wallet && Google&nbsp;Pay.
+              Digitale Stempelkarten für lokale Geschäfte. Belohne Stammkunden – mit deiner Marke und deinen Prämien.
             </p>
           </div>
 

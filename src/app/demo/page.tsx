@@ -32,21 +32,21 @@ export default function DemoPage() {
             className="inline-flex items-center gap-3 mb-8 px-5 py-2.5 rounded-full bg-white/[0.03] border border-white/[0.05] backdrop-blur-xl w-fit"
           >
             <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-white/70">Kostenlose Demo</span>
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-white/70">Demo für dein Geschäft</span>
           </motion.div>
 
           <motion.h1 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
             className="text-5xl md:text-7xl font-bold tracking-tighter leading-[1.1] mb-6"
           >
-            Lass uns <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">starten.</span>
+            Dein Betrieb. <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">Deine Karte.</span>
           </motion.h1>
           
           <motion.p 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.8 }} 
             className="text-lg md:text-xl text-white/40 font-medium max-w-lg leading-relaxed mb-12"
           >
-            Fordere deinen unverbindlichen Zugang an. Erlebe in wenigen Minuten, wie einfach echte Kundenbindung sein kann.
+            Erzähle uns von deinem Geschäft. Wir zeigen dir, wie du deine Stempelkarte gestaltest, mit deinem Team Stempel vergibst und die Nutzung im Blick behältst.
           </motion.p>
 
           {/* Frosted Glass Form Container */}
@@ -59,7 +59,7 @@ export default function DemoPage() {
               {/* Name & Company Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="name" className="text-[10px] font-bold uppercase tracking-widest text-white/40 pl-4">Vollständiger Name</label>
+                  <label htmlFor="name" className="text-[10px] font-bold uppercase tracking-widest text-white/40 pl-4">Dein Name</label>
                   <input 
                     type="text" id="name" required placeholder="Max Mustermann"
                     className="w-full bg-white/[0.03] border border-white/5 focus:border-amber-500/50 focus:bg-white/[0.06] rounded-2xl px-6 py-4 text-white outline-none transition-all placeholder:text-white/20 font-medium"
@@ -77,7 +77,7 @@ export default function DemoPage() {
               {/* Email & Branche Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="email" className="text-[10px] font-bold uppercase tracking-widest text-white/40 pl-4">E-Mail Adresse</label>
+                  <label htmlFor="email" className="text-[10px] font-bold uppercase tracking-widest text-white/40 pl-4">Geschäftliche E-Mail</label>
                   <input 
                     type="email" id="email" required placeholder="max@beispiel.de"
                     className="w-full bg-white/[0.03] border border-white/5 focus:border-amber-500/50 focus:bg-white/[0.06] rounded-2xl px-6 py-4 text-white outline-none transition-all placeholder:text-white/20 font-medium"
@@ -162,7 +162,7 @@ export default function DemoPage() {
             className="mt-20 text-center relative z-10 bg-black/50 backdrop-blur-md py-3 px-8 rounded-full border border-white/5"
           >
             <p className="text-xs font-bold uppercase tracking-widest text-white/50">
-              Live Preview <span className="text-amber-500 ml-2">●</span>
+              Beispiel deiner Kundenkarte <span className="text-amber-500 ml-2">●</span>
             </p>
           </motion.div>
         </div>

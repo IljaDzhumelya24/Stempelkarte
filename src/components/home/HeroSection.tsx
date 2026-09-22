@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useCallback } from "react";
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
 import WalletCard from "@/components/WalletCard";
 
 const particles = Array.from({ length: 40 }, (_, i) => ({
@@ -65,7 +65,7 @@ function Particles() {
 
 // ─── TICKER ────────────────────────────────────────────────────────
 function Ticker() {
-  const items = ["Apple Wallet", "Google Pay", "NFC", "Push Alerts", "Analytics", "DSGVO", "Location", "Branding"];
+  const items = ["Für lokale Geschäfte", "Digitale Stempelkarten", "Dein Logo", "Deine Belohnungen", "Kundenbindung", "Stempel vergeben", "Besuche auswerten", "Stammkunden gewinnen"];
   return (
     <div className="w-full overflow-hidden border-t border-black/5 bg-white/30 backdrop-blur-sm">
       <motion.div animate={{ x: [0, -2000] }} transition={{ duration: 30, repeat: Infinity, ease: "linear" }} className="flex gap-16 py-4 whitespace-nowrap">
@@ -83,6 +83,7 @@ function Ticker() {
 // ─── MAIN HERO ─────────────────────────────────────────────────────
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const prefersReducedMotion = useReducedMotion();
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -93,26 +94,27 @@ export default function HeroSection() {
   const yTitle = useTransform(scrollYProgress, [0, 1], [0, 300]);
   const scaleTitle = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
   const opacityTitle = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
-  const yPhone = useTransform(scrollYProgress, [0, 1], [0, -250]);
-  const scalePhone = useTransform(scrollYProgress, [0, 0.6], [1, 1.2]);
-  const rotateZPhone = useTransform(scrollYProgress, [0, 1], [0, -3]);
 
   // 3D Mouse Tracking
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [18, -18]), { damping: 20, stiffness: 100, mass: 0.8 });
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-18, 18]), { damping: 20, stiffness: 100, mass: 0.8 });
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [6, -6]), { damping: 20, stiffness: 100, mass: 0.8 });
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-6, 6]), { damping: 20, stiffness: 100, mass: 0.8 });
   const glareX = useSpring(useTransform(mouseX, [-0.5, 0.5], ["0%", "100%"]), { damping: 25, stiffness: 120 });
   const glareY = useSpring(useTransform(mouseY, [-0.5, 0.5], ["0%", "100%"]), { damping: 25, stiffness: 120 });
   const shadowX = useSpring(useTransform(mouseX, [-0.5, 0.5], [40, -40]), { damping: 30, stiffness: 150 });
   const shadowY = useSpring(useTransform(mouseY, [-0.5, 0.5], [40, -40]), { damping: 30, stiffness: 150 });
+  const glare = useTransform(
+    [glareX, glareY],
+    ([horizontal, vertical]) => `radial-gradient(ellipse 60% 40% at ${horizontal} ${vertical}, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 100%)`
+  );
 
-  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current) return;
-    const { width, height, left, top } = containerRef.current.getBoundingClientRect();
+  const handleMouseMove = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
+    if (prefersReducedMotion || e.pointerType !== "mouse" || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    const { width, height, left, top } = e.currentTarget.getBoundingClientRect();
     mouseX.set((e.clientX - left) / width - 0.5);
     mouseY.set((e.clientY - top) / height - 0.5);
-  }, [mouseX, mouseY]);
+  }, [mouseX, mouseY, prefersReducedMotion]);
 
   const handleMouseLeave = useCallback(() => {
     mouseX.set(0);
@@ -122,9 +124,7 @@ export default function HeroSection() {
   return (
     <section
       ref={containerRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className="relative w-full min-h-[120vh] md:min-h-[150vh] bg-[#fcfcfc] flex flex-col items-center justify-start overflow-hidden [perspective:1800px]"
+      className="relative w-full bg-[#fcfcfc] flex flex-col items-center justify-start overflow-hidden"
     >
       <Particles />
 
@@ -144,29 +144,36 @@ export default function HeroSection() {
 
       {/* ─── THE TITLE ─────────────────────────────────────────────── */}
       <motion.div
-        style={{ y: yTitle, scale: scaleTitle, opacity: opacityTitle }}
+        style={prefersReducedMotion ? undefined : { y: yTitle, scale: scaleTitle, opacity: opacityTitle }}
         className="relative z-10 flex flex-col items-center text-center w-full pt-28 md:pt-36 lg:pt-44 px-2"
       >
         <CharReveal
-          text="Kundenbindung."
+          text="Dein Geschäft."
           className="text-[11.5vw] sm:text-[12vw] md:text-[11vw] font-bold tracking-tight md:tracking-[-0.05em] leading-[0.8] text-[#111]"
           delay={0.1}
         />
         <CharReveal
-          text="Perfektioniert."
-          className="text-[11.5vw] sm:text-[12vw] md:text-[11vw] font-bold tracking-tight md:tracking-[-0.05em] leading-[0.8] text-transparent bg-clip-text bg-gradient-to-br from-zinc-200 via-zinc-400 to-zinc-600 -mt-[0.1em]"
+          text="Mehr Stammkunden."
+          className="text-[8.5vw] md:text-[8vw] font-bold tracking-tight md:tracking-[-0.05em] leading-[0.9] text-transparent bg-clip-text bg-gradient-to-br from-zinc-200 via-zinc-400 to-zinc-600 -mt-[0.1em]"
           delay={0.55}
         />
+        <p className="mt-6 max-w-2xl px-5 text-base leading-relaxed text-zinc-500 md:mt-8 md:text-xl">
+          Digitale Stempelkarten für dein Café, deinen Laden oder Salon.
+          Du legst die Belohnung fest, dein Team vergibt die Stempel –
+          und deine Kunden haben einen Grund, wiederzukommen.
+        </p>
       </motion.div>
 
       {/* ─── THE IPHONE ────────────────────────────────────────────── */}
       <motion.div
-        style={{ y: yPhone, scale: scalePhone, rotateZ: rotateZPhone }}
-        className="relative z-20 w-full flex justify-center mt-14 md:mt-6 lg:mt-10 px-4"
+        onPointerMove={handleMouseMove}
+        onPointerLeave={handleMouseLeave}
+        onPointerCancel={handleMouseLeave}
+        className="relative z-20 w-full flex justify-center mt-14 md:mt-6 lg:mt-10 px-5 pb-24 md:pb-36 [perspective:1800px]"
       >
         <motion.div
-          style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-          className="relative"
+          style={{ rotateX: prefersReducedMotion ? 0 : rotateX, rotateY: prefersReducedMotion ? 0 : rotateY }}
+          className="relative w-full max-w-[306px] sm:max-w-[346px] md:max-w-[448px]"
         >
           {/* Dynamic Ground Shadow */}
           <motion.div
@@ -176,10 +183,9 @@ export default function HeroSection() {
 
           {/* PHONE ENTRY ANIMATION */}
           <motion.div
-            initial={{ opacity: 0, y: 300, rotateX: 35, scale: 0.8 }}
-            animate={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
-            transition={{ duration: 2.2, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            style={{ transformStyle: "preserve-3d" }}
+            initial={false}
+            animate={{ y: prefersReducedMotion ? 0 : [40, 0] }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             {/* Space Black Titanium Outer Frame */}
             <div className="relative p-[2px] sm:p-[3px] md:p-[4px] rounded-[2.8rem] sm:rounded-[3.5rem] md:rounded-[4.5rem] bg-gradient-to-b from-zinc-600 via-zinc-800 to-zinc-950 shadow-[0_40px_80px_rgba(0,0,0,0.4),0_20px_40px_rgba(0,0,0,0.2),0_0_0_1px_rgba(0,0,0,0.3)] md:shadow-[0_80px_160px_rgba(0,0,0,0.5),0_30px_60px_rgba(0,0,0,0.25),0_0_0_1px_rgba(0,0,0,0.3)]">
@@ -196,17 +202,13 @@ export default function HeroSection() {
 
               {/* The Screen Assembly */}
               <div
-                style={{ transformStyle: "preserve-3d" }}
-                className="relative w-[300px] sm:w-[340px] md:w-[440px] aspect-[9/19.5] rounded-[2.8rem] sm:rounded-[3.3rem] md:rounded-[4.2rem] bg-black overflow-hidden"
+                className="relative isolate w-full aspect-[9/19.5] rounded-[2.8rem] sm:rounded-[3.3rem] md:rounded-[4.2rem] bg-black overflow-hidden [transform:translateZ(0)]"
               >
                 {/* INTERACTIVE GLASS GLARE */}
                 <motion.div
                   className="absolute inset-0 pointer-events-none z-[60]"
                   style={{
-                    background: useTransform(
-                      [glareX, glareY],
-                      ([x, y]) => `radial-gradient(ellipse 60% 40% at ${x} ${y}, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 100%)`
-                    ),
+                    background: glare,
                   }}
                 />
 
@@ -240,21 +242,20 @@ export default function HeroSection() {
                   </div>
 
                   {/* Background Cards Stack */}
-                  <div className="mt-2 md:mt-3 space-y-[-120px] md:space-y-[-160px] relative z-10 w-[260px] sm:w-[320px] md:w-[380px]">
+                  <div className="mt-2 md:mt-3 space-y-[-120px] md:space-y-[-160px] relative z-10 w-[calc(100%-2rem)] max-w-[260px] sm:max-w-[320px] md:max-w-[380px] shrink-0">
                     <div className="w-full h-44 md:h-56 rounded-[1.25rem] bg-gradient-to-br from-[#1d1d1f] to-zinc-800 shadow-xl border border-white/5" />
                     <div className="w-full h-44 md:h-56 rounded-[1.25rem] bg-gradient-to-br from-zinc-100 to-zinc-200 border border-black/5 shadow-xl" />
                   </div>
 
                   {/* THE STEMPELKARTE DROP */}
                   <motion.div
-                    initial={{ y: -800, rotateZ: 10, scale: 1.1 }}
-                    animate={{ y: 0, rotateZ: 0, scale: 1 }}
-                    transition={{ delay: 1.5, duration: 2.4, type: "spring", bounce: 0.1 }}
-                    style={{ transform: "translateZ(60px)" }}
+                    initial={false}
+                    animate={{ y: prefersReducedMotion ? 0 : [-24, 0] }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     className="absolute top-[150px] md:top-[260px] left-0 w-full flex justify-center z-30"
                   >
                     {/* Mobile Card (sm) */}
-                    <div className="block sm:hidden">
+                    <div className="block sm:hidden max-w-[calc(100%-2rem)] [&>div]:max-w-full">
                       <WalletCard
                         businessName="CAFE NORD"
                         currentStamps={7}
@@ -264,11 +265,12 @@ export default function HeroSection() {
                         colorTo="#b45309"
                         showQR={true}
                         size="sm"
+                        interactive={false}
                         className="shadow-[0_20px_60px_rgba(245,158,11,0.4)] border border-white/30"
                       />
                     </div>
                     {/* Tablet Card (md) */}
-                    <div className="hidden sm:block md:hidden">
+                    <div className="hidden sm:block md:hidden max-w-[calc(100%-2rem)] [&>div]:max-w-full">
                       <WalletCard
                         businessName="CAFE NORD"
                         currentStamps={7}
@@ -278,11 +280,12 @@ export default function HeroSection() {
                         colorTo="#b45309"
                         showQR={true}
                         size="md"
+                        interactive={false}
                         className="shadow-[0_30px_80px_rgba(245,158,11,0.45)] border border-white/30"
                       />
                     </div>
                     {/* Desktop Card (lg) */}
-                    <div className="hidden md:block">
+                    <div className="hidden md:block max-w-[calc(100%-2rem)] [&>div]:max-w-full">
                       <WalletCard
                         businessName="CAFE NORD"
                         currentStamps={7}
@@ -292,6 +295,7 @@ export default function HeroSection() {
                         colorTo="#b45309"
                         showQR={true}
                         size="lg"
+                        interactive={false}
                         className="shadow-[0_40px_100px_rgba(245,158,11,0.5)] border border-white/30"
                       />
                     </div>
@@ -307,7 +311,7 @@ export default function HeroSection() {
       </motion.div>
 
       {/* Ticker */}
-      <div className="absolute bottom-0 left-0 w-full z-30">
+      <div className="relative w-full z-30">
         <Ticker />
       </div>
     </section>

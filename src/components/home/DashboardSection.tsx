@@ -48,8 +48,8 @@ export default function DashboardSection() {
       
       <div className="text-center max-w-3xl mb-20">
         <h2 className="text-5xl lg:text-7xl font-bold tracking-tighter text-[#111] leading-[0.9]">
-          Alles, was du brauchst. <br/>
-          <span className="text-black/30">In einem System.</span>
+          Deine Kundenbindung. <br/>
+          <span className="text-black/30">Zentral verwaltet.</span>
         </h2>
       </div>
 
@@ -59,9 +59,9 @@ export default function DashboardSection() {
         {/* CARD 1: Analytics (Span 2) - MASSIVE WIDE CHART */}
         <BentoCard className="col-span-1 md:col-span-2 h-[450px] bg-zinc-50 flex flex-col justify-between">
           <div className="p-10 relative z-10" style={{ transform: "translateZ(40px)" }}>
-            <h3 className="text-3xl lg:text-4xl font-bold text-[#111] tracking-tight">Kunden-Analytics</h3>
+            <h3 className="text-3xl lg:text-4xl font-bold text-[#111] tracking-tight">Besuche im Blick</h3>
             <p className="text-base lg:text-lg font-medium text-black/50 mt-2 max-w-md">
-              Beobachte Scans in Echtzeit. Erkenne deine stärksten Tage und optimiere deine Angebote.
+              Sieh, wie oft deine Karten genutzt und Belohnungen eingelöst werden. Nutze die Übersicht für deine nächsten Aktionen.
             </p>
           </div>
           
@@ -101,8 +101,8 @@ export default function DashboardSection() {
         {/* CARD 2: Push Notifications */}
         <BentoCard className="col-span-1 h-[450px] flex flex-col bg-gradient-to-br from-[#111] via-zinc-900 to-black text-white">
           <div className="p-10 relative z-20" style={{ transform: "translateZ(40px)" }}>
-            <h3 className="text-3xl font-bold tracking-tight">Push-Marketing</h3>
-            <p className="text-base font-medium text-white/50 mt-2">Sende Angebote auf den Lockscreen.</p>
+            <h3 className="text-3xl font-bold tracking-tight">Kunden erreichen</h3>
+            <p className="text-base font-medium text-white/50 mt-2">Mache deine Kunden mit Wallet-Mitteilungen auf Angebote deines Geschäfts aufmerksam.</p>
           </div>
           
           <div className="absolute inset-x-0 bottom-0 top-32 flex justify-center items-center pointer-events-none">
@@ -126,8 +126,8 @@ export default function DashboardSection() {
         {/* CARD 3: Location */}
         <BentoCard className="col-span-1 h-[450px] bg-white relative overflow-hidden">
           <div className="p-10 relative z-10" style={{ transform: "translateZ(30px)" }}>
-            <h3 className="text-3xl font-bold text-[#111] tracking-tight">Location Based</h3>
-            <p className="text-base font-medium text-black/50 mt-2">Karte öffnet sich automatisch am POS.</p>
+            <h3 className="text-3xl font-bold text-[#111] tracking-tight">Vor Ort präsent</h3>
+            <p className="text-base font-medium text-black/50 mt-2">Erinnere Kunden in der Nähe an die Karte deines Geschäfts.</p>
           </div>
           {/* Subtle Grid Background */}
           <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, black 1px, transparent 0)', backgroundSize: '30px 30px' }} />
@@ -143,8 +143,8 @@ export default function DashboardSection() {
         {/* CARD 4: NFC */}
         <BentoCard className="col-span-1 h-[450px] bg-amber-400 relative">
           <div className="p-10 relative z-10" style={{ transform: "translateZ(30px)" }}>
-            <h3 className="text-3xl font-bold text-[#111] tracking-tight">NFC Ready</h3>
-            <p className="text-base font-medium text-black/70 mt-2">Kompatibel mit Apple & Google Pay Terminals.</p>
+            <h3 className="text-3xl font-bold text-[#111] tracking-tight">An der Kasse</h3>
+            <p className="text-base font-medium text-black/70 mt-2">Dein Team scannt die Kundenkarte und vergibt den nächsten Stempel.</p>
           </div>
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none mt-20" style={{ transform: "translateZ(40px)" }}>
              <svg className="w-48 h-48 text-black/20 group-hover:scale-110 transition-transform duration-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -156,8 +156,8 @@ export default function DashboardSection() {
         {/* CARD 5: Customization */}
         <BentoCard className="col-span-1 h-[450px] overflow-hidden bg-zinc-900 text-white relative">
           <div className="p-10 relative z-20" style={{ transform: "translateZ(50px)" }}>
-            <h3 className="text-3xl font-bold tracking-tight">100% Branding</h3>
-            <p className="text-base font-medium text-white/50 mt-2">Logo, Farben & Design in Sekunden anpassen.</p>
+            <h3 className="text-3xl font-bold tracking-tight">Deine Marke</h3>
+            <p className="text-base font-medium text-white/50 mt-2">Gestalte die Karte mit deinem Logo und den Farben deines Geschäfts.</p>
           </div>
           {/* Overlapping Cards */}
           <div className="absolute -bottom-10 -right-20 w-[140%] pointer-events-none flex" style={{ transform: "translateZ(30px)" }}>

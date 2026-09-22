@@ -140,11 +140,11 @@ export default function BrancheSubpageClient({ data }: { data: BrancheData }) {
       <section className="w-full py-8 px-4 md:px-8 bg-[#f5f5f7]">
         <div className="w-full py-40 md:py-56 bg-black text-white rounded-[3rem] md:rounded-[4rem] flex flex-col items-center justify-center text-center px-6 relative overflow-hidden">
           <h2 className="text-5xl md:text-8xl font-bold tracking-tighter leading-[0.85] relative z-10 max-w-[900px]">
-            Bereit für dein <span className="text-transparent bg-clip-text bg-gradient-to-br from-amber-400 to-amber-600">Geschäft?</span>
+            Kundenbindung für dein <span className="text-transparent bg-clip-text bg-gradient-to-br from-amber-400 to-amber-600">Geschäft?</span>
           </h2>
           <div className="mt-12 flex flex-col sm:flex-row gap-4 sm:gap-5 relative z-10 w-full sm:w-auto">
             <Link href="/demo" className="w-full sm:w-auto bg-white text-black px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest hover:scale-105 transition-transform">
-              Demo Anfragen
+              Demo für deinen Betrieb
             </Link>
           </div>
         </div>

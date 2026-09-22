@@ -42,7 +42,7 @@ export default function StorytellingSection() {
               <div className="text-[12rem] md:text-[16rem] font-light text-white/10 leading-none absolute -top-16 -left-8 pointer-events-none">1</div>
               <h3 className="text-4xl md:text-6xl font-medium text-white mb-6 tracking-tight relative z-10">Scan.</h3>
               <p className="text-xl text-zinc-400 font-light max-w-sm relative z-10">
-                Der Kunde scannt den Code. Kein Download, keine App-Stores, keine Hürden.
+                Stelle deinen QR-Code an der Kasse bereit und lade deine Kunden ein, die Karte deines Geschäfts zu nutzen.
               </p>
               
               <div className="mt-12 p-8 border border-white/10 rounded-2xl bg-black/50 relative overflow-hidden">
@@ -60,7 +60,7 @@ export default function StorytellingSection() {
               <div className="text-[12rem] md:text-[16rem] font-light text-white/10 leading-none absolute -top-16 -left-8 pointer-events-none">2</div>
               <h3 className="text-4xl md:text-6xl font-medium text-white mb-6 tracking-tight relative z-10">Save.</h3>
               <p className="text-xl text-zinc-400 font-light max-w-sm relative z-10">
-                Mit einem Tap direkt im Apple Wallet oder Google Wallet gespeichert.
+                Deine Kunden speichern die Karte in ihrer Wallet. Deine Marke bleibt nach dem Besuch bei ihnen.
               </p>
               
               <div className="mt-12 relative w-full flex justify-center">
@@ -76,7 +76,7 @@ export default function StorytellingSection() {
               <div className="text-[12rem] md:text-[16rem] font-light text-white/10 leading-none absolute -top-16 -left-8 pointer-events-none">3</div>
               <h3 className="text-4xl md:text-6xl font-medium text-white mb-6 tracking-tight relative z-10">Collect.</h3>
               <p className="text-xl text-zinc-400 font-light max-w-sm relative z-10">
-                Bei jedem Kauf scannen. Die Karte updatet sich in Echtzeit über Push-Notifications.
+                Dein Team scannt die Kundenkarte und vergibt den Stempel für den Einkauf. Der neue Stand erscheint auf der Karte.
               </p>
               
               <div className="mt-12 relative w-full flex justify-center">
@@ -91,7 +91,7 @@ export default function StorytellingSection() {
               <div className="text-[12rem] md:text-[16rem] font-light text-amber-500/10 leading-none absolute -top-16 -left-8 pointer-events-none">4</div>
               <h3 className="text-4xl md:text-6xl font-medium text-transparent bg-clip-text text-gradient-amber mb-6 tracking-tight relative z-10">Reward.</h3>
               <p className="text-xl text-zinc-400 font-light max-w-sm relative z-10">
-                Volle Karte? Der Kunde löst sie ein. Der Zyklus beginnt von vorn. Absolute Loyalität.
+                Ist die Karte voll, löst dein Team die Prämie ein. Du entscheidest, welche Belohnung zu deinem Geschäft passt.
               </p>
               
               <div className="mt-12 relative w-full flex justify-center">

@@ -40,14 +40,14 @@ export default function BranchenPage() {
           className="inline-flex items-center gap-3 mb-10 px-5 py-2.5 rounded-full bg-black/5 backdrop-blur-xl border border-black/5 shadow-[0_8px_30px_rgba(0,0,0,0.02)]"
         >
           <span className="w-2 h-2 rounded-full bg-zinc-800" />
-          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#111]">Anwendungsfälle</span>
+          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#111]">Für lokale Betriebe</span>
         </motion.div>
 
         <CharReveal text="Branchen." className="text-[11.5vw] sm:text-[12vw] md:text-[9vw] font-bold tracking-tight md:tracking-[-0.05em] leading-[0.8] text-[#111]" delay={0.1} />
         <CharReveal text="Dein Geschäft." className="text-[11.5vw] sm:text-[12vw] md:text-[9vw] font-bold tracking-tight md:tracking-[-0.05em] leading-[0.8] text-transparent bg-clip-text bg-gradient-to-br from-zinc-400 via-zinc-600 to-zinc-800 -mt-[0.1em]" delay={0.4} />
         
         <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1, duration: 0.8 }} className="mt-10 text-lg md:text-xl text-black/40 font-medium max-w-xl leading-relaxed">
-          Egal ob Café, Kiosk oder Friseur. Die digitale Stempelkarte passt sich deinem Business nahtlos an.
+          Ob Café, Kiosk oder Salon: Wähle die Stempelkarte und Belohnung passend zu deinem Geschäft. Entdecke Beispiele für deinen Betriebsalltag.
         </motion.p>
       </section>
 
@@ -135,11 +135,11 @@ export default function BranchenPage() {
       <section className="w-full py-8 px-4 md:px-8 bg-[#f5f5f7]">
         <div className="w-full py-40 md:py-56 bg-black text-white rounded-[3rem] md:rounded-[4rem] flex flex-col items-center justify-center text-center px-6 relative overflow-hidden">
           <h2 className="text-5xl md:text-8xl font-bold tracking-tighter leading-[0.85] relative z-10 max-w-[900px]">
-            Ready to <span className="text-transparent bg-clip-text bg-gradient-to-br from-zinc-400 to-zinc-600">Start?</span>
+            Bereit für <span className="text-transparent bg-clip-text bg-gradient-to-br from-zinc-400 to-zinc-600">Stammkunden?</span>
           </h2>
           <div className="mt-12 flex flex-col sm:flex-row gap-4 sm:gap-5 relative z-10 w-full sm:w-auto">
             <Link href="/demo" className="w-full sm:w-auto bg-white text-black px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest text-center hover:scale-105 transition-transform inline-block">
-              Demo Anfragen
+              Demo für dein Geschäft
             </Link>
           </div>
         </div>

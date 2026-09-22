@@ -27,8 +27,8 @@ function CharReveal({ text, className = "", delay = 0 }: { text: string, classNa
 }
 
 const values = [
-  { title: "Simplicity", text: "Wir glauben, dass die besten Produkte diejenigen sind, die man nicht erst erklären muss." },
-  { title: "Innovation", text: "Wir nutzen Apple Wallet & Google Pay, um lokale Geschäfte ins 21. Jahrhundert zu bringen." },
+  { title: "Simplicity", text: "Kundenbindung soll auch dann einfach bleiben, wenn an deiner Kasse viel los ist. Deshalb denken wir vom Alltag lokaler Geschäfte aus." },
+  { title: "Innovation", text: "Wir bringen die Stempelkarte deines Geschäfts in die Wallet deiner Kunden – mit deiner Marke und deinen Belohnungen." },
   { title: "Fairness", text: "Keine versteckten Gebühren. Keine Knebelverträge. Ein faires Preismodell für kleine Unternehmen." }
 ];
 
@@ -64,7 +64,7 @@ export default function ClientUeberUnsPage() {
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.8 }}
           className="text-xl md:text-3xl text-white/40 font-medium max-w-3xl leading-relaxed"
         >
-          Wir haben es uns zur Aufgabe gemacht, kleinen und mittelständischen Unternehmen die Werkzeuge der Großen in die Hand zu geben. Einfach, modern und effektiv.
+          Wir entwickeln digitale Stempelkarten für die Menschen, die lokale Geschäfte führen. Damit du treue Kunden belohnen kannst und dein Team im Alltag den Überblick behält.
         </motion.p>
       </section>
 

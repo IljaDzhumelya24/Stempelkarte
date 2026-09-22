@@ -58,7 +58,7 @@ export default function FinalCTA() {
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
               className="text-5xl md:text-8xl lg:text-[9rem] font-bold tracking-tighter leading-[0.8] text-white"
             >
-              Bereit für den
+              Dein Geschäft.
             </motion.h2>
           </div>
           <div className="overflow-hidden mt-2">
@@ -66,9 +66,9 @@ export default function FinalCTA() {
               initial={{ y: 120 }}
               animate={isInView ? { y: 0 } : {}}
               transition={{ duration: 1.2, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-              className="text-5xl md:text-8xl lg:text-[9rem] font-bold tracking-tighter leading-[0.8] text-transparent bg-clip-text bg-gradient-to-br from-amber-300 via-amber-500 to-orange-600"
+              className="text-[9vw] md:text-7xl lg:text-[7rem] font-bold tracking-tighter leading-[1.1] text-transparent bg-clip-text bg-gradient-to-br from-amber-300 via-amber-500 to-orange-600"
             >
-              ersten Stempel?
+              Deine Stammkunden.
             </motion.h2>
           </div>
           
@@ -78,7 +78,7 @@ export default function FinalCTA() {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="mt-10 text-xl md:text-2xl text-white/40 font-medium tracking-tight max-w-xl leading-relaxed"
           >
-            Schließe dich hunderten lokalen Geschäften an und starte in unter 5 Minuten.
+            Entdecke, wie du eine digitale Stempelkarte in deinem Betrieb einsetzt. Wir zeigen dir den Ablauf – von der Gestaltung bis zum Stempeln an der Kasse.
           </motion.p>
 
           <motion.div 
@@ -100,12 +100,12 @@ export default function FinalCTA() {
                 className="absolute inset-0 bg-amber-500 rounded-full blur-xl"
               />
               <Link href="/demo" className="relative flex bg-amber-500 text-black px-12 py-6 rounded-full font-bold uppercase tracking-[0.2em] text-xs hover:bg-white hover:scale-110 transition-all duration-500 shadow-[0_0_80px_rgba(245,158,11,0.4)]">
-                Kostenlos Starten
+                Demo anfragen
               </Link>
             </div>
             
-            <Link href="/demo" className="flex bg-white/5 backdrop-blur-md border border-white/10 text-white px-12 py-6 rounded-full font-bold uppercase tracking-[0.2em] text-xs hover:bg-white/15 hover:border-white/30 hover:scale-105 transition-all duration-500">
-              Demo Ansehen
+            <Link href="/preise" className="flex bg-white/5 backdrop-blur-md border border-white/10 text-white px-12 py-6 rounded-full font-bold uppercase tracking-[0.2em] text-xs hover:bg-white/15 hover:border-white/30 hover:scale-105 transition-all duration-500">
+              Tarife vergleichen
             </Link>
           </motion.div>
         </motion.div>

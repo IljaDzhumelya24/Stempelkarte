@@ -55,8 +55,8 @@ export default function PreisePage() {
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
           className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.9] text-[#111] mb-6"
         >
-          Einfache Preise.<br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-br from-zinc-400 via-zinc-600 to-zinc-800">Keine Überraschungen.</span>
+          Für deinen Betrieb.<br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-br from-zinc-400 via-zinc-600 to-zinc-800">Der passende Tarif.</span>
         </motion.h1>
         
         <motion.p 
@@ -216,19 +216,19 @@ export default function PreisePage() {
         <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-24">
           <div className="flex-1">
             <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-[#111] mb-6">
-              Macht sich von selbst bezahlt.
+              Was bringt es deinem Geschäft?
             </h2>
             <p className="text-lg md:text-xl text-black/60 font-medium leading-relaxed mb-8">
-              Mit nur <strong className="text-[#111]">2-3 zusätzlichen Stammkunden</strong> im Monat, die durch die digitale Stempelkarte öfter wiederkommen, hast du die Kosten für das Starter-Paket bereits wieder reingeholt. Jeder weitere Kunde ist reiner Gewinn für dein Geschäft.
+              Mit <strong className="text-[#111]">zusätzlichen Besuchen deiner Stammkunden</strong> kann dein Umsatz wachsen. Die Beispielrechnung zeigt möglichen Zusatzumsatz, keinen Gewinn. Ob sich der Tarif für dich lohnt, hängt auch von deiner Marge, den Prämien und den tatsächlichen Wiederbesuchen ab.
             </p>
             <div className="flex items-center gap-4 text-sm font-bold uppercase tracking-widest text-amber-600">
               <span className="w-8 h-[2px] bg-amber-600" />
-              Kein Risiko. Jederzeit kündbar.
+              Plane mit den Zahlen deines Betriebs.
             </div>
           </div>
           <div className="w-full md:w-[400px] bg-white p-8 md:p-12 rounded-[2rem] shadow-xl border border-black/5 relative">
             <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/20 blur-[40px] rounded-full" />
-            <h3 className="text-xl font-bold tracking-tight mb-8">Beispiel-Rechnung</h3>
+            <h3 className="text-xl font-bold tracking-tight mb-8">Rechenbeispiel, keine Prognose</h3>
             <div className="space-y-6 relative z-10">
               <div className="flex justify-between items-center pb-4 border-b border-black/5">
                 <span className="text-black/50 font-medium">Zusätzliche Kunden</span>
@@ -275,11 +275,11 @@ export default function PreisePage() {
       <section className="w-full py-8 px-4 md:px-8 bg-[#f5f5f7]">
         <div className="w-full py-32 md:py-48 bg-[#111] text-white rounded-[3rem] md:rounded-[4rem] flex flex-col items-center justify-center text-center px-6 relative overflow-hidden">
           <h2 className="text-5xl md:text-8xl font-bold tracking-tighter leading-[0.85] relative z-10 max-w-[900px]">
-            Bereit für dein <span className="text-transparent bg-clip-text bg-gradient-to-br from-zinc-400 to-zinc-600">Geschäft?</span>
+            Bereit für mehr <span className="text-transparent bg-clip-text bg-gradient-to-br from-zinc-400 to-zinc-600">Stammkunden?</span>
           </h2>
           <div className="mt-10 md:mt-16 relative z-10">
             <Link href="/demo" className="w-full sm:w-auto bg-amber-500 text-[#111] px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest hover:scale-105 transition-transform inline-block">
-              Demo Anfragen
+              Demo anfragen
             </Link>
           </div>
         </div>

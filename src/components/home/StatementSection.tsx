@@ -45,30 +45,30 @@ const features = [
     icon: (
       <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
     ),
-    title: "Keine App nötig",
-    desc: "Deine Stempelkarte landet mit einem Klick direkt in Apple Wallet oder Google Pay.",
+    title: "Einfach für deine Kunden",
+    desc: "Deine Kunden speichern die Karte deines Geschäfts direkt in ihrer Wallet. Eine zusätzliche Stempelkarten-App brauchen sie nicht.",
     stat: "0",
-    statLabel: "App Downloads",
+    statLabel: "Zusatz-Apps",
     color: "amber" as const,
   },
   {
     icon: (
       <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
     ),
-    title: "In 5 Minuten live",
-    desc: "Logo hochladen, Farben wählen, fertig. Vollautomatisch generiert und sofort einsatzbereit.",
-    stat: "5",
-    statLabel: "Min Setup",
+    title: "Dein Geschäft gibt den Ton an",
+    desc: "Gestalte deine Karte mit Logo und Farben deines Geschäfts. Du entscheidest, wie viele Besuche du mit welcher Prämie belohnst.",
+    stat: "Du",
+    statLabel: "entscheidest",
     color: "blue" as const,
   },
   {
     icon: (
       <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
     ),
-    title: "100% DSGVO konform",
-    desc: "Komplett anonym über sichere Token. Maximale Kundenbindung ohne Datensammelei.",
-    stat: "100%",
-    statLabel: "Datenschutz",
+    title: "Übersicht für deinen Betrieb",
+    desc: "Behalte aktive Karten, vergebene Stempel und eingelöste Belohnungen im Blick. So siehst du, wie dein Treueangebot genutzt wird.",
+    stat: "1",
+    statLabel: "Dashboard",
     color: "emerald" as const,
   },
 ];
@@ -89,7 +89,7 @@ export default function StatementSection() {
       {/* SCROLL-DRIVEN WORD REVEAL — THE Awwwards Signature */}
       <div className="w-full py-32 md:py-48 flex justify-center px-6">
         <ScrollRevealText 
-          text="Die eleganteste Art, Kunden zu begeistern. Keine App. Kein Plastik. Nur pure Magie direkt in der nativen Wallet deiner Kunden."
+          text="Aus einem Besuch kann eine Gewohnheit werden. Gib deinen Kunden einen Grund, wiederzukommen – mit einer digitalen Stempelkarte für dein Geschäft."
           className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[1.1] text-[#111] max-w-[1200px] text-center"
         />
       </div>
@@ -102,7 +102,7 @@ export default function StatementSection() {
           transition={{ duration: 1 }}
           className="flex justify-center items-center gap-16 flex-wrap px-8"
         >
-          {["500+ Geschäfte", "50.000+ Stempel", "98% Retention", "4.9★ Bewertung"].map((item, i) => (
+          {["Für lokale Geschäfte", "Deine Marke", "Deine Belohnungen", "Dein Überblick"].map((item, i) => (
             <motion.span 
               key={i}
               initial={{ opacity: 0, y: 20 }}
@@ -138,7 +138,7 @@ export default function StatementSection() {
                 {f.icon}
               </motion.div>
 
-              <div className="flex items-baseline gap-3">
+              <div className="flex flex-wrap items-baseline gap-3">
                 <span className="text-6xl lg:text-7xl font-bold tracking-tighter text-[#111]">{f.stat}</span>
                 <span className="text-xs font-bold uppercase tracking-widest text-black/30">{f.statLabel}</span>
               </div>
