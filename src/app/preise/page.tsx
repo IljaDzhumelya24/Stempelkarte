@@ -6,6 +6,38 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { pricingTiers, faqItems } from "@/lib/data";
 
+// ─── CHARACTER REVEAL ──────────────────────────────────────────────
+function CharReveal({ text, className = "", delay = 0 }: { text: string, className?: string, delay?: number }) {
+  const words = text.split(" ");
+  let globalIndex = 0;
+  return (
+    <div className={`overflow-hidden w-full flex justify-center pb-[0.15em] ${className}`}>
+      <motion.div className="flex flex-wrap justify-center gap-x-[0.2em] md:gap-[0.25em]">
+        {words.map((word, wI) => (
+          <span key={wI} className="whitespace-nowrap flex">
+            {word.split("").map((char, cI) => {
+              const delayTime = delay + globalIndex * 0.035;
+              globalIndex++;
+              return (
+                <motion.span
+                  key={cI}
+                  initial={{ y: "110%", rotateX: 90, opacity: 0 }}
+                  animate={{ y: "0%", rotateX: 0, opacity: 1 }}
+                  transition={{ duration: 1, delay: delayTime, ease: [0.16, 1, 0.3, 1] }}
+                  className="inline-block"
+                  style={{ transformOrigin: "bottom" }}
+                >
+                  {char}
+                </motion.span>
+              );
+            })}
+          </span>
+        ))}
+      </motion.div>
+    </div>
+  );
+}
+
 // ─── SVG ICONS ───────────────────────────────────────────────────
 const CheckIcon = () => (
   <svg className="w-5 h-5 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
@@ -40,36 +72,39 @@ export default function PreisePage() {
       <Navigation />
 
       {/* ─── PURE CINEMATIC HERO ───────────────────────────────────── */}
-      <section className="w-full pt-40 lg:pt-48 pb-16 flex flex-col items-center text-center px-6">
+      <section className="w-full pt-40 lg:pt-52 pb-16 flex flex-col items-center text-center px-6">
         <motion.div
           initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
           animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
           transition={{ duration: 0.8 }}
-          className="inline-flex items-center gap-3 mb-8 px-4 py-2 rounded-full bg-black/5 backdrop-blur-xl border border-black/5"
+          className="inline-flex items-center gap-3 mb-10 md:mb-12 px-5 py-2.5 rounded-full bg-black/5 backdrop-blur-xl border border-black/5 shadow-[0_8px_30px_rgba(0,0,0,0.05)]"
         >
           <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
           <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#111]">Transparente Tarife</span>
         </motion.div>
 
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.9] text-[#111] mb-6"
-        >
-          Für deinen Betrieb.<br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-br from-zinc-400 via-zinc-600 to-zinc-800">Der passende Tarif.</span>
-        </motion.h1>
+        <CharReveal
+          text="Für deinen Betrieb."
+          className="text-[11.5vw] sm:text-[12vw] md:text-[9vw] font-bold tracking-tight md:tracking-[-0.05em] leading-[0.8] text-[#111]"
+          delay={0.1}
+        />
+        <CharReveal
+          text="Der passende Tarif."
+          className="text-[11.5vw] sm:text-[12vw] md:text-[9vw] font-bold tracking-tight md:tracking-[-0.05em] leading-[0.8] text-transparent bg-clip-text bg-gradient-to-br from-zinc-400 via-zinc-600 to-zinc-800 -mt-[0.1em]"
+          delay={0.4}
+        />
         
         <motion.p 
-          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.8 }} 
-          className="mt-6 text-lg md:text-xl text-black/40 font-medium max-w-xl leading-relaxed"
+          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1, duration: 0.8 }} 
+          className="mt-10 md:mt-12 text-lg md:text-xl text-black/40 font-medium max-w-xl leading-relaxed"
         >
           Wähle den Plan, der am besten zu deinem Geschäft passt. Jederzeit kündbar, keine versteckten Gebühren.
         </motion.p>
       </section>
 
-      {/* ─── PRICING CARDS (WIDE HORIZONTAL LAYOUT) ────────────────────────── */}
-      <section className="w-full py-12 md:py-20 px-6 max-w-[1200px] mx-auto">
-        <div className="flex flex-col gap-10">
+      {/* ─── PRICING CARDS (HEFTIG BENTO) ────────────────────────────── */}
+      <section className="w-full py-16 md:py-32 px-6 max-w-[1300px] mx-auto relative z-20">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-0 lg:items-center">
           {pricingTiers.map((tier, i) => {
             const isHighlighted = tier.highlighted;
             
@@ -79,69 +114,89 @@ export default function PreisePage() {
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className={`relative flex flex-col md:flex-row w-full p-8 md:p-12 lg:p-16 rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden transition-all duration-500 hover:-translate-y-2 ${
+                transition={{ duration: 0.8, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className={`relative flex flex-col rounded-[2.5rem] overflow-hidden transition-all duration-500 ${
                   isHighlighted 
-                    ? "bg-gradient-to-br from-[#111] via-[#0a0a0a] to-[#050505] text-white shadow-[0_40px_100px_rgba(0,0,0,0.3)] border border-amber-500/20" 
-                    : "bg-white text-[#111] shadow-[0_20px_80px_rgba(0,0,0,0.04)] border border-black/5"
+                    ? "bg-[#050505] text-white shadow-[0_0_100px_rgba(245,158,11,0.25)] border-[2px] border-amber-500/30 lg:scale-110 lg:z-30 p-10 md:p-14" 
+                    : "bg-white text-[#111] shadow-[0_20px_80px_rgba(0,0,0,0.03)] border border-black/5 p-8 md:p-10 lg:scale-95 lg:z-10 hover:-translate-y-2 hover:shadow-[0_30px_100px_rgba(0,0,0,0.06)]"
                 }`}
               >
-                {/* Highlight Glow Effect */}
+                {/* Intense Highlight Glow Effects */}
                 {isHighlighted && (
-                  <div className="absolute top-1/2 left-1/2 w-full h-[150%] bg-amber-500/10 blur-[120px] rounded-full pointer-events-none transform -translate-x-1/2 -translate-y-1/2" />
+                  <>
+                    <div className="absolute top-0 left-1/2 w-[150%] h-[300px] bg-amber-500/20 blur-[100px] rounded-full pointer-events-none transform -translate-x-1/2 -translate-y-[40%]" />
+                    <div className="absolute bottom-0 right-0 w-[100%] h-[200px] bg-amber-600/10 blur-[80px] rounded-full pointer-events-none transform translate-x-1/4 translate-y-1/4" />
+                    {/* Animated moving border highlight simulation */}
+                    <div className="absolute inset-0 border border-amber-300/10 rounded-[2.5rem] pointer-events-none" />
+                  </>
                 )}
 
-                {/* LEFT SIDE: Info & Price */}
-                <div className={`relative z-10 w-full md:w-[45%] flex flex-col md:pr-12 lg:pr-16 md:border-r ${isHighlighted ? "border-white/10" : "border-black/5"}`}>
+                <div className="relative z-10 flex-1 flex flex-col">
                   {/* Badge */}
-                  {isHighlighted && (
-                    <div className="w-fit mb-6 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-[10px] font-bold uppercase tracking-widest backdrop-blur-md">
+                  {isHighlighted ? (
+                    <motion.div 
+                      initial={{ opacity: 0.8 }}
+                      animate={{ opacity: 1, boxShadow: ["0 0 0 rgba(245,158,11,0)", "0 0 20px rgba(245,158,11,0.5)", "0 0 0 rgba(245,158,11,0)"] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                      className="w-fit mb-8 px-4 py-1.5 rounded-full bg-amber-500 border border-amber-400 text-[#111] text-[11px] font-black uppercase tracking-widest"
+                    >
                       Empfohlen
+                    </motion.div>
+                  ) : (
+                    <div className="w-fit mb-8 px-4 py-1.5 rounded-full bg-transparent border border-transparent text-transparent text-[11px] select-none">
+                      Spacer
                     </div>
                   )}
 
-                  <h3 className={`text-4xl lg:text-5xl font-bold tracking-tighter mb-4 ${isHighlighted ? "text-white" : "text-[#111]"}`}>
+                  <h3 className={`text-3xl font-black tracking-tight mb-3 ${isHighlighted ? "text-white" : "text-[#111]"}`}>
                     {tier.name}
                   </h3>
                   
-                  <p className={`text-base font-medium leading-relaxed mb-8 ${isHighlighted ? "text-white/50" : "text-black/40"}`}>
+                  <p className={`text-sm font-medium leading-relaxed min-h-[60px] ${isHighlighted ? "text-white/60" : "text-black/40"}`}>
                     {tier.description}
                   </p>
 
-                  <div className="mb-10 flex items-baseline gap-2 mt-auto">
-                    <span className={`text-6xl lg:text-7xl font-bold tracking-tighter ${isHighlighted ? "text-white" : "text-[#111]"}`}>€{tier.price}</span>
-                    <span className={`text-sm font-bold uppercase tracking-widest ${isHighlighted ? "text-white/30" : "text-black/20"}`}>
-                      /{tier.period.replace("pro ", "")}
+                  <div className="my-10 flex items-baseline gap-2">
+                    <span className={`font-black tracking-tighter ${
+                      isHighlighted 
+                        ? "text-6xl md:text-7xl text-transparent bg-clip-text bg-gradient-to-b from-white to-white/70" 
+                        : "text-5xl md:text-6xl text-[#111]"
+                    }`}>
+                      {tier.price === 'Individuell' ? 'Indiv.' : `€${tier.price}`}
                     </span>
+                    {tier.period && (
+                      <span className={`text-xs font-bold uppercase tracking-widest ${isHighlighted ? "text-white/40" : "text-black/20"}`}>
+                        /{tier.period.replace("pro ", "")}
+                      </span>
+                    )}
                   </div>
 
                   <Link
                     href="/demo"
-                    className={`w-full py-5 rounded-full font-bold text-sm uppercase tracking-widest text-center transition-all duration-300 hover:scale-[1.02] ${
+                    className={`w-full py-5 rounded-full font-black text-xs uppercase tracking-widest text-center transition-all duration-300 ${
                       isHighlighted 
-                        ? "bg-amber-500 text-[#111] hover:bg-amber-400 shadow-[0_0_40px_rgba(245,158,11,0.2)]" 
-                        : "bg-[#111] text-white hover:bg-black/90 shadow-xl"
+                        ? "bg-gradient-to-r from-amber-400 to-amber-500 text-[#111] hover:from-amber-300 hover:to-amber-400 shadow-[0_10px_40px_rgba(245,158,11,0.4)] hover:shadow-[0_15px_50px_rgba(245,158,11,0.6)] hover:scale-[1.03]" 
+                        : "bg-[#f5f5f7] text-[#111] hover:bg-black/5"
                     }`}
                   >
                     {tier.ctaText || "Auswählen"}
                   </Link>
-                </div>
 
-                {/* RIGHT SIDE: Features */}
-                <div className="relative z-10 w-full md:w-[55%] mt-12 md:mt-0 md:pl-12 lg:pl-16 flex flex-col justify-center">
-                  <h4 className={`text-sm font-bold uppercase tracking-widest mb-8 ${isHighlighted ? "text-white/40" : "text-black/30"}`}>
-                    Alles in {tier.name} enthalten:
+                  <div className={`w-full h-px my-10 ${isHighlighted ? "bg-white/10" : "bg-black/5"}`} />
+
+                  <h4 className={`text-xs font-bold uppercase tracking-widest mb-6 ${isHighlighted ? "text-amber-500" : "text-black/30"}`}>
+                    Enthaltene Funktionen:
                   </h4>
                   
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6 lg:gap-y-8">
+                  <ul className="flex flex-col gap-5">
                     {tier.features.map((feature: string, fIndex: number) => (
                       <li key={fIndex} className="flex items-start gap-4">
-                        <div className={`flex items-center justify-center w-7 h-7 rounded-full shrink-0 ${isHighlighted ? "bg-amber-500/10" : "bg-black/5"}`}>
-                          <svg className={`w-4 h-4 ${isHighlighted ? "text-amber-500" : "text-black/40"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                        <div className={`flex items-center justify-center w-6 h-6 rounded-full shrink-0 ${isHighlighted ? "bg-amber-500/20" : "bg-black/5"}`}>
+                          <svg className={`w-3.5 h-3.5 ${isHighlighted ? "text-amber-400" : "text-black/40"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                           </svg>
                         </div>
-                        <span className={`text-base font-medium mt-0.5 ${isHighlighted ? "text-white/90" : "text-[#111]/80"}`}>
+                        <span className={`text-sm font-medium mt-0.5 ${isHighlighted ? "text-white/90" : "text-[#111]/70"}`}>
                           {feature}
                         </span>
                       </li>
@@ -154,56 +209,63 @@ export default function PreisePage() {
         </div>
       </section>
 
-      {/* ─── FEATURE COMPARISON TABLE ─────────────────────────────── */}
+      {/* ─── FEATURE COMPARISON TABLE (PREMIUM CARD) ─────────────────────────── */}
       <section className="w-full py-20 md:py-32 px-6 max-w-[1100px] mx-auto">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-[#111] mb-4">Vergleich im Detail</h2>
-          <p className="text-black/40 font-medium text-lg">Alle Funktionen in der direkten Übersicht.</p>
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16 md:mb-24">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-black/40 mb-4">Vergleich</p>
+          <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-[#111]">
+            Alle Funktionen im Detail
+          </h2>
         </motion.div>
 
         {/* DESKTOP TABLE */}
-        <div className="hidden md:block w-full">
-          <table className="w-full text-left border-collapse">
-            <thead>
-              <tr className="border-b border-black/10">
-                <th className="py-6 px-4 text-sm font-bold uppercase tracking-widest text-black/40 w-1/2">Funktion</th>
-                <th className="py-6 px-4 text-sm font-bold uppercase tracking-widest text-[#111] w-1/4">Starter</th>
-                <th className="py-6 px-4 text-sm font-bold uppercase tracking-widest text-amber-600 w-1/4">Professional</th>
-              </tr>
-            </thead>
-            <tbody>
-              {comparisonFeatures.map((feat, i) => (
-                <tr key={i} className="border-b border-black/5 hover:bg-black/[0.02] transition-colors">
-                  <td className="py-6 px-4 text-base md:text-lg font-medium text-[#111]">{feat.name}</td>
-                  <td className="py-6 px-4 text-base md:text-lg font-medium text-black/60">
-                    {typeof feat.starter === 'boolean' ? (feat.starter ? <CheckIcon /> : <CrossIcon />) : feat.starter}
-                  </td>
-                  <td className="py-6 px-4 text-base md:text-lg font-bold text-[#111]">
-                    {typeof feat.pro === 'boolean' ? (feat.pro ? <CheckIcon /> : <CrossIcon />) : feat.pro}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="hidden md:block w-full bg-white rounded-[3rem] p-10 lg:p-16 shadow-[0_20px_80px_rgba(0,0,0,0.04)] border border-black/5 relative overflow-hidden">
+          
+          {/* Subtle Highlight for Pro Column */}
+          <div className="absolute top-0 right-8 w-[30%] h-full bg-gradient-to-b from-amber-500/[0.07] to-transparent pointer-events-none rounded-3xl" />
+
+          <div className="grid grid-cols-12 gap-4 border-b border-black/10 pb-6 mb-4 relative z-10">
+            <div className="col-span-5 text-xs font-bold uppercase tracking-widest text-black/40 flex items-end">Funktion</div>
+            <div className="col-span-3 text-sm font-bold uppercase tracking-widest text-[#111] flex items-end justify-center">Starter</div>
+            <div className="col-span-4 text-sm font-black uppercase tracking-widest text-amber-600 flex items-end justify-center">Professional</div>
+          </div>
+
+          <div className="relative z-10 flex flex-col">
+            {comparisonFeatures.map((feat, i) => (
+              <div key={i} className="grid grid-cols-12 gap-4 py-6 border-b border-black/[0.03] hover:bg-black/[0.02] transition-colors rounded-2xl -mx-4 px-4">
+                <div className="col-span-5 flex items-center text-base font-bold text-[#111]">
+                  {feat.name}
+                </div>
+                <div className="col-span-3 flex items-center justify-center text-sm font-medium text-black/50 text-center">
+                  {typeof feat.starter === 'boolean' ? (feat.starter ? <CheckIcon /> : <span className="text-black/10 font-bold">—</span>) : feat.starter}
+                </div>
+                <div className="col-span-4 flex items-center justify-center text-base font-black text-[#111] text-center">
+                  {typeof feat.pro === 'boolean' ? (feat.pro ? <CheckIcon /> : <span className="text-black/10 font-bold">—</span>) : feat.pro}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* MOBILE TABLE (Stacked Cards) */}
-        <div className="flex md:hidden flex-col gap-4">
+        {/* MOBILE TABLE (Premium Cards) */}
+        <div className="flex md:hidden flex-col gap-6">
           {comparisonFeatures.map((feat, i) => (
-            <div key={i} className="bg-black/[0.02] border border-black/5 rounded-2xl p-5 flex flex-col">
-              <h4 className="text-lg font-bold tracking-tight text-[#111] mb-4">{feat.name}</h4>
+            <div key={i} className="bg-white rounded-[2rem] p-6 shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-black/5 flex flex-col relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 blur-[30px] rounded-full pointer-events-none" />
               
-              <div className="flex justify-between items-center py-3 border-b border-black/5">
+              <h4 className="text-lg font-black text-[#111] mb-6 relative z-10">{feat.name}</h4>
+              
+              <div className="flex justify-between items-center py-4 border-b border-black/5 relative z-10">
                 <span className="text-xs font-bold uppercase tracking-widest text-black/40">Starter</span>
-                <span className="text-sm font-medium text-black/60 text-right flex justify-end">
-                   {typeof feat.starter === 'boolean' ? (feat.starter ? <CheckIcon /> : <CrossIcon />) : feat.starter}
+                <span className="text-sm font-medium text-black/60">
+                   {typeof feat.starter === 'boolean' ? (feat.starter ? <CheckIcon /> : <span className="text-black/10">—</span>) : feat.starter}
                 </span>
               </div>
 
-              <div className="flex justify-between items-center py-3">
+              <div className="flex justify-between items-center pt-4 relative z-10">
                 <span className="text-xs font-bold uppercase tracking-widest text-amber-600">Professional</span>
-                <span className="text-sm font-bold text-[#111] text-right flex justify-end">
-                   {typeof feat.pro === 'boolean' ? (feat.pro ? <CheckIcon /> : <CrossIcon />) : feat.pro}
+                <span className="text-sm font-black text-[#111]">
+                   {typeof feat.pro === 'boolean' ? (feat.pro ? <CheckIcon /> : <span className="text-black/10">—</span>) : feat.pro}
                 </span>
               </div>
             </div>
@@ -211,36 +273,37 @@ export default function PreisePage() {
         </div>
       </section>
 
-      {/* ─── ROI SECTION ──────────────────────────────────────────── */}
-      <section className="w-full py-20 md:py-32 px-6 bg-amber-500/10">
-        <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-24">
+      {/* ─── ROI SECTION (CLEAN) ────────────────────────────────────────── */}
+      <section className="w-full py-20 md:py-32 px-6 bg-[#f5f5f7]">
+        <div className="max-w-[1100px] mx-auto flex flex-col md:flex-row items-center gap-16 md:gap-24">
           <div className="flex-1">
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-[#111] mb-6">
-              Was bringt es deinem Geschäft?
+            <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-[#111] mb-6 leading-[1.1]">
+              Was bringt das deinem Geschäft?
             </h2>
-            <p className="text-lg md:text-xl text-black/60 font-medium leading-relaxed mb-8">
-              Mit <strong className="text-[#111]">zusätzlichen Besuchen deiner Stammkunden</strong> kann dein Umsatz wachsen. Die Beispielrechnung zeigt möglichen Zusatzumsatz, keinen Gewinn. Ob sich der Tarif für dich lohnt, hängt auch von deiner Marge, den Prämien und den tatsächlichen Wiederbesuchen ab.
+            <p className="text-lg text-black/50 font-medium leading-relaxed mb-10">
+              Mit <strong className="text-[#111]">zusätzlichen Besuchen deiner Stammkunden</strong> wächst dein Umsatz. Ob sich der Tarif für dich lohnt, hängt von deiner Marge, den Prämien und den tatsächlichen Wiederbesuchen ab.
             </p>
-            <div className="flex items-center gap-4 text-sm font-bold uppercase tracking-widest text-amber-600">
-              <span className="w-8 h-[2px] bg-amber-600" />
-              Plane mit den Zahlen deines Betriebs.
+            <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-black/40">
+              <span className="w-8 h-[2px] bg-black/20" />
+              Rechenbeispiel, keine Prognose
             </div>
           </div>
-          <div className="w-full md:w-[400px] bg-white p-8 md:p-12 rounded-[2rem] shadow-xl border border-black/5 relative">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/20 blur-[40px] rounded-full" />
-            <h3 className="text-xl font-bold tracking-tight mb-8">Rechenbeispiel, keine Prognose</h3>
+          <div className="w-full md:w-[420px] bg-white p-10 md:p-12 rounded-[2.5rem] shadow-[0_20px_60px_rgba(0,0,0,0.03)] border border-black/5 relative overflow-hidden group">
+            {/* Subtle glow */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 blur-[40px] rounded-full group-hover:bg-amber-500/20 transition-colors duration-500" />
+            
             <div className="space-y-6 relative z-10">
-              <div className="flex justify-between items-center pb-4 border-b border-black/5">
+              <div className="flex justify-between items-center pb-5 border-b border-black/5">
                 <span className="text-black/50 font-medium">Zusätzliche Kunden</span>
-                <span className="font-bold">+ 3</span>
+                <span className="font-bold text-lg">+ 3</span>
               </div>
-              <div className="flex justify-between items-center pb-4 border-b border-black/5">
+              <div className="flex justify-between items-center pb-5 border-b border-black/5">
                 <span className="text-black/50 font-medium">Umsatz pro Kunde</span>
-                <span className="font-bold">Ø 12 €</span>
+                <span className="font-bold text-lg">Ø 12 €</span>
               </div>
               <div className="flex justify-between items-center pt-2">
-                <span className="text-amber-600 font-bold uppercase tracking-wider text-sm">Zusatzumsatz</span>
-                <span className="text-2xl font-bold text-amber-600">+ 36 €</span>
+                <span className="text-[#111] font-bold text-base">Zusatzumsatz</span>
+                <span className="text-3xl font-black text-amber-500 tracking-tight">+ 36 €</span>
               </div>
             </div>
           </div>

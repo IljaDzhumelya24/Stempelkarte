@@ -39,54 +39,58 @@ const columns = [
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#0a0a0a] text-white relative z-30">
-      <div className="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-
-      <div className="max-w-[1400px] mx-auto px-8 md:px-16 py-16 md:py-20">
+    <footer className="w-full bg-[#111111] text-white border-t border-black/10 relative z-30">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 pt-24 md:pt-32 pb-12">
         
-        {/* Grid: Brand + Links all in one tight row */}
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-10 md:gap-8">
+        {/* ─── TOP SECTION: BRAND & LINKS ─── */}
+        <div className="flex flex-col lg:flex-row justify-between gap-16 lg:gap-24 mb-24 md:mb-32">
           
-          {/* Brand (spans 2 cols) */}
-          <div className="col-span-2">
-            <Link href="/" className="text-xl font-bold tracking-tighter inline-flex items-baseline mb-4">
+          {/* Brand Info */}
+          <div className="flex-1 max-w-sm">
+            <Link href="/" className="text-2xl font-bold tracking-tight inline-flex items-baseline mb-6 text-white hover:text-white/80 transition-colors">
               Stempelkarte<span className="text-amber-500">.</span>
             </Link>
-            <p className="text-[13px] text-white/30 font-medium leading-relaxed max-w-[240px]">
-              Digitale Stempelkarten für lokale Geschäfte. Belohne Stammkunden – mit deiner Marke und deinen Prämien.
+            <p className="text-sm md:text-base text-white/50 font-medium leading-relaxed">
+              Digitale Kundenbindung für lokale Geschäfte. Verabschiede dich von Papier und belohne deine Stammkunden direkt in Apple & Google Wallet.
             </p>
           </div>
 
-          {/* Link Columns */}
-          {columns.map((col, i) => (
-            <div key={i}>
-              <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/20 mb-5">{col.title}</h4>
-              <ul className="flex flex-col gap-3">
-                {col.links.map((link, j) => (
-                  <li key={j}>
-                    <Link href={link.href} className="text-[13px] font-medium text-white/40 hover:text-white transition-colors duration-300">
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {/* Links Grid */}
+          <div className="flex-[2] grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12">
+            {columns.map((col, i) => (
+              <div key={i} className="flex flex-col">
+                <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/30 mb-6">{col.title}</h4>
+                <ul className="flex flex-col gap-4">
+                  {col.links.map((link, j) => (
+                    <li key={j}>
+                      <Link 
+                        href={link.href} 
+                        className="text-sm font-medium text-white/60 hover:text-white transition-colors duration-200"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-16 pt-6 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <span className="text-[11px] font-medium text-white/15 tracking-wide">
-            © 2026 Stempelkarte. Alle Rechte vorbehalten.
+        {/* ─── BOTTOM SECTION: COPYRIGHT & SOCIALS ─── */}
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
+          <span className="text-xs font-bold uppercase tracking-widest text-white/30">
+            © 2026 Stempelkarte.
           </span>
-          <div className="flex gap-6">
+          <div className="flex gap-8">
             {["Twitter", "LinkedIn", "Instagram"].map((s) => (
-              <Link key={s} href="#" className="text-[11px] font-medium text-white/15 hover:text-white/40 transition-colors duration-300 tracking-wide">
+              <Link key={s} href="#" className="text-xs font-bold uppercase tracking-widest text-white/30 hover:text-white transition-colors duration-200">
                 {s}
               </Link>
             ))}
           </div>
         </div>
+
       </div>
     </footer>
   );

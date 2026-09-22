@@ -2,15 +2,14 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { Wallet, Palette, BarChart3, Zap } from "lucide-react";
 
 // ─── SCROLL-DRIVEN WORD REVEAL ─────────────────────────────────────
-// Each word goes from 15% opacity to 100% based on scroll position
-// This is THE signature Awwwards animation
 function ScrollRevealText({ text, className = "" }: { text: string, className?: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start 0.9", "start 0.3"],
+    offset: ["start 0.9", "start 0.4"],
   });
 
   const words = text.split(" ");
@@ -29,10 +28,10 @@ function ScrollRevealText({ text, className = "" }: { text: string, className?: 
 }
 
 function Word({ word, range, progress }: { word: string, range: [number, number], progress: ReturnType<typeof useScroll>["scrollYProgress"] }) {
-  const opacity = useTransform(progress, range, [0.12, 1]);
+  const opacity = useTransform(progress, range, [0.15, 1]);
   const y = useTransform(progress, range, [8, 0]);
   return (
-    <motion.span style={{ opacity, y }} className="inline-block transition-colors duration-300">
+    <motion.span style={{ opacity, y }} className="inline-block transition-colors duration-300 text-white">
       {word}
     </motion.span>
   );
@@ -40,114 +39,111 @@ function Word({ word, range, progress }: { word: string, range: [number, number]
 
 // ─── MAIN SECTION ──────────────────────────────────────────────────
 
-const features = [
-  {
-    icon: (
-      <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
-    ),
-    title: "Einfach für deine Kunden",
-    desc: "Deine Kunden speichern die Karte deines Geschäfts direkt in ihrer Wallet. Eine zusätzliche Stempelkarten-App brauchen sie nicht.",
-    stat: "0",
-    statLabel: "Zusatz-Apps",
-    color: "amber" as const,
-  },
-  {
-    icon: (
-      <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-    ),
-    title: "Dein Geschäft gibt den Ton an",
-    desc: "Gestalte deine Karte mit Logo und Farben deines Geschäfts. Du entscheidest, wie viele Besuche du mit welcher Prämie belohnst.",
-    stat: "Du",
-    statLabel: "entscheidest",
-    color: "blue" as const,
-  },
-  {
-    icon: (
-      <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-    ),
-    title: "Übersicht für deinen Betrieb",
-    desc: "Behalte aktive Karten, vergebene Stempel und eingelöste Belohnungen im Blick. So siehst du, wie dein Treueangebot genutzt wird.",
-    stat: "1",
-    statLabel: "Dashboard",
-    color: "emerald" as const,
-  },
-];
-
-const colorMap = {
-  amber: { bg: "bg-amber-500/10", text: "text-amber-500", border: "border-amber-500/20" },
-  blue: { bg: "bg-blue-500/10", text: "text-blue-500", border: "border-blue-500/20" },
-  emerald: { bg: "bg-emerald-500/10", text: "text-emerald-500", border: "border-emerald-500/20" },
-};
-
 export default function StatementSection() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-10%" });
 
   return (
-    <section ref={ref} className="relative w-full bg-[#fcfcfc] flex flex-col items-center z-20 overflow-hidden">
+    <section ref={ref} className="relative w-full bg-zinc-950 flex flex-col items-center z-20 overflow-hidden rounded-t-[2.5rem] md:rounded-t-[4rem]">
       
-      {/* SCROLL-DRIVEN WORD REVEAL — THE Awwwards Signature */}
-      <div className="w-full py-32 md:py-48 flex justify-center px-6">
+      {/* Decorative Glows */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] md:w-[60%] h-[300px] bg-amber-500/10 blur-[120px] rounded-full pointer-events-none" />
+
+      {/* SCROLL-DRIVEN WORD REVEAL */}
+      <div className="w-full pt-32 pb-20 md:pt-48 md:pb-32 flex justify-center px-6 relative z-10">
         <ScrollRevealText 
-          text="Aus einem Besuch kann eine Gewohnheit werden. Gib deinen Kunden einen Grund, wiederzukommen – mit einer digitalen Stempelkarte für dein Geschäft."
-          className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[1.1] text-[#111] max-w-[1200px] text-center"
+          text="Vergiss das Papier. Die Zukunft der Kundenbindung lebt direkt in den Smartphones deiner Gäste."
+          className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter leading-[1.1] max-w-[1000px] text-center"
         />
       </div>
 
-      {/* Social Proof Ticker */}
-      <div className="w-full border-y border-black/5 py-6 mb-20">
+      {/* BENTO GRID */}
+      <div className="w-full max-w-[1200px] px-5 md:px-10 grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 pb-32 md:pb-48 relative z-10">
+        
+        {/* Bento Item 1: Large Wide */}
         <motion.div 
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 1 }}
-          className="flex justify-center items-center gap-16 flex-wrap px-8"
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          className="md:col-span-2 relative group overflow-hidden rounded-[2rem] bg-zinc-900/50 border border-white/5 p-8 md:p-12 flex flex-col justify-between min-h-[300px] md:min-h-[360px]"
         >
-          {["Für lokale Geschäfte", "Deine Marke", "Deine Belohnungen", "Dein Überblick"].map((item, i) => (
-            <motion.span 
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.1 * i, duration: 0.6 }}
-              className="text-sm font-bold uppercase tracking-[0.2em] text-black/30 flex items-center gap-3"
-            >
-              <span className="w-1 h-1 rounded-full bg-amber-500" />
-              {item}
-            </motion.span>
-          ))}
+          <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+          <div className="relative z-10">
+            <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 mb-8 text-amber-400">
+              <Wallet size={28} strokeWidth={1.5} />
+            </div>
+          </div>
+          <div className="relative z-10 mt-auto">
+            <h3 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-4">Keine App nötig.</h3>
+            <p className="text-lg md:text-xl text-zinc-400 font-medium max-w-md leading-relaxed">
+              Deine Kunden fügen die Stempelkarte mit einem Klick zur nativen Apple oder Google Wallet hinzu.
+            </p>
+          </div>
         </motion.div>
-      </div>
 
-      {/* Feature Cards with Scale-In + Stagger */}
-      <div className="w-full max-w-[1600px] px-8 md:px-16 xl:px-32 grid grid-cols-1 md:grid-cols-3 gap-8 xl:gap-12 pb-24">
-        {features.map((f, i) => {
-          const c = colorMap[f.color];
-          return (
-            <motion.div 
-              key={i}
-              initial={{ opacity: 0, y: 80, scale: 0.9 }}
-              animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-              transition={{ duration: 1, delay: 0.15 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ y: -12, scale: 1.02 }}
-              className={`p-10 rounded-[2.5rem] bg-white border ${c.border} shadow-[0_8px_40px_rgba(0,0,0,0.04)] flex flex-col gap-5 cursor-default transition-shadow duration-500 hover:shadow-[0_20px_60px_rgba(0,0,0,0.08)]`}
-            >
-              <motion.div 
-                whileHover={{ rotate: [0, -12, 12, -6, 0], scale: 1.15 }}
-                transition={{ duration: 0.6 }}
-                className={`w-14 h-14 rounded-2xl ${c.bg} ${c.text} flex items-center justify-center`}
-              >
-                {f.icon}
-              </motion.div>
+        {/* Bento Item 2: Square */}
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="md:col-span-1 relative group overflow-hidden rounded-[2rem] bg-zinc-900/50 border border-white/5 p-8 md:p-10 flex flex-col justify-between min-h-[300px] md:min-h-[360px]"
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+          <div className="relative z-10">
+            <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 mb-8 text-blue-400">
+              <Palette size={24} strokeWidth={1.5} />
+            </div>
+          </div>
+          <div className="relative z-10 mt-auto">
+            <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight mb-3">100% Dein Branding.</h3>
+            <p className="text-base text-zinc-400 font-medium leading-relaxed">
+              Dein Logo, deine Farben, deine Prämien. Deine Marke im Vordergrund.
+            </p>
+          </div>
+        </motion.div>
 
-              <div className="flex flex-wrap items-baseline gap-3">
-                <span className="text-6xl lg:text-7xl font-bold tracking-tighter text-[#111]">{f.stat}</span>
-                <span className="text-xs font-bold uppercase tracking-widest text-black/30">{f.statLabel}</span>
-              </div>
+        {/* Bento Item 3: Square */}
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="md:col-span-1 relative group overflow-hidden rounded-[2rem] bg-zinc-900/50 border border-white/5 p-8 md:p-10 flex flex-col justify-between min-h-[300px] md:min-h-[360px]"
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+          <div className="relative z-10">
+            <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 mb-8 text-emerald-400">
+              <BarChart3 size={24} strokeWidth={1.5} />
+            </div>
+          </div>
+          <div className="relative z-10 mt-auto">
+            <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight mb-3">Smarte Daten.</h3>
+            <p className="text-base text-zinc-400 font-medium leading-relaxed">
+              Erkenne in Echtzeit, wer deine treuesten Kunden sind und was funktioniert.
+            </p>
+          </div>
+        </motion.div>
 
-              <h3 className="text-xl font-bold text-[#111] tracking-tight">{f.title}</h3>
-              <p className="text-sm font-medium text-black/50 leading-relaxed">{f.desc}</p>
-            </motion.div>
-          );
-        })}
+        {/* Bento Item 4: Large Wide */}
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          className="md:col-span-2 relative group overflow-hidden rounded-[2rem] bg-zinc-900/50 border border-white/5 p-8 md:p-12 flex flex-col justify-between min-h-[300px] md:min-h-[360px]"
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-violet-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+          <div className="relative z-10">
+            <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 mb-8 text-violet-400">
+              <Zap size={28} strokeWidth={1.5} />
+            </div>
+          </div>
+          <div className="relative z-10 mt-auto">
+            <h3 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-4">In 5 Minuten live.</h3>
+            <p className="text-lg md:text-xl text-zinc-400 font-medium max-w-md leading-relaxed">
+              Keine wochenlange Entwicklung. Registrieren, Karte designen und noch heute den ersten Stempel vergeben.
+            </p>
+          </div>
+        </motion.div>
+
       </div>
     </section>
   );

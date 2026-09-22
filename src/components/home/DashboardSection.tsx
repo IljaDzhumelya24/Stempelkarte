@@ -1,174 +1,184 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import WalletCard from "@/components/WalletCard";
+import { motion, useMotionValue, useTransform, animate } from "framer-motion";
+import { useEffect, useState } from "react";
 
-// Ultra-Premium Tilt Card for Wide Layouts
-const BentoCard = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  
-  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [6, -6]), { damping: 40, stiffness: 200 });
-  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-6, 6]), { damping: 40, stiffness: 200 });
-  const glareOpacity = useSpring(useTransform(y, [-0.5, 0.5], [0, 0.3]), { damping: 40, stiffness: 200 });
+function Counter({ from, to }: { from: number; to: number }) {
+  const count = useMotionValue(from);
+  const rounded = useTransform(count, (latest) => Math.round(latest).toLocaleString("de-DE"));
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return;
-    const { left, top, width, height } = ref.current.getBoundingClientRect();
-    x.set((e.clientX - left) / width - 0.5);
-    y.set((e.clientY - top) / height - 0.5);
-  };
+  useEffect(() => {
+    const controls = animate(count, to, { duration: 2.5, ease: "easeOut", delay: 0.2 });
+    return controls.stop;
+  }, [count, to]);
 
-  const handleMouseLeave = () => {
-    x.set(0); y.set(0);
-  };
-
-  return (
-    <motion.div
-      ref={ref}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      className={`relative rounded-[2.5rem] border border-black/5 shadow-[0_15px_50px_rgba(0,0,0,0.06)] overflow-hidden group ${className}`}
-    >
-      <motion.div 
-        style={{ opacity: glareOpacity }}
-        className="absolute inset-0 bg-gradient-to-br from-white via-transparent to-transparent pointer-events-none z-50 mix-blend-overlay"
-      />
-      {children}
-    </motion.div>
-  );
-};
+  return <motion.span>{rounded}</motion.span>;
+}
 
 export default function DashboardSection() {
+  const [colorIndex, setColorIndex] = useState(0);
+  const colors = ["#f59e0b", "#3b82f6", "#10b981", "#8b5cf6", "#ec4899"];
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setColorIndex((prev) => (prev + 1) % colors.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, [colors.length]);
+
   return (
-    <section className="relative w-full py-32 bg-[#fcfcfc] flex flex-col items-center px-6 lg:px-12 z-20">
+    <section className="relative w-full py-24 md:py-40 bg-[#f2f2f7] text-[#111] flex flex-col items-center px-5 md:px-10 overflow-hidden rounded-t-[2.5rem] md:rounded-t-[4rem] z-20">
       
-      <div className="text-center max-w-3xl mb-20">
-        <h2 className="text-5xl lg:text-7xl font-bold tracking-tighter text-[#111] leading-[0.9]">
-          Deine Kundenbindung. <br/>
-          <span className="text-black/30">Zentral verwaltet.</span>
-        </h2>
+      {/* Dynamic Background Mesh */}
+      <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-white to-transparent pointer-events-none" />
+
+      {/* Title */}
+      <div className="text-center max-w-4xl mb-20 md:mb-32 relative z-10">
+        <motion.h2 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.95] mb-8"
+        >
+          Dein Geschäft.<br/>
+          <span className="text-black/30">Deine Regeln.</span>
+        </motion.h2>
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          className="text-lg md:text-xl text-black/50 font-medium max-w-2xl mx-auto px-4"
+        >
+          Keine Zettelwirtschaft. Kein teures NFC-Terminal. Alles, was du für moderne Kundenbindung brauchst, direkt in deinem Dashboard.
+        </motion.p>
       </div>
 
-      {/* ULTRAWIDE GRID: max-w-[1600px] */}
-      <div className="w-full max-w-[1600px] grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10 [perspective:2000px]">
+      <div className="w-full max-w-[1200px] grid grid-cols-1 md:grid-cols-12 gap-5 md:gap-6 relative z-10">
         
-        {/* CARD 1: Analytics (Span 2) - MASSIVE WIDE CHART */}
-        <BentoCard className="col-span-1 md:col-span-2 h-[450px] bg-zinc-50 flex flex-col justify-between">
-          <div className="p-10 relative z-10" style={{ transform: "translateZ(40px)" }}>
-            <h3 className="text-3xl lg:text-4xl font-bold text-[#111] tracking-tight">Besuche im Blick</h3>
-            <p className="text-base lg:text-lg font-medium text-black/50 mt-2 max-w-md">
-              Sieh, wie oft deine Karten genutzt und Belohnungen eingelöst werden. Nutze die Übersicht für deine nächsten Aktionen.
-            </p>
-          </div>
-          
-          <div className="absolute bottom-0 left-0 w-full h-[60%] overflow-hidden pointer-events-none" style={{ transform: "translateZ(20px)" }}>
-             {/* Stunning Edge-to-Edge Glowing Vector Area Chart */}
-             <svg className="w-full h-full text-amber-500 drop-shadow-[0_0_20px_rgba(245,158,11,0.6)]" preserveAspectRatio="none" viewBox="0 0 1000 200">
-               <defs>
-                 <linearGradient id="chart-grad" x1="0" y1="0" x2="0" y2="1">
-                   <stop offset="0%" stopColor="currentColor" stopOpacity="0.3" />
-                   <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
-                 </linearGradient>
-               </defs>
-               <motion.path 
-                 initial={{ pathLength: 0, opacity: 0 }}
-                 whileInView={{ pathLength: 1, opacity: 1 }}
-                 transition={{ duration: 2, ease: "easeInOut" }}
-                 d="M0,150 C150,150 250,50 450,120 C650,190 750,20 1000,60" 
-                 fill="none" stroke="currentColor" strokeWidth="6" strokeLinecap="round" 
-               />
-               <motion.path 
-                 initial={{ opacity: 0 }}
-                 whileInView={{ opacity: 1 }}
-                 transition={{ duration: 1, delay: 1 }}
-                 d="M0,150 C150,150 250,50 450,120 C650,190 750,20 1000,60 L1000,200 L0,200 Z" 
-                 fill="url(#chart-grad)" 
-               />
-               <motion.circle 
-                 initial={{ scale: 0, opacity: 0 }}
-                 whileInView={{ scale: 1, opacity: 1 }}
-                 transition={{ duration: 0.5, delay: 2, type: "spring" }}
-                 cx="1000" cy="60" r="10" fill="white" stroke="currentColor" strokeWidth="4" 
-               />
-             </svg>
-          </div>
-        </BentoCard>
-
-        {/* CARD 2: Push Notifications */}
-        <BentoCard className="col-span-1 h-[450px] flex flex-col bg-gradient-to-br from-[#111] via-zinc-900 to-black text-white">
-          <div className="p-10 relative z-20" style={{ transform: "translateZ(40px)" }}>
-            <h3 className="text-3xl font-bold tracking-tight">Kunden erreichen</h3>
-            <p className="text-base font-medium text-white/50 mt-2">Mache deine Kunden mit Wallet-Mitteilungen auf Angebote deines Geschäfts aufmerksam.</p>
-          </div>
-          
-          <div className="absolute inset-x-0 bottom-0 top-32 flex justify-center items-center pointer-events-none">
-             {/* Huge Floating Notification Mockup */}
-             <div className="w-[85%] bg-white/10 backdrop-blur-3xl border border-white/20 rounded-3xl p-6 shadow-[0_30px_60px_rgba(0,0,0,0.6)]" style={{ transform: "translateZ(60px)" }}>
-                <div className="flex gap-4 items-center mb-4">
-                   <div className="w-10 h-10 rounded-xl bg-amber-500 flex items-center justify-center shadow-[0_0_20px_rgba(245,158,11,0.5)]">
-                      <svg className="w-5 h-5 text-black" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
-                   </div>
-                   <div>
-                      <p className="text-xs font-bold text-white/60 uppercase tracking-widest">Apple Wallet</p>
-                      <p className="text-[11px] text-white/40 font-medium">Vor 2 Min</p>
-                   </div>
+        {/* CARD 1: ANALYTICS (col-span-8) */}
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="md:col-span-8 bg-white hover:shadow-[0_20px_60px_rgba(0,0,0,0.06)] shadow-[0_8px_30px_rgba(0,0,0,0.03)] transition-all border border-black/5 rounded-[2.5rem] md:rounded-[3rem] p-8 md:p-14 overflow-hidden relative group"
+        >
+           {/* Abstract Animated Chart */}
+           <div className="absolute bottom-0 right-10 w-[60%] h-[70%] opacity-40 flex items-end justify-between gap-2 md:gap-4 pointer-events-none">
+              {[40, 70, 45, 90, 65, 110, 85].map((h, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ height: 0 }}
+                  whileInView={{ height: h + "%" }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.5, delay: i * 0.1, type: "spring", bounce: 0.4 }}
+                  className="w-full bg-black/5 rounded-t-xl"
+                />
+              ))}
+           </div>
+           
+           <div className="relative z-10 h-full flex flex-col justify-between min-h-[300px]">
+              <div className="mb-16">
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-black/40 mb-4">Live Insights</p>
+                <div className="text-6xl md:text-8xl lg:text-[7rem] font-black tracking-tighter leading-none mb-3">
+                  <Counter from={0} to={8492} />
                 </div>
-                <p className="text-white font-bold text-xl">Happy Hour! 🍻</p>
-                <p className="text-white/70 text-sm mt-1 font-medium">Dein Gratis-Kaffee ist abholbereit.</p>
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-100">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="text-sm font-bold">+124 diese Woche</span>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight">Daten in Echtzeit.</h3>
+                <p className="text-black/50 text-lg max-w-md leading-relaxed">Verstehe endlich, wer deine besten Kunden sind, wann sie kommen und welche Prämien am besten funktionieren.</p>
+              </div>
+           </div>
+        </motion.div>
+
+        {/* CARD 2: QR SCAN (col-span-4) */}
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          className="md:col-span-4 bg-white hover:shadow-[0_20px_60px_rgba(0,0,0,0.06)] shadow-[0_8px_30px_rgba(0,0,0,0.03)] transition-all border border-black/5 rounded-[2.5rem] md:rounded-[3rem] p-8 md:p-12 overflow-hidden relative flex flex-col justify-between min-h-[360px] group"
+        >
+           <div className="absolute top-10 right-10 w-32 md:w-40 h-32 md:h-40 opacity-10 group-hover:opacity-20 transition-opacity duration-500 text-black pointer-events-none">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" className="w-full h-full">
+                <path d="M3 9V5a2 2 0 0 1 2-2h4M15 3h4a2 2 0 0 1 2 2v4M21 15v4a2 2 0 0 1-2 2h-4M9 21H5a2 2 0 0 1-2-2v-4" />
+                <rect x="7" y="7" width="4" height="4" fill="currentColor" />
+                <rect x="13" y="13" width="4" height="4" fill="currentColor" />
+                <rect x="13" y="7" width="4" height="4" fill="currentColor" />
+                <rect x="7" y="13" width="4" height="4" fill="currentColor" />
+              </svg>
+              {/* Animated Laser */}
+              <motion.div 
+                animate={{ y: [0, 160, 0] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
+                className="absolute top-0 left-0 w-full h-[2px] bg-amber-500 shadow-[0_0_15px_rgba(245,158,11,0.6)]"
+              />
+           </div>
+           
+           <div className="mt-auto relative z-10 pt-32">
+             <h3 className="text-3xl font-bold mb-4 tracking-tight">Kamera an. Fertig.</h3>
+             <p className="text-black/50 text-base md:text-lg leading-relaxed">Dein Team scannt den QR-Code des Kunden einfach per Handykamera. Der Stempel ist vergeben.</p>
+           </div>
+        </motion.div>
+
+        {/* CARD 3: CUSTOMIZATION (col-span-12) */}
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="md:col-span-12 bg-white hover:shadow-[0_20px_60px_rgba(0,0,0,0.06)] shadow-[0_8px_30px_rgba(0,0,0,0.03)] transition-all border border-black/5 rounded-[2.5rem] md:rounded-[4rem] p-8 md:p-16 flex flex-col md:flex-row items-center gap-12 md:gap-20 overflow-hidden relative"
+        >
+           
+           <div className="flex-1 relative z-10 w-full">
+             <p className="text-xs font-bold uppercase tracking-[0.2em] text-black/40 mb-4">Branding</p>
+             <h3 className="text-4xl md:text-6xl font-bold mb-6 tracking-tighter leading-[1.05]">Perfekt auf deine Marke abgestimmt.</h3>
+             <p className="text-black/50 text-lg md:text-xl max-w-lg mb-10 leading-relaxed">
+               Passe Farben, Logo und Prämien mit wenigen Klicks an. Deine Kunden sehen keine Fremdwerbung, sondern zu 100% dein Geschäft.
+             </p>
+             <div className="flex gap-3 md:gap-4">
+               {colors.map((c, i) => (
+                 <button 
+                   key={i} 
+                   onClick={() => setColorIndex(i)}
+                   aria-label={`Farbe ${i}`}
+                   className={`w-10 md:w-12 h-10 md:h-12 rounded-full border-2 transition-all duration-300 ${colorIndex === i ? 'border-[#111] scale-110 shadow-[0_4px_15px_rgba(0,0,0,0.1)]' : 'border-transparent scale-100 hover:scale-105'}`}
+                   style={{ backgroundColor: c }}
+                 />
+               ))}
              </div>
-          </div>
-        </BentoCard>
+           </div>
 
-        {/* CARD 3: Location */}
-        <BentoCard className="col-span-1 h-[450px] bg-white relative overflow-hidden">
-          <div className="p-10 relative z-10" style={{ transform: "translateZ(30px)" }}>
-            <h3 className="text-3xl font-bold text-[#111] tracking-tight">Vor Ort präsent</h3>
-            <p className="text-base font-medium text-black/50 mt-2">Erinnere Kunden in der Nähe an die Karte deines Geschäfts.</p>
-          </div>
-          {/* Subtle Grid Background */}
-          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, black 1px, transparent 0)', backgroundSize: '30px 30px' }} />
-          
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none mt-20" style={{ transform: "translateZ(20px)" }}>
-             <div className="w-64 h-64 rounded-full border border-blue-500/20 absolute group-hover:scale-125 transition-transform duration-1000 ease-out" />
-             <div className="w-40 h-40 rounded-full border border-blue-500/40 absolute group-hover:scale-110 transition-transform duration-700 ease-out" />
-             <div className="w-6 h-6 bg-blue-500 rounded-full absolute shadow-[0_0_30px_rgba(59,130,246,1)]" />
-             <div className="w-48 h-48 bg-blue-500/10 rounded-full absolute blur-[30px]" />
-          </div>
-        </BentoCard>
-
-        {/* CARD 4: NFC */}
-        <BentoCard className="col-span-1 h-[450px] bg-amber-400 relative">
-          <div className="p-10 relative z-10" style={{ transform: "translateZ(30px)" }}>
-            <h3 className="text-3xl font-bold text-[#111] tracking-tight">An der Kasse</h3>
-            <p className="text-base font-medium text-black/70 mt-2">Dein Team scannt die Kundenkarte und vergibt den nächsten Stempel.</p>
-          </div>
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none mt-20" style={{ transform: "translateZ(40px)" }}>
-             <svg className="w-48 h-48 text-black/20 group-hover:scale-110 transition-transform duration-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-               <path d="M12 2v20M17 5S14 8 12 8s-5-3-5-3M17 19s-3-3-5-3-5 3-5 3M19 12a7 7 0 00-14 0" />
-             </svg>
-          </div>
-        </BentoCard>
-
-        {/* CARD 5: Customization */}
-        <BentoCard className="col-span-1 h-[450px] overflow-hidden bg-zinc-900 text-white relative">
-          <div className="p-10 relative z-20" style={{ transform: "translateZ(50px)" }}>
-            <h3 className="text-3xl font-bold tracking-tight">Deine Marke</h3>
-            <p className="text-base font-medium text-white/50 mt-2">Gestalte die Karte mit deinem Logo und den Farben deines Geschäfts.</p>
-          </div>
-          {/* Overlapping Cards */}
-          <div className="absolute -bottom-10 -right-20 w-[140%] pointer-events-none flex" style={{ transform: "translateZ(30px)" }}>
-            <div className="rotate-[-15deg] group-hover:rotate-[-20deg] group-hover:-translate-x-10 transition-all duration-700 ease-out shadow-2xl">
-              <WalletCard businessName="CAFE NORD" currentStamps={3} totalStamps={10} reward="Belohnung" colorFrom="#3b82f6" colorTo="#1e3a8a" showQR={false} size="sm" className="opacity-80 scale-90" />
-            </div>
-            <div className="absolute top-10 left-10 rotate-[-5deg] group-hover:rotate-[0deg] group-hover:-translate-y-6 transition-all duration-700 ease-out shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-10">
-              <WalletCard businessName="DEIN LOGO" currentStamps={7} totalStamps={10} reward="Gratis Kaffee" colorFrom="#f59e0b" colorTo="#b45309" showQR={false} size="sm" />
-            </div>
-          </div>
-        </BentoCard>
+           <div className="flex-1 w-full flex justify-center md:justify-end relative">
+             <motion.div 
+               animate={{ backgroundColor: colors[colorIndex] }}
+               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+               className="w-full max-w-[320px] aspect-[4/5] rounded-[2rem] p-8 shadow-2xl relative overflow-hidden flex flex-col border border-black/5"
+             >
+                {/* Minimal Card UI inside - This stays white because it sits on a solid colored background */}
+                <div className="w-16 h-16 rounded-2xl bg-white/20 mb-6 flex items-center justify-center backdrop-blur-sm">
+                  <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                </div>
+                <div className="w-3/4 h-6 bg-white/50 rounded-full mb-3" />
+                <div className="w-1/2 h-4 bg-white/30 rounded-full mb-10" />
+                
+                {/* Stamps Grid */}
+                <div className="grid grid-cols-4 gap-3 mt-auto">
+                   {[...Array(8)].map((_, i) => (
+                     <div key={i} className="aspect-square rounded-full border-2 border-white/40 flex items-center justify-center">
+                        {i < 3 && <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: i * 0.1 }} className="w-3/5 h-3/5 rounded-full bg-white" />}
+                     </div>
+                   ))}
+                </div>
+             </motion.div>
+           </div>
+        </motion.div>
 
       </div>
     </section>

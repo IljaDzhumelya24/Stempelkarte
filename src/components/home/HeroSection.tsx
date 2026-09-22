@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef, useCallback } from "react";
+import { useRef, useCallback, useState } from "react";
 import { motion, useScroll, useTransform, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
+import { Gift, RotateCcw, Stamp } from "lucide-react";
 import WalletCard from "@/components/WalletCard";
 
 const particles = Array.from({ length: 40 }, (_, i) => ({
@@ -16,20 +17,32 @@ const particles = Array.from({ length: 40 }, (_, i) => ({
 
 // ─── CHARACTER REVEAL ──────────────────────────────────────────────
 function CharReveal({ text, className = "", delay = 0 }: { text: string, className?: string, delay?: number }) {
+  const reducedMotion = useReducedMotion();
+  
+  let charCount = 0;
+
   return (
     <div className={`overflow-hidden w-full flex justify-center pb-[0.15em] ${className}`}>
-      <motion.div className="flex flex-wrap justify-center">
-        {text.split("").map((char, i) => (
-          <motion.span
-            key={i}
-            initial={{ y: "110%", rotateX: 90, opacity: 0 }}
-            animate={{ y: "0%", rotateX: 0, opacity: 1 }}
-            transition={{ duration: 1, delay: delay + i * 0.035, ease: [0.16, 1, 0.3, 1] }}
-            className="inline-block"
-            style={{ transformOrigin: "bottom" }}
-          >
-            {char === " " ? "\u00A0" : char}
-          </motion.span>
+      <motion.div className="flex flex-wrap justify-center gap-x-[0.25em]">
+        {text.split(" ").map((word, wordIdx) => (
+          <span key={wordIdx} className="inline-flex whitespace-nowrap">
+            {word.split("").map((char, i) => {
+              const currentDelay = delay + charCount * 0.035;
+              charCount++;
+              return (
+                <motion.span
+                  key={i}
+                  initial={reducedMotion ? false : { y: "110%", rotateX: 90, opacity: 0 }}
+                  animate={{ y: "0%", rotateX: 0, opacity: 1 }}
+                  transition={{ duration: 1, delay: currentDelay, ease: [0.16, 1, 0.3, 1] }}
+                  className="inline-block"
+                  style={{ transformOrigin: "bottom" }}
+                >
+                  {char}
+                </motion.span>
+              );
+            })}
+          </span>
         ))}
       </motion.div>
     </div>
@@ -38,8 +51,10 @@ function CharReveal({ text, className = "", delay = 0 }: { text: string, classNa
 
 // ─── FLOATING PARTICLES ────────────────────────────────────────────
 function Particles() {
+  const reducedMotion = useReducedMotion();
+  if (reducedMotion) return null;
   return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden">
+    <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block" aria-hidden="true">
       {particles.map((particle, i) => (
         <motion.div
           key={i}
@@ -65,10 +80,11 @@ function Particles() {
 
 // ─── TICKER ────────────────────────────────────────────────────────
 function Ticker() {
+  const reducedMotion = useReducedMotion();
   const items = ["Für lokale Geschäfte", "Digitale Stempelkarten", "Dein Logo", "Deine Belohnungen", "Kundenbindung", "Stempel vergeben", "Besuche auswerten", "Stammkunden gewinnen"];
   return (
     <div className="w-full overflow-hidden border-t border-black/5 bg-white/30 backdrop-blur-sm">
-      <motion.div animate={{ x: [0, -2000] }} transition={{ duration: 30, repeat: Infinity, ease: "linear" }} className="flex gap-16 py-4 whitespace-nowrap">
+      <motion.div animate={reducedMotion ? { x: 0 } : { x: [0, -2000] }} transition={{ duration: 30, repeat: Infinity, ease: "linear" }} className="flex gap-16 py-4 whitespace-nowrap">
         {[...items, ...items, ...items, ...items].map((item, i) => (
           <span key={i} className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/10 flex items-center gap-5">
             <span className="w-1.5 h-1.5 rounded-full bg-amber-500/40" />
@@ -84,6 +100,24 @@ function Ticker() {
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
+  const [stamps, setStamps] = useState(7);
+  const [redeemed, setRedeemed] = useState(false);
+  const complete = stamps === 10;
+
+  const resetDemo = () => {
+    setStamps(7);
+    setRedeemed(false);
+  };
+
+  const tryStamp = () => {
+    if (complete) {
+      setStamps(0);
+      setRedeemed(true);
+    } else {
+      setStamps((value) => Math.min(value + 1, 10));
+      setRedeemed(false);
+    }
+  };
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -131,12 +165,12 @@ export default function HeroSection() {
       {/* Aurora Background */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <motion.div
-          animate={{ scale: [1, 1.5, 1], x: [0, 150, 0], opacity: [0.1, 0.3, 0.1] }}
+          animate={prefersReducedMotion ? { opacity: 0.15 } : { scale: [1, 1.5, 1], x: [0, 150, 0], opacity: [0.1, 0.3, 0.1] }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
           className="absolute -top-20 left-[20%] w-[400px] md:w-[700px] h-[400px] md:h-[700px] bg-amber-500/15 rounded-full blur-[100px] md:blur-[150px]"
         />
         <motion.div
-          animate={{ scale: [1, 1.3, 1], x: [0, -100, 0], opacity: [0.05, 0.12, 0.05] }}
+          animate={prefersReducedMotion ? { opacity: 0.08 } : { scale: [1, 1.3, 1], x: [0, -100, 0], opacity: [0.05, 0.12, 0.05] }}
           transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 4 }}
           className="absolute top-[30%] right-[10%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-violet-500/8 rounded-full blur-[90px] md:blur-[130px]"
         />
@@ -145,35 +179,33 @@ export default function HeroSection() {
       {/* ─── THE TITLE ─────────────────────────────────────────────── */}
       <motion.div
         style={prefersReducedMotion ? undefined : { y: yTitle, scale: scaleTitle, opacity: opacityTitle }}
-        className="relative z-10 flex flex-col items-center text-center w-full pt-28 md:pt-36 lg:pt-44 px-2"
+        className="relative z-10 flex flex-col items-center text-center w-full pt-32 md:pt-36 lg:pt-44 px-4"
       >
+        <h1 className="sr-only">Dein Geschäft. Mehr Stammkunden.</h1>
+        <div aria-hidden="true" className="w-full">
         <CharReveal
           text="Dein Geschäft."
-          className="text-[11.5vw] sm:text-[12vw] md:text-[11vw] font-bold tracking-tight md:tracking-[-0.05em] leading-[0.8] text-[#111]"
+          className="text-[13vw] sm:text-[12vw] md:text-[11vw] font-bold tracking-tight md:tracking-[-0.05em] leading-[0.9] text-[#111]"
           delay={0.1}
         />
         <CharReveal
           text="Mehr Stammkunden."
-          className="text-[8.5vw] md:text-[8vw] font-bold tracking-tight md:tracking-[-0.05em] leading-[0.9] text-transparent bg-clip-text bg-gradient-to-br from-zinc-200 via-zinc-400 to-zinc-600 -mt-[0.1em]"
+          className="text-[10vw] sm:text-[9vw] md:text-[8vw] font-bold tracking-tight md:tracking-[-0.05em] leading-[1] text-transparent bg-clip-text bg-gradient-to-br from-zinc-200 via-zinc-400 to-zinc-600 mt-1 md:-mt-[0.1em]"
           delay={0.55}
         />
-        <p className="mt-6 max-w-2xl px-5 text-base leading-relaxed text-zinc-500 md:mt-8 md:text-xl">
-          Digitale Stempelkarten für dein Café, deinen Laden oder Salon.
-          Du legst die Belohnung fest, dein Team vergibt die Stempel –
-          und deine Kunden haben einen Grund, wiederzukommen.
-        </p>
+        </div>
       </motion.div>
 
       {/* ─── THE IPHONE ────────────────────────────────────────────── */}
       <motion.div
-        onPointerMove={handleMouseMove}
-        onPointerLeave={handleMouseLeave}
-        onPointerCancel={handleMouseLeave}
-        className="relative z-20 w-full flex justify-center mt-14 md:mt-6 lg:mt-10 px-5 pb-24 md:pb-36 [perspective:1800px]"
+        className="relative z-20 w-full flex flex-col items-center mt-10 md:-mt-4 lg:-mt-16 px-5 pb-16 md:pb-36 [perspective:1800px]"
       >
         <motion.div
+          onPointerMove={handleMouseMove}
+          onPointerLeave={handleMouseLeave}
+          onPointerCancel={handleMouseLeave}
           style={{ rotateX: prefersReducedMotion ? 0 : rotateX, rotateY: prefersReducedMotion ? 0 : rotateY }}
-          className="relative w-full max-w-[306px] sm:max-w-[346px] md:max-w-[448px]"
+          className="relative w-full max-w-[260px] sm:max-w-[300px] md:max-w-[380px]"
         >
           {/* Dynamic Ground Shadow */}
           <motion.div
@@ -202,7 +234,7 @@ export default function HeroSection() {
 
               {/* The Screen Assembly */}
               <div
-                className="relative isolate w-full aspect-[9/19.5] rounded-[2.8rem] sm:rounded-[3.3rem] md:rounded-[4.2rem] bg-black overflow-hidden [transform:translateZ(0)]"
+                className="relative isolate flex w-full aspect-[9/19.5] rounded-[2.8rem] sm:rounded-[3.3rem] md:rounded-[4.2rem] bg-black overflow-hidden [transform:translateZ(0)]"
               >
                 {/* INTERACTIVE GLASS GLARE */}
                 <motion.div
@@ -222,40 +254,40 @@ export default function HeroSection() {
                 </div>
 
                 {/* ─── SCREEN CONTENT ─────────────────────────────── */}
-                <div className="absolute inset-0 bg-[#f2f2f7] overflow-hidden flex flex-col items-center">
+                <div className="relative w-full h-full bg-[#f2f2f7] flex flex-col items-center">
                   
                   {/* Status Bar */}
-                  <div className="w-full flex justify-between items-center px-6 md:px-10 pt-[10px] md:pt-[16px] text-[10px] md:text-[13px] font-semibold text-black relative z-30">
+                  <div className="w-full flex justify-between items-center px-6 md:px-8 pt-[12px] md:pt-[14px] text-[10px] md:text-[12px] font-semibold text-black relative z-30">
                     <span>9:41</span>
                     <div className="flex items-center gap-1 md:gap-1.5">
-                      <svg className="w-[14px] md:w-[18px] h-[14px] md:h-[18px]" viewBox="0 0 24 24" fill="currentColor"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
-                      <svg className="w-[14px] md:w-[18px] h-[14px] md:h-[18px]" viewBox="0 0 24 24" fill="currentColor"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.34V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
+                      <svg className="w-[14px] h-[14px]" viewBox="0 0 24 24" fill="currentColor"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
+                      <svg className="w-[14px] h-[14px]" viewBox="0 0 24 24" fill="currentColor"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.34V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
                     </div>
                   </div>
 
                   {/* Wallet Header */}
-                  <div className="w-full px-5 md:px-7 pt-8 md:pt-12 pb-3 md:pb-5 flex justify-between items-end relative z-20">
-                    <h2 className="text-[#111] text-[28px] md:text-[38px] font-bold tracking-tight">Wallet</h2>
-                    <div className="w-7 md:w-9 h-7 md:h-9 rounded-full bg-black/5 flex items-center justify-center">
-                      <span className="text-[#111] text-xl md:text-2xl leading-none font-medium">+</span>
+                  <div className="w-full px-5 pt-8 pb-3 flex justify-between items-end relative z-20">
+                    <h2 className="text-[#111] text-[28px] md:text-[34px] font-bold tracking-tight">Wallet</h2>
+                    <button type="button" onClick={resetDemo} aria-label="Demo zurücksetzen" title="Demo zurücksetzen" className="size-9 rounded-full bg-black/5 flex items-center justify-center text-[#111] hover:bg-black/10">
+                      <RotateCcw size={15} aria-hidden="true" />
+                    </button>
+                  </div>
+
+                  {/* Cards Container */}
+                  <div className="flex-1 w-full flex flex-col items-center relative px-4">
+                    {/* Background Cards Stack */}
+                    <div aria-hidden="true" className="w-full h-8 md:h-12 relative z-10 shrink-0">
+                      <div className="absolute inset-x-0 top-0 h-28 rounded-[1.25rem] bg-gradient-to-br from-[#1d1d1f] to-zinc-800 shadow-xl border border-white/5" />
+                      <div className="absolute inset-x-0 top-4 h-28 rounded-[1.25rem] bg-gradient-to-br from-zinc-100 to-zinc-200 border border-black/5 shadow-xl" />
                     </div>
-                  </div>
 
-                  {/* Background Cards Stack */}
-                  <div className="mt-2 md:mt-3 space-y-[-120px] md:space-y-[-160px] relative z-10 w-[calc(100%-2rem)] max-w-[260px] sm:max-w-[320px] md:max-w-[380px] shrink-0">
-                    <div className="w-full h-44 md:h-56 rounded-[1.25rem] bg-gradient-to-br from-[#1d1d1f] to-zinc-800 shadow-xl border border-white/5" />
-                    <div className="w-full h-44 md:h-56 rounded-[1.25rem] bg-gradient-to-br from-zinc-100 to-zinc-200 border border-black/5 shadow-xl" />
-                  </div>
-
-                  {/* THE STEMPELKARTE DROP */}
-                  <motion.div
-                    initial={false}
-                    animate={{ y: prefersReducedMotion ? 0 : [-24, 0] }}
-                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="absolute top-[150px] md:top-[260px] left-0 w-full flex justify-center z-30"
-                  >
-                    {/* Mobile Card (sm) */}
-                    <div className="block sm:hidden max-w-[calc(100%-2rem)] [&>div]:max-w-full">
+                    {/* THE STEMPELKARTE DROP */}
+                    <motion.div
+                      initial={false}
+                      animate={{ y: prefersReducedMotion ? 0 : [-24, 0] }}
+                      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                      className="relative w-full z-30 mt-4 md:mt-8"
+                    >
                       <WalletCard
                         businessName="CAFE NORD"
                         currentStamps={7}
@@ -264,42 +296,12 @@ export default function HeroSection() {
                         colorFrom="#f59e0b"
                         colorTo="#b45309"
                         showQR={true}
-                        size="sm"
+                        size="fluid"
                         interactive={false}
                         className="shadow-[0_20px_60px_rgba(245,158,11,0.4)] border border-white/30"
                       />
-                    </div>
-                    {/* Tablet Card (md) */}
-                    <div className="hidden sm:block md:hidden max-w-[calc(100%-2rem)] [&>div]:max-w-full">
-                      <WalletCard
-                        businessName="CAFE NORD"
-                        currentStamps={7}
-                        totalStamps={10}
-                        reward="Gratis Kaffee"
-                        colorFrom="#f59e0b"
-                        colorTo="#b45309"
-                        showQR={true}
-                        size="md"
-                        interactive={false}
-                        className="shadow-[0_30px_80px_rgba(245,158,11,0.45)] border border-white/30"
-                      />
-                    </div>
-                    {/* Desktop Card (lg) */}
-                    <div className="hidden md:block max-w-[calc(100%-2rem)] [&>div]:max-w-full">
-                      <WalletCard
-                        businessName="CAFE NORD"
-                        currentStamps={7}
-                        totalStamps={10}
-                        reward="Gratis Kaffee"
-                        colorFrom="#f59e0b"
-                        colorTo="#b45309"
-                        showQR={true}
-                        size="lg"
-                        interactive={false}
-                        className="shadow-[0_40px_100px_rgba(245,158,11,0.5)] border border-white/30"
-                      />
-                    </div>
-                  </motion.div>
+                    </motion.div>
+                  </div>
 
                   {/* Home Indicator */}
                   <div className="absolute bottom-[4px] md:bottom-[6px] left-1/2 -translate-x-1/2 w-[100px] md:w-[140px] h-[4px] md:h-[5px] bg-black/20 rounded-full z-40" />

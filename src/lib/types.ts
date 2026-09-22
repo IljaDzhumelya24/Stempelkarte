@@ -7,7 +7,8 @@ export interface WalletCardProps {
   colorTo?: string;
   className?: string;
   showQR?: boolean;
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg' | 'fluid';
+  interactive?: boolean;
 }
 
 export interface BrancheData {
