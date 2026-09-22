@@ -14,6 +14,7 @@ const sizeMap = {
   sm: { width: "w-[260px]", height: "min-h-[340px]", text: "text-sm", title: "text-base", stamp: "w-5 h-5", count: "text-3xl", qr: "w-14 h-14" },
   md: { width: "w-[320px]", height: "min-h-[420px]", text: "text-base", title: "text-lg", stamp: "w-6 h-6", count: "text-4xl", qr: "w-20 h-20" },
   lg: { width: "w-[380px]", height: "min-h-[500px]", text: "text-base", title: "text-xl", stamp: "w-7 h-7", count: "text-5xl", qr: "w-24 h-24" },
+  fluid: { width: "w-full", height: "min-h-[340px] sm:min-h-[420px] md:min-h-[500px]", text: "text-sm md:text-base", title: "text-base sm:text-lg md:text-xl", stamp: "w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7", count: "text-3xl sm:text-4xl md:text-5xl", qr: "w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24" },
 };
 
 export default function WalletCard({
@@ -27,7 +28,7 @@ export default function WalletCard({
   showQR = false,
   size = "md",
   interactive = true,
-}: WalletCardProps & { size?: "sm" | "md" | "lg"; interactive?: boolean }) {
+}: WalletCardProps & { size?: "sm" | "md" | "lg" | "fluid"; interactive?: boolean }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
   const s = sizeMap[size];
@@ -80,7 +81,7 @@ export default function WalletCard({
       <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-black/10 pointer-events-none" />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col h-full p-6 sm:p-7 text-white">
+      <div className={`relative z-10 flex flex-col h-full ${size === "fluid" ? "p-5 sm:p-7" : "p-6 sm:p-7"} text-white`}>
         {/* Header */}
         <div className="flex items-start justify-between mb-auto">
           <div>
@@ -108,7 +109,7 @@ export default function WalletCard({
         </div>
 
         {/* Stamps grid */}
-        <div className="flex flex-wrap justify-center gap-2.5 mb-6">
+        <div className="flex flex-wrap justify-center gap-2.5 mb-6" role="img" aria-label={`${currentStamps} von ${totalStamps} Stempeln gesammelt`}>
           {Array.from({ length: totalStamps }).map((_, i) => {
             const filled = i < currentStamps;
             return (
@@ -137,7 +138,7 @@ export default function WalletCard({
             <div className="bg-white rounded-xl p-3 shadow-lg">
               <div className={`${s.qr} relative`}>
                 {/* Simulated QR pattern */}
-                <svg viewBox="0 0 100 100" className="w-full h-full text-slate-900">
+                <svg viewBox="0 0 100 100" className="w-full h-full text-slate-900" role="img" aria-label="Beispiel-QR-Code, nicht zum Scannen">
                   {/* Corner squares */}
                   <rect x="2" y="2" width="26" height="26" rx="4" fill="currentColor" />
                   <rect x="6" y="6" width="18" height="18" rx="2" fill="white" />
