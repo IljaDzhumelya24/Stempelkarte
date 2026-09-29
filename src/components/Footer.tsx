@@ -79,23 +79,11 @@ export default function Footer() {
         </div>
 
         {/* ─── BOTTOM SECTION: COPYRIGHT & SOCIALS ─── */}
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 md:gap-0">
-          
-          <div className="flex-1 text-center md:text-left">
-            <span className="text-xs font-bold uppercase tracking-widest text-white/30">
-              © 2026 StampNow.
-            </span>
-          </div>
-
-          <div className="flex-1 flex justify-center order-first md:order-none mb-6 md:mb-0">
-            <img 
-              src="/brand/sn-logo.jpg" 
-              alt="StampNow SN Logo" 
-              className="w-12 h-12 rounded-2xl shadow-[0_0_20px_rgba(0,0,0,0.5)] border border-white/10"
-            />
-          </div>
-
-          <div className="flex-1 flex justify-center md:justify-end gap-8">
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
+          <span className="text-xs font-bold uppercase tracking-widest text-white/30">
+            © 2026 StampNow.
+          </span>
+          <div className="flex gap-8">
             {["Twitter", "LinkedIn", "Instagram"].map((s) => (
               <Link key={s} href="#" className="text-xs font-bold uppercase tracking-widest text-white/30 hover:text-white transition-colors duration-200">
                 {s}
