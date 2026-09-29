@@ -47,11 +47,11 @@ export default function Footer() {
           
           {/* Brand Info */}
           <div className="flex-1 max-w-sm">
-            <Link href="/" aria-label="StampNow – Startseite" className="inline-flex items-center gap-4 mb-6 text-white hover:text-white/80 transition-colors">
-              <div className="relative flex items-center justify-center overflow-hidden w-16 h-16 sm:w-20 sm:h-20 rounded-2xl shadow-[0_0_30px_rgba(255,255,255,0.03)] border border-white/10">
-                <img src="/brand/sn-logo.jpg" alt="" className="w-full h-full object-cover scale-[1.8]" />
+            <Link href="/" aria-label="StampNow – Startseite" className="inline-flex items-center gap-1 mb-6 text-white hover:text-white/80 transition-colors">
+              <div className="relative flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20">
+                <img src="/brand/sn-logo.jpg" alt="" className="w-full h-full object-contain mix-blend-screen" />
               </div>
-              <span className="font-extrabold tracking-[-0.05em] text-[32px]">StampNow</span>
+              <span className="font-extrabold tracking-[-0.05em] text-[24px]">StampNow</span>
             </Link>
             <p className="text-sm md:text-base text-white/50 font-medium leading-relaxed">
               Digitale Kundenbindung für lokale Geschäfte. Verabschiede dich von Papier und belohne deine Stammkunden direkt in Apple & Google Wallet.
