@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import ClientUeberUnsPage from './ClientPage';
 
 export const metadata: Metadata = {
-  title: 'Über uns | Stempelkarte',
+  title: 'Über uns | StampNow',
   description: 'Wir entwickeln digitale Stempelkarten für lokale Geschäfte – damit Geschäftsinhaber und ihre Teams Stammkunden gezielt belohnen können.',
 };
 

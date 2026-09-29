@@ -30,13 +30,13 @@ export interface FAQItem {
   answer: string;
 }
 
-export interface PricingTier {
+export interface PricingPlan {
   name: string;
   price: string;
   period: string;
+  setupFee: string;
   description: string;
   features: string[];
-  highlighted?: boolean;
   ctaText: string;
 }
 

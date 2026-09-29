@@ -1,4 +1,4 @@
-import type { BrancheData, FAQItem, PricingTier, StorytellingStep, BenefitStatement } from './types';
+import type { BrancheData, FAQItem, PricingPlan, StorytellingStep, BenefitStatement } from './types';
 
 export const branchen: BrancheData[] = [
   {
@@ -139,10 +139,28 @@ export const storytellingSteps: StorytellingStep[] = [
   },
 ];
 
+export const pricingPlan: PricingPlan = {
+  name: 'StampNow',
+  price: '29,99',
+  period: 'pro Monat',
+  setupFee: '150',
+  description: 'Digitale Kundenbindung für dein Geschäft – mit deiner Marke, deinen Prämien und Übersicht für dein Team.',
+  features: [
+    'Digitale Stempelkarte in deinem Design',
+    'Apple Wallet & Google Wallet',
+    'QR-Code für deine Kasse',
+    'Stempelvergabe per Smartphone oder Tablet',
+    'Individuelle Stempelanzahl und Prämien',
+    'Dashboard mit Statistiken',
+    'E-Mail-Support',
+  ],
+  ctaText: 'Demo anfragen',
+};
+
 export const faqItems: FAQItem[] = [
   {
-    question: 'Brauchen meine Kunden eine App?',
-    answer: 'Nein. Die Stempelkarte wird direkt in Apple Wallet oder Google Wallet gespeichert. Keine App-Installation nötig, keine Registrierung. Einfach QR-Code scannen und los.',
+    question: 'Wie erhalten meine Kunden ihre Karte?',
+    answer: 'Deine Kunden scannen den QR-Code in deinem Geschäft und speichern ihre digitale Stempelkarte in Apple Wallet oder Google Wallet. Bei jedem Besuch zeigen sie die Karte zum Stempeln vor.',
   },
   {
     question: 'Wie vergibt mein Team Stempel?',
@@ -162,7 +180,7 @@ export const faqItems: FAQItem[] = [
   },
   {
     question: 'Was kostet der Service?',
-    answer: 'Wir bieten verschiedene Pakete an, die sich nach der Anzahl der aktiven Karten richten. Für Pilotpartner in Bremen ist der Start kostenlos.',
+    answer: `StampNow kostet ${pricingPlan.price} € pro Monat. Hinzu kommen einmalig ${pricingPlan.setupFee} € für die Einrichtung.`,
   },
   {
     question: 'Welche Smartphones können meine Kunden nutzen?',
@@ -174,69 +192,18 @@ export const faqItems: FAQItem[] = [
   },
   {
     question: 'Bin ich an einen Vertrag gebunden?',
-    answer: 'Nein. Du kannst monatlich kündigen. Keine Mindestlaufzeit, keine versteckten Kosten.',
+    answer: 'Du kannst monatlich kündigen. Die einmalige Einrichtungsgebühr fällt zum Start an.',
   },
   {
     question: 'Wo ist der Service verfügbar?',
-    answer: 'Wir starten mit ausgewählten Pilotpartnern in Bremen. Eine Ausweitung auf weitere Städte ist geplant.',
-  },
-];
-
-export const pricingTiers: PricingTier[] = [
-  {
-    name: 'Starter',
-    price: '29',
-    period: 'pro Monat',
-    description: 'Für dein erstes Treueangebot: eine Stempelkarte im Design deines Geschäfts und Übersicht über die Nutzung.',
-    features: [
-      '1 Stempelkarte',
-      'Bis zu 200 aktive Kunden',
-      'Eigenes Branding',
-      'Dashboard mit Statistiken',
-      'QR-Code für die Kasse',
-      'E-Mail-Support',
-    ],
-    ctaText: 'Starter wählen',
-  },
-  {
-    name: 'Professional',
-    price: '59',
-    period: 'pro Monat',
-    description: 'Für Betriebe mit mehreren Treueangeboten oder Standorten. Verwalte deine Karten zentral.',
-    features: [
-      'Bis zu 5 Stempelkarten',
-      'Unbegrenzte aktive Kunden',
-      'Eigenes Branding pro Karte',
-      'Erweitertes Dashboard',
-      'Push-Benachrichtigungen',
-      'Prioritäts-Support',
-      'Mehrere Standorte',
-    ],
-    highlighted: true,
-    ctaText: 'Professional wählen',
-  },
-  {
-    name: 'Enterprise',
-    price: 'Individuell',
-    period: '',
-    description: 'Für Filialbetriebe und Franchise-Unternehmen mit individuellen Anforderungen.',
-    features: [
-      'Unbegrenzte Stempelkarten',
-      'Unbegrenzte Kunden',
-      'API-Zugang',
-      'Dedizierter Ansprechpartner',
-      'Custom Integrationen',
-      'SLA-Garantie',
-      'Onboarding-Support',
-    ],
-    ctaText: 'Kontakt aufnehmen',
+    answer: 'StampNow ist deutschlandweit für lokale Geschäfte verfügbar. In einer Demo zeigen wir dir, wie du die digitale Kundenbindung in deinem Betrieb einsetzt.',
   },
 ];
 
 export const benefitStatements: BenefitStatement[] = [
   {
     text: 'Einfach für deine Kunden.',
-    subtext: 'Deine Kunden nutzen deine Karte in Apple Wallet oder Google Wallet. Eine zusätzliche Stempelkarten-App brauchen sie nicht.',
+    subtext: 'Deine Kunden nutzen deine Karte in Apple Wallet oder Google Wallet. Stempel und Prämien bleiben dort im Blick.',
   },
   {
     text: 'Passend zu deinem Betrieb.',

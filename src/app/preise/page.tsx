@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { pricingTiers, faqItems } from "@/lib/data";
+import { pricingPlan, faqItems } from "@/lib/data";
 
 // ─── CHARACTER REVEAL ──────────────────────────────────────────────
 function CharReveal({ text, className = "", delay = 0 }: { text: string, className?: string, delay?: number }) {
@@ -40,28 +40,38 @@ function CharReveal({ text, className = "", delay = 0 }: { text: string, classNa
 
 // ─── SVG ICONS ───────────────────────────────────────────────────
 const CheckIcon = () => (
-  <svg className="w-5 h-5 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+  <svg aria-hidden="true" className="w-5 h-5 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-  </svg>
-);
-
-const CrossIcon = () => (
-  <svg className="w-5 h-5 text-black/10 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
   </svg>
 );
 
 // ─── FEATURE TABLE DATA ──────────────────────────────────────────
 const comparisonFeatures = [
-  { name: "Aktive Kunden", starter: "Bis zu 200", pro: "Unbegrenzt" },
-  { name: "Standorte", starter: "1 Standort", pro: "Unbegrenzt" },
-  { name: "Stempelkarten-Designs", starter: "1 Design", pro: "Bis zu 5 Designs" },
-  { name: "Apple & Google Wallet", starter: true, pro: true },
-  { name: "QR-Code Scanner für Kasse", starter: true, pro: true },
-  { name: "Echtzeit-Dashboard", starter: true, pro: true },
-  { name: "Eigenes Branding", starter: true, pro: true },
-  { name: "Push-Benachrichtigungen", starter: false, pro: true },
-  { name: "Support", starter: "E-Mail", pro: "Priorität (Telefon & E-Mail)" },
+  {
+    name: "Karte aufbewahren",
+    paper: "Als Papierkarte im Portemonnaie",
+    stampNow: "Digital in Apple Wallet oder Google Wallet",
+  },
+  {
+    name: "Stempel vergeben",
+    paper: "Per Hand auf die Karte stempeln",
+    stampNow: "Kundenkarte scannen und digital stempeln",
+  },
+  {
+    name: "Nutzung im Blick",
+    paper: "Besuche und Einlösungen separat erfassen",
+    stampNow: "Aktive Karten, Stempel und Einlösungen im Dashboard",
+  },
+  {
+    name: "Eigenes Design",
+    paper: "Logo und Farben auf gedruckten Karten",
+    stampNow: "Logo, Farben und Prämie auf deiner digitalen Karte",
+  },
+  {
+    name: "Neue Karten bereitstellen",
+    paper: "Karten drucken und im Geschäft auslegen",
+    stampNow: "Kunden speichern ihre Karte über deinen QR-Code",
+  },
 ];
 
 export default function PreisePage() {
@@ -80,7 +90,7 @@ export default function PreisePage() {
           className="inline-flex items-center gap-3 mb-10 md:mb-12 px-5 py-2.5 rounded-full bg-black/5 backdrop-blur-xl border border-black/5 shadow-[0_8px_30px_rgba(0,0,0,0.05)]"
         >
           <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
-          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#111]">Transparente Tarife</span>
+          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#111]">Ein Angebot. Klarer Preis.</span>
         </motion.div>
 
         <CharReveal
@@ -89,7 +99,7 @@ export default function PreisePage() {
           delay={0.1}
         />
         <CharReveal
-          text="Der passende Tarif."
+          text="Einfach StampNow."
           className="text-[11.5vw] sm:text-[12vw] md:text-[9vw] font-bold tracking-tight md:tracking-[-0.05em] leading-[0.8] text-transparent bg-clip-text bg-gradient-to-br from-zinc-400 via-zinc-600 to-zinc-800 -mt-[0.1em]"
           delay={0.4}
         />
@@ -98,181 +108,119 @@ export default function PreisePage() {
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1, duration: 0.8 }} 
           className="mt-10 md:mt-12 text-lg md:text-xl text-black/40 font-medium max-w-xl leading-relaxed"
         >
-          Wähle den Plan, der am besten zu deinem Geschäft passt. Jederzeit kündbar, keine versteckten Gebühren.
+          Deine digitale Kundenbindung für {pricingPlan.price} € {pricingPlan.period} plus {pricingPlan.setupFee} € einmalige Einrichtung.
         </motion.p>
       </section>
 
-      {/* ─── PRICING CARDS (HEFTIG BENTO) ────────────────────────────── */}
-      <section className="w-full py-16 md:py-32 px-6 max-w-[1300px] mx-auto relative z-20">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-0 lg:items-center">
-          {pricingTiers.map((tier, i) => {
-            const isHighlighted = tier.highlighted;
-            
-            return (
-              <motion.div
-                key={tier.name}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.8, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className={`relative flex flex-col rounded-[2.5rem] overflow-hidden transition-all duration-500 ${
-                  isHighlighted 
-                    ? "bg-[#050505] text-white shadow-[0_0_100px_rgba(245,158,11,0.25)] border-[2px] border-amber-500/30 lg:scale-110 lg:z-30 p-10 md:p-14" 
-                    : "bg-white text-[#111] shadow-[0_20px_80px_rgba(0,0,0,0.03)] border border-black/5 p-8 md:p-10 lg:scale-95 lg:z-10 hover:-translate-y-2 hover:shadow-[0_30px_100px_rgba(0,0,0,0.06)]"
-                }`}
-              >
-                {/* Intense Highlight Glow Effects */}
-                {isHighlighted && (
-                  <>
-                    <div className="absolute top-0 left-1/2 w-[150%] h-[300px] bg-amber-500/20 blur-[100px] rounded-full pointer-events-none transform -translate-x-1/2 -translate-y-[40%]" />
-                    <div className="absolute bottom-0 right-0 w-[100%] h-[200px] bg-amber-600/10 blur-[80px] rounded-full pointer-events-none transform translate-x-1/4 translate-y-1/4" />
-                    {/* Animated moving border highlight simulation */}
-                    <div className="absolute inset-0 border border-amber-300/10 rounded-[2.5rem] pointer-events-none" />
-                  </>
-                )}
+      {/* Single offer */}
+      <section aria-labelledby="offer-heading" className="w-full pt-8 pb-16 md:pt-12 md:pb-24 px-6 max-w-[1100px] mx-auto relative z-20">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="relative rounded-[2.5rem] overflow-hidden bg-[#111] text-white border border-amber-500/20 shadow-[0_20px_80px_rgba(0,0,0,0.12)]"
+        >
+          <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 blur-[100px] rounded-full pointer-events-none" />
+          <div className="relative z-10 grid md:grid-cols-2">
+            <div className="p-6 sm:p-10 lg:p-14">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400 mb-5">Deine digitale Kundenbindung</p>
+              <h2 id="offer-heading" className="text-4xl md:text-5xl font-black tracking-tight mb-4">
+                {pricingPlan.name}
+              </h2>
+              <p className="text-base font-medium leading-relaxed text-white/65">
+                {pricingPlan.description}
+              </p>
 
-                <div className="relative z-10 flex-1 flex flex-col">
-                  {/* Badge */}
-                  {isHighlighted ? (
-                    <motion.div 
-                      initial={{ opacity: 0.8 }}
-                      animate={{ opacity: 1, boxShadow: ["0 0 0 rgba(245,158,11,0)", "0 0 20px rgba(245,158,11,0.5)", "0 0 0 rgba(245,158,11,0)"] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                      className="w-fit mb-8 px-4 py-1.5 rounded-full bg-amber-500 border border-amber-400 text-[#111] text-[11px] font-black uppercase tracking-widest"
-                    >
-                      Empfohlen
-                    </motion.div>
-                  ) : (
-                    <div className="w-fit mb-8 px-4 py-1.5 rounded-full bg-transparent border border-transparent text-transparent text-[11px] select-none">
-                      Spacer
-                    </div>
-                  )}
-
-                  <h3 className={`text-3xl font-black tracking-tight mb-3 ${isHighlighted ? "text-white" : "text-[#111]"}`}>
-                    {tier.name}
-                  </h3>
-                  
-                  <p className={`text-sm font-medium leading-relaxed min-h-[60px] ${isHighlighted ? "text-white/60" : "text-black/40"}`}>
-                    {tier.description}
-                  </p>
-
-                  <div className="my-10 flex items-baseline gap-2">
-                    <span className={`font-black tracking-tighter ${
-                      isHighlighted 
-                        ? "text-6xl md:text-7xl text-transparent bg-clip-text bg-gradient-to-b from-white to-white/70" 
-                        : "text-5xl md:text-6xl text-[#111]"
-                    }`}>
-                      {tier.price === 'Individuell' ? 'Indiv.' : `€${tier.price}`}
-                    </span>
-                    {tier.period && (
-                      <span className={`text-xs font-bold uppercase tracking-widest ${isHighlighted ? "text-white/40" : "text-black/20"}`}>
-                        /{tier.period.replace("pro ", "")}
-                      </span>
-                    )}
-                  </div>
-
-                  <Link
-                    href="/demo"
-                    className={`w-full py-5 rounded-full font-black text-xs uppercase tracking-widest text-center transition-all duration-300 ${
-                      isHighlighted 
-                        ? "bg-gradient-to-r from-amber-400 to-amber-500 text-[#111] hover:from-amber-300 hover:to-amber-400 shadow-[0_10px_40px_rgba(245,158,11,0.4)] hover:shadow-[0_15px_50px_rgba(245,158,11,0.6)] hover:scale-[1.03]" 
-                        : "bg-[#f5f5f7] text-[#111] hover:bg-black/5"
-                    }`}
-                  >
-                    {tier.ctaText || "Auswählen"}
-                  </Link>
-
-                  <div className={`w-full h-px my-10 ${isHighlighted ? "bg-white/10" : "bg-black/5"}`} />
-
-                  <h4 className={`text-xs font-bold uppercase tracking-widest mb-6 ${isHighlighted ? "text-amber-500" : "text-black/30"}`}>
-                    Enthaltene Funktionen:
-                  </h4>
-                  
-                  <ul className="flex flex-col gap-5">
-                    {tier.features.map((feature: string, fIndex: number) => (
-                      <li key={fIndex} className="flex items-start gap-4">
-                        <div className={`flex items-center justify-center w-6 h-6 rounded-full shrink-0 ${isHighlighted ? "bg-amber-500/20" : "bg-black/5"}`}>
-                          <svg className={`w-3.5 h-3.5 ${isHighlighted ? "text-amber-400" : "text-black/40"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                          </svg>
-                        </div>
-                        <span className={`text-sm font-medium mt-0.5 ${isHighlighted ? "text-white/90" : "text-[#111]/70"}`}>
-                          {feature}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+              <div className="my-9">
+                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <span className="text-5xl sm:text-6xl font-black tracking-tighter whitespace-nowrap">{pricingPlan.price} €</span>
+                  <span className="text-sm font-medium text-white/60">{pricingPlan.period}</span>
                 </div>
-              </motion.div>
-            );
-          })}
-        </div>
+                <p className="mt-3 text-base leading-relaxed text-white/75">
+                  plus <strong className="text-white">{pricingPlan.setupFee} €</strong> einmalige Einrichtung
+                </p>
+              </div>
+
+              <Link
+                href="/demo"
+                className="inline-block w-full py-5 rounded-full bg-amber-500 text-[#111] font-black text-xs uppercase tracking-widest text-center transition-colors hover:bg-amber-400 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-400"
+              >
+                {pricingPlan.ctaText}
+              </Link>
+            </div>
+
+            <div className="p-6 sm:p-10 lg:p-14 border-t md:border-t-0 md:border-l border-white/10 bg-white/[0.03] flex flex-col justify-center">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-amber-400 mb-7">
+                Das ist enthalten
+              </h3>
+              <ul className="flex flex-col gap-5">
+                {pricingPlan.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-4">
+                    <span className="flex items-center justify-center w-7 h-7 rounded-full shrink-0 bg-amber-500/15">
+                      <CheckIcon />
+                    </span>
+                    <span className="text-base font-medium leading-relaxed text-white/90">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </motion.div>
       </section>
 
-      {/* ─── FEATURE COMPARISON TABLE (PREMIUM CARD) ─────────────────────────── */}
-      <section className="w-full py-20 md:py-32 px-6 max-w-[1100px] mx-auto">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16 md:mb-24">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-black/40 mb-4">Vergleich</p>
+      {/* Paper cards and StampNow */}
+      <section className="w-full py-16 md:py-24 px-6 max-w-[1100px] mx-auto">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12 md:mb-16">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-black/40 mb-4">Papierkarte & StampNow</p>
           <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-[#111]">
-            Alle Funktionen im Detail
+            Was digital einfacher wird
           </h2>
+          <p className="mt-5 text-base md:text-lg text-black/50 font-medium leading-relaxed max-w-2xl mx-auto">
+            Das Prinzip bleibt: Besuche sammeln und Treue belohnen. StampNow bringt deine Karte aufs Smartphone und die Nutzung in dein Dashboard.
+          </p>
         </motion.div>
 
-        {/* DESKTOP TABLE */}
-        <div className="hidden md:block w-full bg-white rounded-[3rem] p-10 lg:p-16 shadow-[0_20px_80px_rgba(0,0,0,0.04)] border border-black/5 relative overflow-hidden">
-          
-          {/* Subtle Highlight for Pro Column */}
-          <div className="absolute top-0 right-8 w-[30%] h-full bg-gradient-to-b from-amber-500/[0.07] to-transparent pointer-events-none rounded-3xl" />
-
-          <div className="grid grid-cols-12 gap-4 border-b border-black/10 pb-6 mb-4 relative z-10">
-            <div className="col-span-5 text-xs font-bold uppercase tracking-widest text-black/40 flex items-end">Funktion</div>
-            <div className="col-span-3 text-sm font-bold uppercase tracking-widest text-[#111] flex items-end justify-center">Starter</div>
-            <div className="col-span-4 text-sm font-black uppercase tracking-widest text-amber-600 flex items-end justify-center">Professional</div>
-          </div>
-
-          <div className="relative z-10 flex flex-col">
-            {comparisonFeatures.map((feat, i) => (
-              <div key={i} className="grid grid-cols-12 gap-4 py-6 border-b border-black/[0.03] hover:bg-black/[0.02] transition-colors rounded-2xl -mx-4 px-4">
-                <div className="col-span-5 flex items-center text-base font-bold text-[#111]">
-                  {feat.name}
-                </div>
-                <div className="col-span-3 flex items-center justify-center text-sm font-medium text-black/50 text-center">
-                  {typeof feat.starter === 'boolean' ? (feat.starter ? <CheckIcon /> : <span className="text-black/10 font-bold">—</span>) : feat.starter}
-                </div>
-                <div className="col-span-4 flex items-center justify-center text-base font-black text-[#111] text-center">
-                  {typeof feat.pro === 'boolean' ? (feat.pro ? <CheckIcon /> : <span className="text-black/10 font-bold">—</span>) : feat.pro}
-                </div>
-              </div>
-            ))}
-          </div>
+        <div className="hidden md:block w-full bg-white rounded-[3rem] p-8 lg:p-12 shadow-[0_20px_80px_rgba(0,0,0,0.04)] border border-black/5">
+          <table className="w-full table-fixed text-left">
+            <caption className="sr-only">Papier-Stempelkarten und StampNow im Vergleich</caption>
+            <thead>
+              <tr className="border-b border-black/10">
+                <th scope="col" className="w-[28%] pb-6 pr-6 text-xs font-bold uppercase tracking-widest text-black/40">Im Alltag</th>
+                <th scope="col" className="w-[34%] pb-6 px-5 text-sm font-bold text-[#111]">Papierkarte</th>
+                <th scope="col" className="w-[38%] pb-6 px-5 text-sm font-black text-amber-600">StampNow</th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonFeatures.map((feature) => (
+                <tr key={feature.name} className="border-b border-black/5 last:border-0">
+                  <th scope="row" className="py-6 pr-6 align-top text-base font-bold text-[#111]">{feature.name}</th>
+                  <td className="py-6 px-5 align-top text-sm font-medium leading-relaxed text-black/50">{feature.paper}</td>
+                  <td className="py-6 px-5 align-top text-sm font-bold leading-relaxed text-[#111] bg-amber-500/[0.04]">{feature.stampNow}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
 
-        {/* MOBILE TABLE (Premium Cards) */}
         <div className="flex md:hidden flex-col gap-6">
-          {comparisonFeatures.map((feat, i) => (
-            <div key={i} className="bg-white rounded-[2rem] p-6 shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-black/5 flex flex-col relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 blur-[30px] rounded-full pointer-events-none" />
-              
-              <h4 className="text-lg font-black text-[#111] mb-6 relative z-10">{feat.name}</h4>
-              
-              <div className="flex justify-between items-center py-4 border-b border-black/5 relative z-10">
-                <span className="text-xs font-bold uppercase tracking-widest text-black/40">Starter</span>
-                <span className="text-sm font-medium text-black/60">
-                   {typeof feat.starter === 'boolean' ? (feat.starter ? <CheckIcon /> : <span className="text-black/10">—</span>) : feat.starter}
-                </span>
-              </div>
-
-              <div className="flex justify-between items-center pt-4 relative z-10">
-                <span className="text-xs font-bold uppercase tracking-widest text-amber-600">Professional</span>
-                <span className="text-sm font-black text-[#111]">
-                   {typeof feat.pro === 'boolean' ? (feat.pro ? <CheckIcon /> : <span className="text-black/10">—</span>) : feat.pro}
-                </span>
-              </div>
+          {comparisonFeatures.map((feature) => (
+            <div key={feature.name} className="bg-white rounded-[2rem] p-6 shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-black/5">
+              <h3 className="text-lg font-black text-[#111] mb-5">{feature.name}</h3>
+              <dl>
+                <div className="pb-4 border-b border-black/5">
+                  <dt className="text-xs font-bold uppercase tracking-widest text-black/40 mb-2">Papierkarte</dt>
+                  <dd className="text-sm font-medium text-black/60 leading-relaxed">{feature.paper}</dd>
+                </div>
+                <div className="pt-4">
+                  <dt className="text-xs font-bold uppercase tracking-widest text-amber-600 mb-2">StampNow</dt>
+                  <dd className="text-sm font-bold text-[#111] leading-relaxed">{feature.stampNow}</dd>
+                </div>
+              </dl>
             </div>
           ))}
         </div>
       </section>
-
       {/* ─── ROI SECTION (CLEAN) ────────────────────────────────────────── */}
       <section className="w-full py-20 md:py-32 px-6 bg-[#f5f5f7]">
         <div className="max-w-[1100px] mx-auto flex flex-col md:flex-row items-center gap-16 md:gap-24">
@@ -281,7 +229,7 @@ export default function PreisePage() {
               Was bringt das deinem Geschäft?
             </h2>
             <p className="text-lg text-black/50 font-medium leading-relaxed mb-10">
-              Mit <strong className="text-[#111]">zusätzlichen Besuchen deiner Stammkunden</strong> wächst dein Umsatz. Ob sich der Tarif für dich lohnt, hängt von deiner Marge, den Prämien und den tatsächlichen Wiederbesuchen ab.
+              Mit <strong className="text-[#111]">zusätzlichen Besuchen deiner Stammkunden</strong> wächst dein Umsatz. Ob sich StampNow für dich lohnt, hängt von deiner Marge, den Prämien und den tatsächlichen Wiederbesuchen ab.
             </p>
             <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-black/40">
               <span className="w-8 h-[2px] bg-black/20" />

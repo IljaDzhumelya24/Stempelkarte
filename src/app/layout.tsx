@@ -10,7 +10,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Stempelkarte | Digitale Stempelkarten für dein Geschäft",
+  title: "StampNow | Digitale Stempelkarten für dein Geschäft",
+  applicationName: "StampNow",
   description: "Mach aus Besuchern Stammkunden. Digitale Stempelkarten für Cafés, Läden und Salons – mit deinem Logo, deinen Belohnungen und Übersicht für dein Team.",
 };
 

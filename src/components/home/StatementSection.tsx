@@ -74,7 +74,7 @@ export default function StatementSection() {
             </div>
           </div>
           <div className="relative z-10 mt-auto">
-            <h3 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-4">Keine App nötig.</h3>
+            <h3 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-4">Direkt in der Wallet.</h3>
             <p className="text-lg md:text-xl text-zinc-400 font-medium max-w-md leading-relaxed">
               Deine Kunden fügen die Stempelkarte mit einem Klick zur nativen Apple oder Google Wallet hinzu.
             </p>

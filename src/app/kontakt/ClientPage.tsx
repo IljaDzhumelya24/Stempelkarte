@@ -78,7 +78,7 @@ export default function ClientKontaktPage() {
             <div>
               <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-black/30 mb-3">Büro</h4>
               <address className="text-xl font-medium text-[#111] not-italic leading-relaxed">
-                Stempelkarte GmbH<br />
+                StampNow GmbH<br />
                 Musterstraße 123<br />
                 10115 Berlin, Deutschland
               </address>

@@ -9,6 +9,7 @@ import {
   useReducedMotion,
 } from "framer-motion";
 import type { WalletCardProps } from "@/lib/types";
+import { twMerge } from "tailwind-merge";
 
 const sizeMap = {
   sm: { width: "w-[260px]", height: "min-h-[340px]", text: "text-sm", title: "text-base", stamp: "w-5 h-5", count: "text-3xl", qr: "w-14 h-14" },
@@ -60,7 +61,7 @@ export default function WalletCard({
       ref={cardRef}
       onMouseMove={interactive ? handleMouseMove : undefined}
       onMouseLeave={interactive ? handleMouseLeave : undefined}
-      className={`${s.width} ${s.height} relative rounded-[1.75rem] overflow-hidden select-none ${className}`}
+      className={twMerge(`${s.width} ${s.height} max-w-full min-w-0 relative rounded-[1.75rem] overflow-hidden select-none`, className)}
       style={{
         background: `linear-gradient(145deg, ${colorFrom} 0%, ${colorTo} 100%)`,
         rotateX: interactive && !prefersReducedMotion ? rotateX : 0,
@@ -83,16 +84,16 @@ export default function WalletCard({
       {/* Content */}
       <div className={`relative z-10 flex flex-col h-full ${size === "fluid" ? "p-5 sm:p-7" : "p-6 sm:p-7"} text-white`}>
         {/* Header */}
-        <div className="flex items-start justify-between mb-auto">
-          <div>
-            <p className={`${s.title} font-bold tracking-[0.08em] uppercase`}>
+        <div className="flex items-start justify-between gap-3 mb-auto">
+          <div className="min-w-0">
+            <p className={`${s.title} font-bold tracking-[0.08em] uppercase break-words`}>
               {businessName}
             </p>
             <p className="text-[0.7rem] uppercase tracking-[0.2em] text-white/50 mt-1 font-medium">
               Treuekarte
             </p>
           </div>
-          <div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center">
+          <div className="w-8 h-8 shrink-0 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center">
             <div className="w-3 h-3 rounded-full bg-white/60" />
           </div>
         </div>

@@ -165,10 +165,10 @@ function StepsSection() {
               </div>
 
               {/* Visual Side */}
-              <div className="flex-1 w-full flex justify-center md:justify-end">
-                <div className="relative w-full max-w-[340px] md:max-w-[400px] aspect-[4/5] bg-white rounded-[3rem] p-8 md:p-10 flex items-center justify-center border border-black/5 shadow-[0_20px_60px_rgba(0,0,0,0.03)] overflow-hidden group">
+              <div className="flex-1 min-w-0 w-full flex justify-center md:justify-end">
+                <div className="relative w-full max-w-[340px] md:max-w-[400px] bg-white rounded-[3rem] px-4 py-8 sm:p-8 md:p-10 flex items-center justify-center border border-black/5 shadow-[0_20px_60px_rgba(0,0,0,0.03)] group">
                   
-                  <div className="absolute inset-0 bg-gradient-to-br from-black/[0.02] to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-br from-black/[0.02] to-transparent pointer-events-none" />
                   
                   <WalletCard
                     businessName={step.card.name}
@@ -270,7 +270,7 @@ export default function ProduktPage() {
           delay={0.1}
         />
         <CharReveal
-          text="Stempelkarte."
+          text="StampNow."
           className="text-[11.5vw] sm:text-[12vw] md:text-[9vw] font-bold tracking-tight md:tracking-[-0.05em] leading-[0.8] text-transparent bg-clip-text bg-gradient-to-br from-amber-400 via-amber-500 to-amber-700 -mt-[0.1em]"
           delay={0.4}
         />
@@ -407,7 +407,7 @@ export default function ProduktPage() {
             <motion.div className="absolute inset-0 bg-amber-500 origin-left" initial={{ scaleX: 0 }} whileHover={{ scaleX: 1 }} transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }} />
           </Link>
           <Link href="/preise" className="w-full sm:w-auto bg-white border border-black/10 text-[#111] px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest text-center hover:bg-black/5 hover:scale-105 transition-all duration-300 block">
-            Tarife ansehen
+            Preis ansehen
           </Link>
         </div>
       </section>

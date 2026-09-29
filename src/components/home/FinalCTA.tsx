@@ -105,7 +105,7 @@ export default function FinalCTA() {
             </div>
             
             <Link href="/preise" className="flex bg-white/5 backdrop-blur-md border border-white/10 text-white px-12 py-6 rounded-full font-bold uppercase tracking-[0.2em] text-xs hover:bg-white/15 hover:border-white/30 hover:scale-105 transition-all duration-500">
-              Tarife vergleichen
+              Preis ansehen
             </Link>
           </motion.div>
         </motion.div>

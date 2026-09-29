@@ -3,8 +3,8 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Datenschutz | Stempelkarte',
-  description: 'Datenschutzerklärung der Stempelkarte GmbH.',
+  title: 'Datenschutz | StampNow',
+  description: 'Datenschutzerklärung der StampNow GmbH.',
 };
 
 export default function DatenschutzPage() {
@@ -62,7 +62,7 @@ export default function DatenschutzPage() {
               Bei Fragen zur Erhebung, Verarbeitung oder Nutzung Ihrer personenbezogenen Daten, bei Auskünften, Berichtigung, Sperrung oder Löschung von Daten sowie Widerruf erteilter Einwilligungen wenden Sie sich bitte an:
             </p>
             <p className="mt-4">
-              Stempelkarte GmbH (i.G.)<br />
+              StampNow GmbH (i.G.)<br />
               Musterstraße 1<br />
               28195 Bremen<br />
               E-Mail: <a href="mailto:hallo@stempelkarte.app" className="text-[#111] hover:text-amber-500 transition-colors">hallo@stempelkarte.app</a>

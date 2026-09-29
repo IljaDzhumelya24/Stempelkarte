@@ -3,8 +3,8 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Impressum | Stempelkarte',
-  description: 'Impressum der Stempelkarte GmbH.',
+  title: 'Impressum | StampNow',
+  description: 'Impressum der StampNow GmbH.',
 };
 
 export default function ImpressumPage() {
@@ -21,7 +21,7 @@ export default function ImpressumPage() {
           <div>
             <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-[#111] mb-4">Angaben gemäß § 5 TMG</h2>
             <p>
-              Stempelkarte GmbH (i.G.)<br />
+              StampNow GmbH (i.G.)<br />
               Musterstraße 1<br />
               28195 Bremen
             </p>

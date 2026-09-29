@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import BrandLogo from "@/components/BrandLogo";
 
 const columns = [
   {
@@ -47,8 +48,8 @@ export default function Footer() {
           
           {/* Brand Info */}
           <div className="flex-1 max-w-sm">
-            <Link href="/" className="text-2xl font-bold tracking-tight inline-flex items-baseline mb-6 text-white hover:text-white/80 transition-colors">
-              Stempelkarte<span className="text-amber-500">.</span>
+            <Link href="/" aria-label="StampNow – Startseite" className="text-2xl inline-flex items-center mb-6 text-white hover:text-white/80 transition-colors">
+              <BrandLogo />
             </Link>
             <p className="text-sm md:text-base text-white/50 font-medium leading-relaxed">
               Digitale Kundenbindung für lokale Geschäfte. Verabschiede dich von Papier und belohne deine Stammkunden direkt in Apple & Google Wallet.
@@ -80,7 +81,7 @@ export default function Footer() {
         {/* ─── BOTTOM SECTION: COPYRIGHT & SOCIALS ─── */}
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
           <span className="text-xs font-bold uppercase tracking-widest text-white/30">
-            © 2026 Stempelkarte.
+            © 2026 StampNow.
           </span>
           <div className="flex gap-8">
             {["Twitter", "LinkedIn", "Instagram"].map((s) => (

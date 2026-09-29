@@ -3,9 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useScroll, useMotionValueEvent } from "framer-motion";
-import { ArrowUpRight, LogIn, Menu, Stamp, X } from "lucide-react";
+import { ArrowUpRight, LogIn, Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { navLinks } from "@/lib/data";
+import BrandLogo from "@/components/BrandLogo";
 
 export default function Navigation({ theme = "light" }: { theme?: "light" | "dark" }) {
   const pathname = usePathname();
@@ -58,11 +59,8 @@ export default function Navigation({ theme = "light" }: { theme?: "light" | "dar
           : `border-black/[0.08] bg-white text-zinc-950 ${isScrolled || mobileMenuOpen ? "shadow-[0_16px_48px_-18px_rgba(0,0,0,0.25)]" : "shadow-[0_8px_32px_-16px_rgba(0,0,0,0.16)]"}`
       }`}>
         <div className="flex h-[68px] items-center justify-between gap-3 px-3 sm:h-[76px] sm:px-5">
-          <Link href="/" onClick={closeMenu} aria-label="Stempelkarte – Startseite" className={`group flex shrink-0 items-center gap-2.5 rounded-xl ${focusRing}`}>
-            <span className="flex size-9 items-center justify-center rounded-xl bg-amber-400 text-zinc-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.5)] transition-transform group-hover:-rotate-6 motion-reduce:transform-none sm:size-10">
-              <Stamp size={21} strokeWidth={2.2} aria-hidden="true" />
-            </span>
-            <span className="text-[15px] font-extrabold tracking-[-0.055em] sm:text-xl">STEMPELKARTE<span className="text-amber-500">.</span></span>
+          <Link href="/" onClick={closeMenu} aria-label="StampNow – Startseite" className={`group flex shrink-0 items-center rounded-xl ${focusRing}`}>
+            <BrandLogo className="text-[19px] sm:text-xl" />
           </Link>
 
           <nav aria-label="Hauptnavigation" className={`hidden items-center gap-1 rounded-full p-1 lg:flex ${isDark ? "bg-white/5" : "bg-zinc-100/80"}`}>
