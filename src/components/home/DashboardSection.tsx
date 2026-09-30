@@ -1,33 +1,36 @@
 "use client";
 
-import { motion, useMotionValue, useTransform, animate } from "framer-motion";
+import { motion, useMotionValue, useTransform, animate, useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 function Counter({ from, to }: { from: number; to: number }) {
+  const prefersReducedMotion = useReducedMotion();
   const count = useMotionValue(from);
   const rounded = useTransform(count, (latest) => Math.round(latest).toLocaleString("de-DE"));
 
   useEffect(() => {
-    const controls = animate(count, to, { duration: 2.5, ease: "easeOut", delay: 0.2 });
+    const controls = animate(count, to, { duration: prefersReducedMotion ? 0 : 1.5, ease: "easeOut", delay: prefersReducedMotion ? 0 : 0.2 });
     return controls.stop;
-  }, [count, to]);
+  }, [count, to, prefersReducedMotion]);
 
   return <motion.span>{rounded}</motion.span>;
 }
 
 export default function DashboardSection() {
+  const prefersReducedMotion = useReducedMotion();
   const [colorIndex, setColorIndex] = useState(0);
-  const colors = ["#f59e0b", "#3b82f6", "#10b981", "#8b5cf6", "#ec4899"];
+  const colors = ["#3058ff", "#2547dc", "#4264e8", "#1e338f", "#111111"];
   
   useEffect(() => {
+    if (prefersReducedMotion) return;
     const interval = setInterval(() => {
       setColorIndex((prev) => (prev + 1) % colors.length);
     }, 2500);
     return () => clearInterval(interval);
-  }, [colors.length]);
+  }, [colors.length, prefersReducedMotion]);
 
   return (
-    <section className="relative w-full py-24 md:py-40 bg-[#f2f2f7] text-[#111] flex flex-col items-center px-5 md:px-10 overflow-hidden rounded-t-[2.5rem] md:rounded-t-[4rem] z-20">
+    <section className="relative w-full py-24 md:py-40 bg-surface text-[#111] flex flex-col items-center px-5 md:px-10 overflow-hidden rounded-t-[2.5rem] md:rounded-t-[4rem] z-20">
       
       {/* Dynamic Background Mesh */}
       <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-white to-transparent pointer-events-none" />
@@ -42,7 +45,7 @@ export default function DashboardSection() {
           className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.95] mb-8"
         >
           Dein Geschäft.<br/>
-          <span className="text-black/30">Deine Regeln.</span>
+          <span className="text-brand-500">Deine Regeln.</span>
         </motion.h2>
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
@@ -63,7 +66,7 @@ export default function DashboardSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-10%" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="md:col-span-8 bg-white hover:shadow-[0_20px_60px_rgba(0,0,0,0.06)] shadow-[0_8px_30px_rgba(0,0,0,0.03)] transition-all border border-black/5 rounded-[2.5rem] md:rounded-[3rem] p-8 md:p-14 overflow-hidden relative group"
+          className="brand-card md:col-span-8 bg-white hover:shadow-[0_20px_60px_rgba(0,0,0,0.06)] shadow-[0_8px_30px_rgba(0,0,0,0.03)] border border-black/5 rounded-[2.5rem] md:rounded-[3rem] p-8 md:p-14 overflow-hidden relative group"
         >
            {/* Abstract Animated Chart */}
            <div className="absolute bottom-0 right-10 w-[60%] h-[70%] opacity-40 flex items-end justify-between gap-2 md:gap-4 pointer-events-none">
@@ -74,7 +77,7 @@ export default function DashboardSection() {
                   whileInView={{ height: h + "%" }}
                   viewport={{ once: true }}
                   transition={{ duration: 1.5, delay: i * 0.1, type: "spring", bounce: 0.4 }}
-                  className="w-full bg-black/5 rounded-t-xl"
+                  className="w-full bg-brand-500/15 rounded-t-xl"
                 />
               ))}
            </div>
@@ -85,8 +88,8 @@ export default function DashboardSection() {
                 <div className="text-6xl md:text-8xl lg:text-[7rem] font-black tracking-tighter leading-none mb-3">
                   <Counter from={0} to={8492} />
                 </div>
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-100">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-50 text-brand-700 border border-brand-100">
+                  <span className="w-2 h-2 rounded-full bg-brand-500 animate-pulse" />
                   <span className="text-sm font-bold">+124 diese Woche</span>
                 </div>
               </div>
@@ -103,7 +106,7 @@ export default function DashboardSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-10%" }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="md:col-span-4 bg-white hover:shadow-[0_20px_60px_rgba(0,0,0,0.06)] shadow-[0_8px_30px_rgba(0,0,0,0.03)] transition-all border border-black/5 rounded-[2.5rem] md:rounded-[3rem] p-8 md:p-12 overflow-hidden relative flex flex-col justify-between min-h-[360px] group"
+          className="brand-card md:col-span-4 bg-white hover:shadow-[0_20px_60px_rgba(0,0,0,0.06)] shadow-[0_8px_30px_rgba(0,0,0,0.03)] border border-black/5 rounded-[2.5rem] md:rounded-[3rem] p-8 md:p-12 overflow-hidden relative flex flex-col justify-between min-h-[360px] group"
         >
            <div className="absolute top-10 right-10 w-32 md:w-40 h-32 md:h-40 opacity-10 group-hover:opacity-20 transition-opacity duration-500 text-black pointer-events-none">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" className="w-full h-full">
@@ -115,9 +118,9 @@ export default function DashboardSection() {
               </svg>
               {/* Animated Laser */}
               <motion.div 
-                animate={{ y: [0, 160, 0] }}
+                animate={prefersReducedMotion ? { y: 60 } : { y: [0, 160, 0] }}
                 transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
-                className="absolute top-0 left-0 w-full h-[2px] bg-amber-500 shadow-[0_0_15px_rgba(245,158,11,0.6)]"
+                className="absolute top-0 left-0 w-full h-[2px] bg-brand-500 shadow-[0_0_15px_rgba(48,88,255,0.6)]"
               />
            </div>
            
@@ -133,7 +136,7 @@ export default function DashboardSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-10%" }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="md:col-span-12 bg-white hover:shadow-[0_20px_60px_rgba(0,0,0,0.06)] shadow-[0_8px_30px_rgba(0,0,0,0.03)] transition-all border border-black/5 rounded-[2.5rem] md:rounded-[4rem] p-8 md:p-16 flex flex-col md:flex-row items-center gap-12 md:gap-20 overflow-hidden relative"
+          className="brand-card md:col-span-12 bg-white hover:shadow-[0_20px_60px_rgba(0,0,0,0.06)] shadow-[0_8px_30px_rgba(0,0,0,0.03)] border border-black/5 rounded-[2.5rem] md:rounded-[4rem] p-8 md:p-16 flex flex-col md:flex-row items-center gap-12 md:gap-20 overflow-hidden relative"
         >
            
            <div className="flex-1 relative z-10 w-full">

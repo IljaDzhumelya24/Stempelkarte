@@ -47,8 +47,8 @@ export default function CustomizationSection() {
             currentStamps={3}
             totalStamps={10}
             reward={cards[0]?.reward || "Reward"}
-            colorFrom={cards[0]?.colorFrom || "#f59e0b"}
-            colorTo={cards[0]?.colorTo || "#d97706"}
+            colorFrom={cards[0]?.colorFrom || "#3058ff"}
+            colorTo={cards[0]?.colorTo || "#2547dc"}
           />
         </motion.div>
         
@@ -93,7 +93,7 @@ export default function CustomizationSection() {
             totalStamps={10}
             reward={cards[3]?.reward || "Reward"}
             colorFrom={cards[3]?.colorFrom || "#ec4899"}
-            colorTo={cards[3]?.colorTo || "#be185d"}
+            colorTo={cards[3]?.colorTo || "#4264e8"}
           />
         </motion.div>
 

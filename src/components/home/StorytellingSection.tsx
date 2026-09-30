@@ -38,7 +38,7 @@ export default function StorytellingSection() {
           {/* Step 1 */}
           <div className="w-[100vw] flex flex-col items-center justify-center px-4">
             <div className="glass-panel p-16 rounded-[3rem] relative group">
-              <div className="absolute -inset-4 bg-amber-500/20 blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+              <div className="absolute -inset-4 bg-brand-500/20 blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
               <div className="text-[12rem] md:text-[16rem] font-light text-white/10 leading-none absolute -top-16 -left-8 pointer-events-none">1</div>
               <h3 className="text-4xl md:text-6xl font-medium text-white mb-6 tracking-tight relative z-10">Scan.</h3>
               <p className="text-xl text-zinc-400 font-light max-w-sm relative z-10">
@@ -47,8 +47,8 @@ export default function StorytellingSection() {
               
               <div className="mt-12 p-8 border border-white/10 rounded-2xl bg-black/50 relative overflow-hidden">
                 <div className="absolute inset-0 bg-grid-pattern opacity-30" />
-                <div className="w-full aspect-square border-2 border-dashed border-amber-500/50 rounded-xl flex items-center justify-center relative">
-                   <div className="w-1/2 h-[2px] bg-amber-500 absolute top-1/2 -translate-y-1/2 animate-[scan_2s_ease-in-out_infinite] shadow-[0_0_20px_#f59e0b]" />
+                <div className="w-full aspect-square border-2 border-dashed border-brand-500/50 rounded-xl flex items-center justify-center relative">
+                   <div className="w-1/2 h-[2px] bg-brand-500 absolute top-1/2 -translate-y-1/2 animate-[scan_2s_ease-in-out_infinite] shadow-[0_0_20px_#3058ff]" />
                 </div>
               </div>
             </div>
@@ -72,7 +72,7 @@ export default function StorytellingSection() {
           {/* Step 3 */}
           <div className="w-[100vw] flex flex-col items-center justify-center px-4">
             <div className="glass-panel p-16 rounded-[3rem] relative group">
-              <div className="absolute -inset-4 bg-amber-500/20 blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+              <div className="absolute -inset-4 bg-brand-500/20 blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
               <div className="text-[12rem] md:text-[16rem] font-light text-white/10 leading-none absolute -top-16 -left-8 pointer-events-none">3</div>
               <h3 className="text-4xl md:text-6xl font-medium text-white mb-6 tracking-tight relative z-10">Collect.</h3>
               <p className="text-xl text-zinc-400 font-light max-w-sm relative z-10">
@@ -80,22 +80,22 @@ export default function StorytellingSection() {
               </p>
               
               <div className="mt-12 relative w-full flex justify-center">
-                <WalletCard businessName="CAFE NORD" currentStamps={7} totalStamps={10} reward="Gratis Kaffee" colorFrom="#f59e0b" colorTo="#b45309" size="md" className="scale-100 shadow-[0_0_50px_rgba(245,158,11,0.2)]" />
+                <WalletCard businessName="CAFE NORD" currentStamps={7} totalStamps={10} reward="Gratis Kaffee" colorFrom="#3058ff" colorTo="#203ab5" size="md" className="scale-100 shadow-[0_0_50px_rgba(48,88,255,0.2)]" />
               </div>
             </div>
           </div>
 
           {/* Step 4 */}
           <div className="w-[100vw] flex flex-col items-center justify-center px-4">
-            <div className="glass-panel p-16 rounded-[3rem] relative group border-amber-500/30">
-              <div className="text-[12rem] md:text-[16rem] font-light text-amber-500/10 leading-none absolute -top-16 -left-8 pointer-events-none">4</div>
-              <h3 className="text-4xl md:text-6xl font-medium text-transparent bg-clip-text text-gradient-amber mb-6 tracking-tight relative z-10">Reward.</h3>
+            <div className="glass-panel p-16 rounded-[3rem] relative group border-brand-500/30">
+              <div className="text-[12rem] md:text-[16rem] font-light text-brand-500/10 leading-none absolute -top-16 -left-8 pointer-events-none">4</div>
+              <h3 className="text-4xl md:text-6xl font-medium text-transparent bg-clip-text text-gradient-brand mb-6 tracking-tight relative z-10">Reward.</h3>
               <p className="text-xl text-zinc-400 font-light max-w-sm relative z-10">
                 Ist die Karte voll, löst dein Team die Prämie ein. Du entscheidest, welche Belohnung zu deinem Geschäft passt.
               </p>
               
               <div className="mt-12 relative w-full flex justify-center">
-                <WalletCard businessName="CAFE NORD" currentStamps={10} totalStamps={10} reward="Gratis Kaffee" colorFrom="#111111" colorTo="#000000" size="md" className="scale-110 shadow-2xl border border-amber-500/50" />
+                <WalletCard businessName="CAFE NORD" currentStamps={10} totalStamps={10} reward="Gratis Kaffee" colorFrom="#111111" colorTo="#000000" size="md" className="scale-110 shadow-2xl border border-brand-500/50" />
               </div>
             </div>
           </div>

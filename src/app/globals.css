@@ -3,8 +3,20 @@
 @theme inline {
   --color-slate-50: #f8fafc;
   --color-slate-950: #0a0a0f;
-  --color-amber-400: #fbbf24;
-  --color-amber-500: #f59e0b;
+  --color-brand-50: #f0f4ff;
+  --color-brand-100: #e1e9ff;
+  --color-brand-200: #c5d3ff;
+  --color-brand-300: #a8baff;
+  --color-brand-400: #829dff;
+  --color-brand-500: #3058ff;
+  --color-brand-600: #2547dc;
+  --color-brand-700: #203ab5;
+  --color-brand-800: #1e338f;
+  --color-brand-900: #1b2c75;
+  --color-brand-950: #101936;
+  --color-canvas: #fbfcff;
+  --color-surface: #f0f3fa;
+  --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
   --color-zinc-400: #a1a1aa;
   --color-zinc-700: #3f3f46;
   /* Link Next.js Font Variables to Tailwind */
@@ -23,8 +35,8 @@ html {
 }
 
 ::selection {
-  background-color: #f59e0b;
-  color: #000000;
+  background-color: var(--color-brand-500);
+  color: #ffffff;
 }
 
 body {
@@ -41,12 +53,12 @@ body {
 .bg-grid-pattern {
   background-size: 50px 50px;
   background-image: 
-    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px), 
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(48, 88, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(48, 88, 255, 0.04) 1px, transparent 1px);
 }
 
-.text-gradient-amber {
-  background: linear-gradient(135deg, #fcd34d 0%, #f59e0b 50%, #b45309 100%);
+.text-gradient-brand {
+  background: linear-gradient(135deg, var(--color-brand-300) 0%, var(--color-brand-500) 50%, var(--color-brand-700) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -61,8 +73,66 @@ body {
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
 }
 
+@layer base {
+  :where(a, button, input, select, textarea) {
+    -webkit-tap-highlight-color: transparent;
+    transition-property: color, background-color, border-color, box-shadow;
+    transition-duration: 220ms;
+    transition-timing-function: var(--ease-brand);
+  }
+
+  :where(a, button, input, select, textarea):focus-visible {
+    outline: 2px solid var(--color-brand-400);
+    outline-offset: 4px;
+  }
+}
+
+.brand-button {
+  box-shadow: 0 6px 20px -8px rgb(48 88 255 / 45%);
+  transition: background-color 220ms ease, box-shadow 300ms var(--ease-brand), translate 300ms var(--ease-brand);
+}
+
+.brand-card {
+  transition: border-color 350ms var(--ease-brand), box-shadow 350ms var(--ease-brand);
+}
+
+.brand-footer {
+  background-image: radial-gradient(ellipse at 15% 0%, rgb(48 88 255 / 12%), transparent 55%);
+}
+
+#mobile-navigation:not([hidden]) {
+  animation: menu-enter 240ms var(--ease-brand) both;
+}
+
+@keyframes menu-enter {
+  from { opacity: 0; translate: 0 -6px; }
+  to { opacity: 1; translate: 0 0; }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .brand-button:hover {
+    translate: 0 -2px;
+    box-shadow: 0 12px 28px -10px rgb(48 88 255 / 55%);
+  }
+
+  .brand-button:active {
+    translate: 0 0;
+  }
+
+  .brand-card:hover {
+    border-color: rgb(130 157 255 / 40%);
+    box-shadow: 0 20px 60px -24px rgb(48 88 255 / 25%);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

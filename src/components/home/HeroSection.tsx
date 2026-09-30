@@ -52,15 +52,14 @@ function CharReveal({ text, className = "", delay = 0 }: { text: string, classNa
 // ─── FLOATING PARTICLES ────────────────────────────────────────────
 function Particles() {
   const reducedMotion = useReducedMotion();
-  if (reducedMotion) return null;
   return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block" aria-hidden="true">
+    <div className="absolute inset-0 pointer-events-none overflow-hidden hidden motion-safe:md:block" aria-hidden="true">
       {particles.map((particle, i) => (
         <motion.div
           key={i}
-          className={`absolute rounded-full ${i % 3 === 0 ? 'w-1.5 h-1.5 bg-amber-500/20' : 'w-1 h-1 bg-black/[0.06]'}`}
+          className={`absolute rounded-full ${i % 3 === 0 ? 'w-1.5 h-1.5 bg-brand-500/20' : 'w-1 h-1 bg-black/[0.06]'}`}
           style={{ left: particle.left, top: particle.top }}
-          animate={{
+          animate={reducedMotion ? { opacity: 0 } : {
             y: [0, particle.y, 0],
             x: [0, particle.x, 0],
             opacity: [0, 0.8, 0],
@@ -87,7 +86,7 @@ function Ticker() {
       <motion.div animate={reducedMotion ? { x: 0 } : { x: [0, -2000] }} transition={{ duration: 30, repeat: Infinity, ease: "linear" }} className="flex gap-16 py-4 whitespace-nowrap">
         {[...items, ...items, ...items, ...items].map((item, i) => (
           <span key={i} className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/10 flex items-center gap-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-500/40" />
+            <span className="w-1.5 h-1.5 rounded-full bg-brand-500/40" />
             {item}
           </span>
         ))}
@@ -158,7 +157,7 @@ export default function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className="relative w-full bg-[#fcfcfc] flex flex-col items-center justify-start overflow-hidden"
+      className="relative w-full bg-canvas flex flex-col items-center justify-start overflow-hidden"
     >
       <Particles />
 
@@ -167,12 +166,12 @@ export default function HeroSection() {
         <motion.div
           animate={prefersReducedMotion ? { opacity: 0.15 } : { scale: [1, 1.5, 1], x: [0, 150, 0], opacity: [0.1, 0.3, 0.1] }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-20 left-[20%] w-[400px] md:w-[700px] h-[400px] md:h-[700px] bg-amber-500/15 rounded-full blur-[100px] md:blur-[150px]"
+          className="absolute -top-20 left-[20%] w-[400px] md:w-[700px] h-[400px] md:h-[700px] bg-brand-500/15 rounded-full blur-[100px] md:blur-[150px]"
         />
         <motion.div
           animate={prefersReducedMotion ? { opacity: 0.08 } : { scale: [1, 1.3, 1], x: [0, -100, 0], opacity: [0.05, 0.12, 0.05] }}
           transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 4 }}
-          className="absolute top-[30%] right-[10%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-violet-500/8 rounded-full blur-[90px] md:blur-[130px]"
+          className="absolute top-[30%] right-[10%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-brand-300/15 rounded-full blur-[90px] md:blur-[130px]"
         />
       </div>
 
@@ -190,7 +189,7 @@ export default function HeroSection() {
         />
         <CharReveal
           text="Mehr Stammkunden."
-          className="text-[10vw] sm:text-[9vw] md:text-[8vw] font-bold tracking-tight md:tracking-[-0.05em] leading-[1] text-transparent bg-clip-text bg-gradient-to-br from-zinc-200 via-zinc-400 to-zinc-600 mt-1 md:-mt-[0.1em]"
+          className="text-[10vw] sm:text-[9vw] md:text-[8vw] font-bold tracking-tight md:tracking-[-0.05em] leading-[1] text-transparent bg-clip-text bg-gradient-to-br from-brand-400 via-brand-500 to-brand-700 mt-1 md:-mt-[0.1em]"
           delay={0.55}
         />
         </div>
@@ -254,7 +253,7 @@ export default function HeroSection() {
                 </div>
 
                 {/* ─── SCREEN CONTENT ─────────────────────────────── */}
-                <div className="relative w-full h-full bg-[#f2f2f7] flex flex-col items-center">
+                <div className="relative w-full h-full bg-surface flex flex-col items-center">
                   
                   {/* Status Bar */}
                   <div className="w-full flex justify-between items-center px-6 md:px-8 pt-[12px] md:pt-[14px] text-[10px] md:text-[12px] font-semibold text-black relative z-30">
@@ -293,12 +292,12 @@ export default function HeroSection() {
                         currentStamps={7}
                         totalStamps={10}
                         reward="Gratis Kaffee"
-                        colorFrom="#f59e0b"
-                        colorTo="#b45309"
+                        colorFrom="#3058ff"
+                        colorTo="#203ab5"
                         showQR={true}
                         size="fluid"
                         interactive={false}
-                        className="shadow-[0_20px_60px_rgba(245,158,11,0.4)] border border-white/30"
+                        className="shadow-[0_20px_60px_rgba(48,88,255,0.4)] border border-white/30"
                       />
                     </motion.div>
                   </div>

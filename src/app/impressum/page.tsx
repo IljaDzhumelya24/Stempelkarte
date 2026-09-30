@@ -9,10 +9,10 @@ export const metadata: Metadata = {
 
 export default function ImpressumPage() {
   return (
-    <div className="min-h-screen bg-[#fcfcfc] text-[#111] selection:bg-amber-500 selection:text-black">
+    <div className="min-h-screen bg-canvas text-[#111] selection:bg-brand-500 selection:text-white">
       <Navigation />
       
-      <main className="pt-40 lg:pt-52 pb-32 px-6 max-w-[800px] mx-auto font-sans">
+      <main className="pt-40 lg:pt-52 pb-32 px-6 max-w-[800px] mx-auto font-sans [overflow-wrap:anywhere]">
         <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-16">
           Impressum.
         </h1>
@@ -35,8 +35,8 @@ export default function ImpressumPage() {
           <div>
             <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-[#111] mb-4">Kontakt</h2>
             <p>
-              E-Mail: <a href="mailto:hallo@stempelkarte.app" className="text-[#111] hover:text-amber-500 transition-colors">hallo@stempelkarte.app</a><br />
-              Website: <a href="https://stempelkarte.app" className="text-[#111] hover:text-amber-500 transition-colors">www.stempelkarte.app</a>
+              E-Mail: <a href="mailto:hallo@stempelkarte.app" className="text-[#111] hover:text-brand-500 transition-colors">hallo@stempelkarte.app</a><br />
+              Website: <a href="https://stempelkarte.app" className="text-[#111] hover:text-brand-500 transition-colors">www.stempelkarte.app</a>
             </p>
           </div>
 
@@ -60,7 +60,7 @@ export default function ImpressumPage() {
           <div>
             <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-[#111] mb-4">EU-Streitschlichtung</h2>
             <p>
-              Die Europäische Kommission stellt eine Plattform zur Online-Streitschlichtung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" className="text-[#111] hover:text-amber-500 transition-colors underline underline-offset-4">https://ec.europa.eu/consumers/odr/</a>.<br />
+              Die Europäische Kommission stellt eine Plattform zur Online-Streitschlichtung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" className="text-[#111] hover:text-brand-500 transition-colors underline underline-offset-4">https://ec.europa.eu/consumers/odr/</a>.<br />
               Unsere E-Mail-Adresse finden Sie oben im Impressum.
             </p>
           </div>

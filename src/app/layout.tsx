@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de">
-      <body className={`${inter.variable} font-sans bg-[#ffffff] text-[#111111] antialiased selection:bg-amber-500 selection:text-black relative`}>
+      <body className={`${inter.variable} font-sans bg-[#ffffff] text-[#111111] antialiased selection:bg-brand-500 selection:text-white relative`}>
         <SmoothScroll>
           {children}
         </SmoothScroll>

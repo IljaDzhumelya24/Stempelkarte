@@ -18,7 +18,7 @@ const industries: Record<string, string> = {
 };
 
 const fieldClassName =
-  "w-full min-w-0 rounded-2xl border border-zinc-200 bg-zinc-50/80 px-4 py-3.5 text-base font-medium text-zinc-950 outline-none transition-colors placeholder:font-normal placeholder:text-zinc-400 hover:border-zinc-300 focus:border-amber-500 focus:bg-white focus:ring-4 focus:ring-amber-400/15";
+  "w-full min-w-0 rounded-2xl border border-zinc-200 bg-zinc-50/80 px-4 py-3.5 text-base font-medium text-zinc-950 outline-none transition-colors placeholder:font-normal placeholder:text-zinc-400 hover:border-zinc-300 focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-400/15";
 
 export default function DemoRequestForm({
   onCompanyChange,
@@ -68,11 +68,11 @@ export default function DemoRequestForm({
     >
       <div className="mb-7 border-b border-zinc-100 pb-7">
         <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-          <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-amber-700">
+          <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-brand-700">
             Deine persönliche Demo
           </p>
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-3 py-1.5 text-[11px] font-semibold text-amber-800">
-            <span className="h-1.5 w-1.5 rounded-full bg-amber-500" aria-hidden="true" />
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-3 py-1.5 text-[11px] font-semibold text-brand-800">
+            <span className="h-1.5 w-1.5 rounded-full bg-brand-500" aria-hidden="true" />
             Unverbindlich
           </span>
         </div>
@@ -190,7 +190,7 @@ export default function DemoRequestForm({
           <button
             type="submit"
             aria-describedby="demo-email-hint"
-            className="group flex min-h-14 w-full items-center justify-between gap-3 rounded-2xl bg-amber-400 px-5 py-4 text-left text-sm font-bold text-zinc-950 shadow-[0_8px_20px_-10px_rgba(245,158,11,0.6)] transition-colors hover:bg-amber-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-600 sm:px-6 sm:text-base"
+            className="brand-button group flex min-h-14 w-full items-center justify-between gap-3 rounded-2xl bg-brand-500 px-5 py-4 text-left text-sm font-bold text-white shadow-[0_8px_20px_-10px_rgba(48,88,255,0.6)] transition-colors hover:bg-brand-600 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-600 sm:px-6 sm:text-base"
           >
             Demo per E-Mail anfragen
             <ArrowUpRight aria-hidden="true" className="h-5 w-5 shrink-0 transition-transform motion-safe:group-hover:-translate-y-0.5 motion-safe:group-hover:translate-x-0.5" />
@@ -203,12 +203,12 @@ export default function DemoRequestForm({
         </div>
 
         {draftHref && (
-          <div role="status" className="flex items-start gap-3 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm leading-relaxed text-zinc-700">
-            <Mail aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-amber-700" />
+          <div role="status" className="flex items-start gap-3 rounded-2xl border border-brand-200 bg-brand-50 p-4 text-sm leading-relaxed text-zinc-700">
+            <Mail aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-brand-700" />
             <div>
               <p className="font-semibold text-zinc-900">Dein E-Mail-Entwurf ist vorbereitet.</p>
               <p className="mt-1">Sende ihn in deinem E-Mail-Programm ab. Es hat sich nichts geöffnet?</p>
-              <a href={draftHref} className="mt-2 inline-block font-semibold text-amber-800 underline decoration-amber-400 underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-600">
+              <a href={draftHref} className="mt-2 inline-block font-semibold text-brand-800 underline decoration-brand-400 underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-600">
                 Entwurf erneut öffnen
               </a>
             </div>
@@ -219,7 +219,7 @@ export default function DemoRequestForm({
           <ShieldCheck aria-hidden="true" className="h-4 w-4 shrink-0 text-zinc-400" />
           <span>
             Infos zum Umgang mit deinen Daten: {" "}
-            <Link href="/datenschutz" className="text-zinc-700 underline decoration-zinc-300 underline-offset-4 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-600">
+            <Link href="/datenschutz" className="text-zinc-700 underline decoration-zinc-300 underline-offset-4 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-600">
               Datenschutz
             </Link>
           </span>

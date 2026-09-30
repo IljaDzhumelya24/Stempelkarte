@@ -43,7 +43,7 @@ const industries = [
 
 export default function IndustryShowcase() {
   return (
-    <section className="py-24 md:py-40 w-full bg-[#fcfcfc] flex flex-col items-center overflow-hidden z-20 relative">
+    <section className="py-24 md:py-40 w-full bg-canvas flex flex-col items-center overflow-hidden z-20 relative">
       <div className="w-full max-w-[1200px] px-5 md:px-10">
         
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 md:mb-24">
@@ -56,7 +56,7 @@ export default function IndustryShowcase() {
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-black/40 mb-4">Branchen</p>
             <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-[#111] leading-[1.05]">
               Für jedes Geschäft.<br/>
-              <span className="text-black/30">Für jeden Kunden.</span>
+              <span className="text-brand-500">Für jeden Kunden.</span>
             </h2>
           </motion.div>
           <motion.p 
@@ -88,7 +88,7 @@ export default function IndustryShowcase() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none -z-10" />
               
               <div className="absolute inset-0 p-8 flex flex-col justify-end pointer-events-none">
-                 <p className="text-amber-400 font-bold text-[10px] md:text-xs uppercase tracking-widest mb-3 transform translate-y-2 opacity-80 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                 <p className="text-brand-400 font-bold text-[10px] md:text-xs uppercase tracking-widest mb-3 transform translate-y-2 opacity-80 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                    {ind.stat} {ind.statLabel}
                  </p>
                  <h3 className="text-white text-3xl font-bold mb-3 tracking-tight transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">

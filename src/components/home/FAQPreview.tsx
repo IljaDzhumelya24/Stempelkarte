@@ -35,7 +35,7 @@ export default function FAQPreview() {
                   onClick={() => toggleFAQ(index)}
                   className="w-full flex items-center justify-between py-6 md:py-8 text-left group"
                 >
-                  <span className="text-lg md:text-xl font-medium text-slate-950 group-hover:text-amber-500 transition-colors">
+                  <span className="text-lg md:text-xl font-medium text-slate-950 group-hover:text-brand-500 transition-colors">
                     {item.question}
                   </span>
                   <motion.div
@@ -69,7 +69,7 @@ export default function FAQPreview() {
         <ScrollReveal direction="up" delay={0.2} className="mt-16 text-center">
           <Link 
             href="/faq" 
-            className="inline-flex text-lg md:text-xl font-medium text-slate-950 hover:text-amber-500 transition-colors"
+            className="inline-flex text-lg md:text-xl font-medium text-slate-950 hover:text-brand-500 transition-colors"
           >
             Alle Fragen ansehen &rarr;
           </Link>

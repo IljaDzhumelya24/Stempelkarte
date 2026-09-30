@@ -67,10 +67,10 @@ export default function WalletShowcase() {
               currentStamps={0}
               totalStamps={10}
               reward="Gratis Kaffee"
-              colorFrom="#f59e0b"
-              colorTo="#b45309"
+              colorFrom="#3058ff"
+              colorTo="#203ab5"
               size="md"
-              className="shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-amber-500/30"
+              className="shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-brand-500/30"
             />
           </motion.div>
 

@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="bg-[#fcfcfc] text-[#111111] min-h-screen relative selection:bg-amber-500 selection:text-black overflow-hidden">
+    <main className="bg-canvas text-[#111111] min-h-screen relative selection:bg-brand-500 selection:text-white overflow-hidden">
       <Navigation />
       
       <HeroSection />

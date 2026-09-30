@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function DatenschutzPage() {
   return (
-    <div className="min-h-screen bg-[#fcfcfc] text-[#111] selection:bg-amber-500 selection:text-black">
+    <div className="min-h-screen bg-canvas text-[#111] selection:bg-brand-500 selection:text-white">
       <Navigation />
       
       <main className="pt-40 lg:pt-52 pb-32 px-6 max-w-[800px] mx-auto font-sans">
@@ -65,7 +65,7 @@ export default function DatenschutzPage() {
               StampNow GmbH (i.G.)<br />
               Musterstraße 1<br />
               28195 Bremen<br />
-              E-Mail: <a href="mailto:hallo@stempelkarte.app" className="text-[#111] hover:text-amber-500 transition-colors">hallo@stempelkarte.app</a>
+              E-Mail: <a href="mailto:hallo@stempelkarte.app" className="text-[#111] hover:text-brand-500 transition-colors">hallo@stempelkarte.app</a>
             </p>
           </section>
         </div>

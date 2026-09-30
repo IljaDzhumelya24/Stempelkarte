@@ -91,7 +91,7 @@ const steps = [
     num: "02",
     title: "Stempel vergeben",
     desc: "Dein Team scannt die Kundenkarte beim Besuch und vergibt einen Stempel. So belohnst du Einkäufe direkt im Betriebsalltag.",
-    card: { stamps: 6, total: 10, name: "CAFE NORD", reward: "Noch 4!", from: "#f59e0b", to: "#b45309" },
+    card: { stamps: 6, total: 10, name: "CAFE NORD", reward: "Noch 4!", from: "#3058ff", to: "#203ab5" },
   },
   {
     num: "03",
@@ -114,7 +114,7 @@ function StepsSection() {
       num: "2",
       title: "Stempel vergeben",
       desc: "Dein Team scannt die Kundenkarte beim Besuch per Smartphone oder Tablet und vergibt blitzschnell einen Stempel. Keine extra Hardware nötig.",
-      card: { stamps: 6, total: 10, name: "CAFE NORD", reward: "Gratis Kaffee", from: "#f59e0b", to: "#b45309" },
+      card: { stamps: 6, total: 10, name: "CAFE NORD", reward: "Gratis Kaffee", from: "#3058ff", to: "#203ab5" },
     },
     {
       num: "3",
@@ -125,7 +125,7 @@ function StepsSection() {
   ];
 
   return (
-    <section className="w-full bg-[#fcfcfc] py-24 md:py-40 flex flex-col items-center overflow-hidden">
+    <section className="w-full bg-canvas py-24 md:py-40 flex flex-col items-center overflow-hidden">
       <div className="w-full max-w-[1000px] px-6 flex flex-col items-center">
         
         <motion.div 
@@ -249,7 +249,7 @@ export default function ProduktPage() {
   const dashOpacity = useTransform(dashScroll, [0, 0.3], [0, 1]);
 
   return (
-    <main className="bg-[#fcfcfc] text-[#111] min-h-screen relative selection:bg-amber-500 selection:text-black overflow-x-clip">
+    <main className="bg-canvas text-[#111] min-h-screen relative selection:bg-brand-500 selection:text-white overflow-x-clip">
       <Navigation />
 
       {/* ─── HERO ──────────────────────────────────────────────────── */}
@@ -260,7 +260,7 @@ export default function ProduktPage() {
           transition={{ duration: 0.8 }}
           className="inline-flex items-center gap-3 mb-12 px-5 py-2.5 rounded-full bg-white/70 backdrop-blur-xl border border-black/5 shadow-[0_8px_30px_rgba(0,0,0,0.05)]"
         >
-          <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
+          <span className="w-2 h-2 rounded-full bg-brand-500 animate-pulse" />
           <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#111]">Das Produkt</span>
         </motion.div>
 
@@ -271,7 +271,7 @@ export default function ProduktPage() {
         />
         <CharReveal
           text="StampNow."
-          className="text-[11.5vw] sm:text-[12vw] md:text-[9vw] font-bold tracking-tight md:tracking-[-0.05em] leading-[0.8] text-transparent bg-clip-text bg-gradient-to-br from-amber-400 via-amber-500 to-amber-700 -mt-[0.1em]"
+          className="text-[11.5vw] sm:text-[12vw] md:text-[9vw] font-bold tracking-tight md:tracking-[-0.05em] leading-[0.8] text-transparent bg-clip-text bg-gradient-to-br from-brand-400 via-brand-500 to-brand-700 -mt-[0.1em]"
           delay={0.4}
         />
 
@@ -322,7 +322,7 @@ export default function ProduktPage() {
                   transition={{ duration: 0.8, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
                   className={`flex flex-col bg-white/[0.03] border border-white/10 rounded-[2rem] p-8 md:p-10 group hover:bg-white/[0.06] transition-colors duration-500 ${colSpanClass}`}
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center text-white mb-8 border border-white/5 group-hover:scale-110 group-hover:bg-amber-500 group-hover:border-transparent transition-all duration-500">
+                  <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center text-white mb-8 border border-white/5 group-hover:scale-110 group-hover:bg-brand-500 group-hover:border-transparent transition-all duration-500">
                     {f.icon}
                   </div>
                   <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight mb-3">{f.title}</h3>
@@ -335,7 +335,7 @@ export default function ProduktPage() {
       </section>
 
       {/* ─── DASHBOARD (PREMIUM DARK MODE) ──────────────────────────── */}
-      <section ref={dashRef} className="w-full py-12 px-4 md:px-8 bg-[#fcfcfc]">
+      <section ref={dashRef} className="w-full py-12 px-4 md:px-8 bg-canvas">
         <motion.div 
           style={{ scale: dashScale, opacity: dashOpacity }} 
           className="w-full max-w-[1400px] mx-auto py-24 md:py-32 bg-[#0a0a0a] rounded-[3rem] md:rounded-[4rem] flex flex-col items-center px-6 border border-black/10 shadow-[0_40px_100px_rgba(0,0,0,0.2)] relative overflow-hidden"
@@ -383,7 +383,7 @@ export default function ProduktPage() {
                     whileInView={{ height: `${h}%` }} 
                     transition={{ duration: 1.2, delay: 0.1 + i * 0.05, type: "spring", bounce: 0.3 }} 
                     viewport={{ once: true }} 
-                    className={`w-full rounded-t-md ${i === 5 ? 'bg-amber-500 shadow-[0_0_20px_rgba(245,158,11,0.2)]' : 'bg-white/10'}`}
+                    className={`w-full rounded-t-md ${i === 5 ? 'bg-brand-500 shadow-[0_0_20px_rgba(48,88,255,0.2)]' : 'bg-white/10'}`}
                   />
                 ))}
               </div>
@@ -396,7 +396,7 @@ export default function ProduktPage() {
       {/* ─── CTA ──────────────────────────────────────────────────── */}
       <section className="w-full py-40 md:py-56 flex flex-col items-center justify-center text-center px-6">
         <h2 className="text-5xl md:text-8xl font-bold tracking-tighter leading-[0.85] text-[#111] max-w-[900px]">
-          Bereit für <span className="text-transparent bg-clip-text bg-gradient-to-br from-amber-400 to-amber-600">moderne</span> Kundenbindung?
+          Bereit für <span className="text-transparent bg-clip-text bg-gradient-to-br from-brand-400 to-brand-600">moderne</span> Kundenbindung?
         </h2>
         <p className="mt-8 text-lg text-black/40 font-medium max-w-md">
           Lerne die Stempelkarte für deinen Betrieb kennen. Frage eine unverbindliche Demo an.
@@ -404,7 +404,7 @@ export default function ProduktPage() {
         <div className="mt-14 flex flex-col sm:flex-row gap-4 sm:gap-5 w-full sm:w-auto">
           <Link href="/demo" className="w-full sm:w-auto relative bg-[#111] text-white px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest text-center hover:scale-105 transition-transform shadow-[0_15px_40px_rgba(0,0,0,0.25)] overflow-hidden group block">
             <span className="relative z-10 group-hover:text-black transition-colors duration-500">Demo anfragen</span>
-            <motion.div className="absolute inset-0 bg-amber-500 origin-left" initial={{ scaleX: 0 }} whileHover={{ scaleX: 1 }} transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }} />
+            <motion.div className="absolute inset-0 bg-brand-500 origin-left" initial={{ scaleX: 0 }} whileHover={{ scaleX: 1 }} transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }} />
           </Link>
           <Link href="/preise" className="w-full sm:w-auto bg-white border border-black/10 text-[#111] px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest text-center hover:bg-black/5 hover:scale-105 transition-all duration-300 block">
             Preis ansehen

@@ -18,7 +18,7 @@ export default function PilotSection() {
         
         <Link 
           href="/demo"
-          className="inline-flex items-center justify-center px-10 py-5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-medium rounded-full transition-colors text-lg"
+          className="brand-button inline-flex items-center justify-center px-10 py-5 bg-brand-500 hover:bg-brand-600 text-white font-medium rounded-full transition-colors text-lg"
         >
           Demo anfragen
         </Link>

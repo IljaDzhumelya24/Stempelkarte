@@ -28,7 +28,7 @@ export default function BranchenPage() {
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
   return (
-    <main className="bg-[#fcfcfc] text-[#111] min-h-screen relative selection:bg-amber-500 selection:text-black overflow-x-clip">
+    <main className="bg-canvas text-[#111] min-h-screen relative selection:bg-brand-500 selection:text-white overflow-x-clip">
       <Navigation />
 
       {/* ─── PURE CINEMATIC HERO ───────────────────────────────────── */}
@@ -67,7 +67,7 @@ export default function BranchenPage() {
                 <div className="relative z-10 flex flex-col">
                   {/* Number & Title */}
                   <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8 mb-6 md:mb-8">
-                    <span className="text-sm md:text-xl font-bold tracking-tighter text-black/20 lg:group-hover:text-amber-500 transition-colors duration-500">
+                    <span className="text-sm md:text-xl font-bold tracking-tighter text-black/20 lg:group-hover:text-brand-500 transition-colors duration-500">
                       0{i + 1}
                     </span>
                     <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-[#111] lg:group-hover:text-white transition-colors duration-500">
@@ -100,7 +100,7 @@ export default function BranchenPage() {
           </div>
 
           {/* RIGHT: Floating Card Viewer (Sticky Desktop Only) */}
-          <div className="hidden lg:flex w-2/5 sticky top-0 h-screen items-center justify-center bg-[#f5f5f7] overflow-hidden [perspective:1200px]">
+          <div className="hidden lg:flex w-2/5 sticky top-0 h-screen items-center justify-center bg-surface overflow-hidden [perspective:1200px]">
             <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, black 1px, transparent 0)', backgroundSize: '24px 24px' }} />
             
             <div className="relative w-full h-full flex items-center justify-center">
@@ -132,7 +132,7 @@ export default function BranchenPage() {
       </section>
 
       {/* ─── CTA ──────────────────────────────────────────────────── */}
-      <section className="w-full py-8 px-4 md:px-8 bg-[#f5f5f7]">
+      <section className="w-full py-8 px-4 md:px-8 bg-surface">
         <div className="w-full py-40 md:py-56 bg-black text-white rounded-[3rem] md:rounded-[4rem] flex flex-col items-center justify-center text-center px-6 relative overflow-hidden">
           <h2 className="text-5xl md:text-8xl font-bold tracking-tighter leading-[0.85] relative z-10 max-w-[900px]">
             Bereit für <span className="text-transparent bg-clip-text bg-gradient-to-br from-zinc-400 to-zinc-600">Stammkunden?</span>
