@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import GrowthComparison from "@/components/GrowthComparison";
 import { pricingPlan, faqItems } from "@/lib/data";
 
 // ─── CHARACTER REVEAL ──────────────────────────────────────────────
@@ -222,41 +223,7 @@ export default function PreisePage() {
         </div>
       </section>
       {/* ─── ROI SECTION (CLEAN) ────────────────────────────────────────── */}
-      <section className="w-full py-20 md:py-32 px-6 bg-surface">
-        <div className="max-w-[1100px] mx-auto flex flex-col md:flex-row items-center gap-16 md:gap-24">
-          <div className="flex-1">
-            <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-[#111] mb-6 leading-[1.1]">
-              Was bringt das deinem Geschäft?
-            </h2>
-            <p className="text-lg text-black/50 font-medium leading-relaxed mb-10">
-              Mit <strong className="text-[#111]">zusätzlichen Besuchen deiner Stammkunden</strong> wächst dein Umsatz. Ob sich StampNow für dich lohnt, hängt von deiner Marge, den Prämien und den tatsächlichen Wiederbesuchen ab.
-            </p>
-            <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-black/40">
-              <span className="w-8 h-[2px] bg-black/20" />
-              Rechenbeispiel, keine Prognose
-            </div>
-          </div>
-          <div className="w-full md:w-[420px] bg-white p-10 md:p-12 rounded-[2.5rem] shadow-[0_20px_60px_rgba(0,0,0,0.03)] border border-black/5 relative overflow-hidden group">
-            {/* Subtle glow */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-brand-500/10 blur-[40px] rounded-full group-hover:bg-brand-500/20 transition-colors duration-500" />
-            
-            <div className="space-y-6 relative z-10">
-              <div className="flex justify-between items-center pb-5 border-b border-black/5">
-                <span className="text-black/50 font-medium">Zusätzliche Kunden</span>
-                <span className="font-bold text-lg">+ 3</span>
-              </div>
-              <div className="flex justify-between items-center pb-5 border-b border-black/5">
-                <span className="text-black/50 font-medium">Umsatz pro Kunde</span>
-                <span className="font-bold text-lg">Ø 12 €</span>
-              </div>
-              <div className="flex justify-between items-center pt-2">
-                <span className="text-[#111] font-bold text-base">Zusatzumsatz</span>
-                <span className="text-3xl font-black text-brand-500 tracking-tight">+ 36 €</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <GrowthComparison />
 
       {/* ─── FAQ SECTION ──────────────────────────────────────────── */}
       <section className="w-full py-20 md:py-32 px-6 max-w-[800px] mx-auto">

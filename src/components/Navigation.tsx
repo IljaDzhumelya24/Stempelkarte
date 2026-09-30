@@ -58,9 +58,9 @@ export default function Navigation({ theme = "light" }: { theme?: "light" | "dar
           ? "border-white/15 bg-zinc-950 text-white shadow-[0_12px_40px_-16px_rgba(0,0,0,0.5)]"
           : `border-brand-500/10 bg-white/95 backdrop-blur-xl text-zinc-950 ${isScrolled || mobileMenuOpen ? "shadow-[0_16px_48px_-18px_rgba(0,0,0,0.25)]" : "shadow-[0_8px_32px_-16px_rgba(0,0,0,0.16)]"}`
       }`}>
-        <div className="flex h-[68px] items-center justify-between gap-3 px-3 sm:h-[76px] sm:px-5">
+        <div className="flex h-16 items-center justify-between gap-3 px-3 sm:h-[76px] sm:px-5">
           <Link href="/" onClick={closeMenu} aria-label="StampNow – Startseite" className={`group flex shrink-0 items-center rounded-xl ${focusRing}`}>
-            <BrandLogo className="text-[19px] sm:text-xl" />
+            <BrandLogo className="text-[17px] sm:text-xl" markClassName="w-10 sm:w-16" />
           </Link>
 
           <nav aria-label="Hauptnavigation" className={`hidden items-center gap-1 rounded-full p-1 lg:flex ${isDark ? "bg-white/5" : "bg-zinc-100/80"}`}>
@@ -74,14 +74,17 @@ export default function Navigation({ theme = "light" }: { theme?: "light" | "dar
           </nav>
 
           <div className="flex shrink-0 items-center gap-2">
-            <Link href="/anmelden" onClick={closeMenu} className={`hidden min-h-11 items-center gap-2 rounded-full px-3 text-xs font-semibold transition-colors sm:inline-flex ${focusRing} ${isDark ? "hover:bg-white/10" : "hover:bg-zinc-100"}`}>
+            <Link href="/anmelden" onClick={closeMenu} className={`hidden min-h-11 items-center gap-2 rounded-full px-3 text-xs font-semibold transition-colors lg:inline-flex ${focusRing} ${isDark ? "hover:bg-white/10" : "hover:bg-zinc-100"}`}>
               <LogIn size={15} aria-hidden="true" />Anmelden
             </Link>
             <Link href="/demo" onClick={closeMenu} className={`brand-button group hidden min-h-11 items-center gap-3 rounded-full bg-brand-500 py-2.5 pl-5 pr-2.5 text-xs font-bold text-white transition-colors hover:bg-brand-600 sm:inline-flex ${focusRing}`}>
               Demo anfragen
               <span className="flex size-7 items-center justify-center rounded-full bg-zinc-950 text-white"><ArrowUpRight size={16} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transform-none" aria-hidden="true" /></span>
             </Link>
-            <button ref={toggleRef} type="button" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label={mobileMenuOpen ? "Menü schließen" : "Menü öffnen"} aria-expanded={mobileMenuOpen} aria-controls="mobile-navigation" className={`flex size-11 items-center justify-center rounded-full border lg:hidden ${focusRing} ${isDark ? "border-white/15 hover:bg-white/10" : "border-black/10 hover:bg-zinc-100"}`}>
+            <Link href="/anmelden" onClick={closeMenu} aria-label="Anmelden" title="Anmelden" className={`flex size-11 items-center justify-center rounded-xl border transition-colors lg:hidden ${focusRing} ${isDark ? "border-brand-400/25 bg-brand-500/15 text-brand-200 hover:bg-brand-500/25" : "border-brand-500/15 bg-brand-50 text-brand-600 hover:border-brand-300 hover:bg-brand-100"}`}>
+              <LogIn size={20} strokeWidth={1.8} aria-hidden="true" />
+            </Link>
+            <button ref={toggleRef} type="button" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label={mobileMenuOpen ? "Menü schließen" : "Menü öffnen"} aria-expanded={mobileMenuOpen} aria-controls="mobile-navigation" className={`flex size-11 items-center justify-center rounded-xl border transition-colors lg:hidden ${focusRing} ${isDark ? "border-white/15 bg-white/5 hover:bg-white/10" : "border-black/[0.06] bg-zinc-50 hover:bg-zinc-100"}`}>
               {mobileMenuOpen ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
             </button>
           </div>
@@ -94,8 +97,7 @@ export default function Navigation({ theme = "light" }: { theme?: "light" | "dar
               <span className="flex items-center gap-4"><span className="text-[10px] font-medium tabular-nums opacity-40">0{index + 1}</span>{link.label}</span><ArrowUpRight size={20} aria-hidden="true" />
             </Link>
           ))}
-          <div className="mt-5 grid grid-cols-2 gap-2">
-            <Link href="/anmelden" onClick={closeMenu} className={`flex min-h-12 items-center justify-center gap-2 rounded-xl border text-sm font-semibold ${focusRing} ${isDark ? "border-white/15 hover:bg-white/10" : "border-black/10 hover:bg-zinc-50"}`}><LogIn size={16} aria-hidden="true" />Anmelden</Link>
+          <div className="mt-5">
             <Link href="/demo" onClick={closeMenu} className={`brand-button flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand-500 text-sm font-bold text-white hover:bg-brand-600 ${focusRing}`}>Demo anfragen<ArrowUpRight size={16} aria-hidden="true" /></Link>
           </div>
         </nav>

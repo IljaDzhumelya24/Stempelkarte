@@ -85,13 +85,13 @@ const steps = [
     num: "01",
     title: "Karte bereitstellen",
     desc: "Platziere den QR-Code deines Geschäfts an der Kasse. Deine Kunden speichern darüber die Karte in ihrer Wallet.",
-    card: { stamps: 1, total: 10, name: "CAFE NORD", reward: "Willkommen!", from: "#3b82f6", to: "#1e3a8a" },
+    card: { stamps: 1, total: 10, name: "CAFE NORD", reward: "Willkommen!", from: "#45454d", to: "#18181b" },
   },
   {
     num: "02",
     title: "Stempel vergeben",
     desc: "Dein Team scannt die Kundenkarte beim Besuch und vergibt einen Stempel. So belohnst du Einkäufe direkt im Betriebsalltag.",
-    card: { stamps: 6, total: 10, name: "CAFE NORD", reward: "Noch 4!", from: "#3058ff", to: "#203ab5" },
+    card: { stamps: 6, total: 10, name: "CAFE NORD", reward: "Noch 4!", from: "#b66a36", to: "#743c23" },
   },
   {
     num: "03",
@@ -108,13 +108,13 @@ function StepsSection() {
       num: "1",
       title: "Karte bereitstellen",
       desc: "Platziere den QR-Code deines Geschäfts an der Kasse. Deine Kunden speichern darüber die Karte direkt in ihrer Apple oder Google Wallet.",
-      card: { stamps: 1, total: 10, name: "CAFE NORD", reward: "Gratis Kaffee", from: "#3b82f6", to: "#1e3a8a" },
+      card: { stamps: 1, total: 10, name: "CAFE NORD", reward: "Gratis Kaffee", from: "#45454d", to: "#18181b" },
     },
     {
       num: "2",
       title: "Stempel vergeben",
       desc: "Dein Team scannt die Kundenkarte beim Besuch per Smartphone oder Tablet und vergibt blitzschnell einen Stempel. Keine extra Hardware nötig.",
-      card: { stamps: 6, total: 10, name: "CAFE NORD", reward: "Gratis Kaffee", from: "#3058ff", to: "#203ab5" },
+      card: { stamps: 6, total: 10, name: "CAFE NORD", reward: "Gratis Kaffee", from: "#b66a36", to: "#743c23" },
     },
     {
       num: "3",
