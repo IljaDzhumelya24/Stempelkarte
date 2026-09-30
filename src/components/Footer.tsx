@@ -49,7 +49,7 @@ export default function Footer() {
           {/* Brand Info */}
           <div className="flex-1 max-w-sm">
             <Link href="/" aria-label="StampNow – Startseite" className="text-2xl inline-flex items-center mb-6 text-white hover:text-white/80 transition-colors">
-              <BrandLogo />
+              <BrandLogo variant="footer" />
             </Link>
             <p className="text-sm md:text-base text-white/50 font-medium leading-relaxed">
               Digitale Kundenbindung für lokale Geschäfte. Verabschiede dich von Papier und belohne deine Stammkunden direkt in Apple & Google Wallet.
