@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="de"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/icon.svg">
+<link rel="stylesheet" href="/css/app.css">
+<title>Anmelden | StampNow</title>
+</head><body class="login-page">
+<header class="login-nav">
+  <a class="brandmark" href="/" aria-label="StampNow – Startseite"><img src="/brand/stampnow-logo.svg" alt="">StampNow</a>
+  <a class="back-link" href="/">Zur Website <span aria-hidden="true">↗</span></a>
+</header>
+<main class="login-layout">
+  <section class="login-intro" aria-labelledby="welcome-heading">
+    <p class="eyebrow">Dein Geschäftsbereich</p>
+    <h1 id="welcome-heading">Dein Geschäft.<br><span>Alles im Blick.</span></h1>
+    <p class="login-lead">Verwalte deine Kundenkarten, belohne treue Kunden und bring dein Team an den Start.</p>
+    <div class="login-features">
+      <div><span class="feature-number">01</span><div><h2>Kunden verstehen.</h2><p>Besuche, Stempel und Prämien in deiner Übersicht.</p></div></div>
+      <div><span class="feature-number">02</span><div><h2>Einfach stempeln.</h2><p>Dein Team scannt die Karte direkt an der Kasse.</p></div></div>
+      <div><span class="feature-number">03</span><div><h2>In Verbindung bleiben.</h2><p>Verwalte deine Aktionen und die Kundenbindung.</p></div></div>
+    </div>
+  </section>
+  <div class="login-form-wrap">
+    <form class="panel login-form" id="f" novalidate>
+      <p class="eyebrow">Willkommen zurück</p>
+      <h2>Anmelden</h2>
+      <p class="muted">Für Inhaber und Team. Kunden brauchen kein Konto.</p>
+      <label for="email">E-Mail-Adresse <input id="email" type="email" autocomplete="username" placeholder="du@dein-geschaeft.de" required></label>
+      <label for="password">Passwort <input id="password" type="password" autocomplete="current-password" placeholder="Dein Passwort" required></label>
+      <p class="error" id="err" role="alert" hidden></p>
+      <button class="btn big" id="go" type="submit">Anmelden <span aria-hidden="true">↗</span></button>
+      <p class="login-help">Passwort vergessen? Der Inhaber kann es im Dashboard unter „Team“ zurücksetzen.</p>
+    </form>
+    <p class="login-note">Ein Zugang für deinen Arbeitsalltag — sicher mit deinem persönlichen Passwort.</p>
+  </div>
+</main>
+<footer class="app-footer"><span>StampNow</span><a href="/impressum">Impressum</a><a href="/datenschutz">Datenschutz</a></footer>
+<script type="module" src="/js/login.js"></script>
+</body></html>

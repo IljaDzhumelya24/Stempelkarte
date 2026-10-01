@@ -1,0 +1,16 @@
+node_modules/
+.env
+.env.*
+!.env.example
+# Zertifikate & Schlüssel gehören NIE ins Repo – nur in Railway-Variablen
+*.pem
+*.p12
+*.key
+*.cer
+*.csr
+certs/
+service-account*.json
+*.pkpass
+*.db
+*.log
+.DS_Store

@@ -74,16 +74,16 @@ export default function Navigation({ theme = "light" }: { theme?: "light" | "dar
           </nav>
 
           <div className="flex shrink-0 items-center gap-2">
-            <Link href="/anmelden" onClick={closeMenu} className={`hidden min-h-11 items-center gap-2 rounded-full px-3 text-xs font-semibold transition-colors lg:inline-flex ${focusRing} ${isDark ? "hover:bg-white/10" : "hover:bg-zinc-100"}`}>
+            <a href="/anmelden" onClick={closeMenu} className={`hidden min-h-11 items-center gap-2 rounded-full px-3 text-xs font-semibold transition-colors lg:inline-flex ${focusRing} ${isDark ? "hover:bg-white/10" : "hover:bg-zinc-100"}`}>
               <LogIn size={15} aria-hidden="true" />Anmelden
-            </Link>
+            </a>
             <Link href="/demo" onClick={closeMenu} className={`brand-button group hidden min-h-11 items-center gap-3 rounded-full bg-brand-500 py-2.5 pl-5 pr-2.5 text-xs font-bold text-white transition-colors hover:bg-brand-600 sm:inline-flex ${focusRing}`}>
               Demo anfragen
               <span className="flex size-7 items-center justify-center rounded-full bg-zinc-950 text-white"><ArrowUpRight size={16} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transform-none" aria-hidden="true" /></span>
             </Link>
-            <Link href="/anmelden" onClick={closeMenu} aria-label="Anmelden" title="Anmelden" className={`flex size-11 items-center justify-center rounded-xl border transition-colors lg:hidden ${focusRing} ${isDark ? "border-brand-400/25 bg-brand-500/15 text-brand-200 hover:bg-brand-500/25" : "border-brand-500/15 bg-brand-50 text-brand-600 hover:border-brand-300 hover:bg-brand-100"}`}>
+            <a href="/anmelden" onClick={closeMenu} aria-label="Anmelden" title="Anmelden" className={`flex size-11 items-center justify-center rounded-xl border transition-colors lg:hidden ${focusRing} ${isDark ? "border-brand-400/25 bg-brand-500/15 text-brand-200 hover:bg-brand-500/25" : "border-brand-500/15 bg-brand-50 text-brand-600 hover:border-brand-300 hover:bg-brand-100"}`}>
               <LogIn size={20} strokeWidth={1.8} aria-hidden="true" />
-            </Link>
+            </a>
             <button ref={toggleRef} type="button" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label={mobileMenuOpen ? "Menü schließen" : "Menü öffnen"} aria-expanded={mobileMenuOpen} aria-controls="mobile-navigation" className={`flex size-11 items-center justify-center rounded-xl border transition-colors lg:hidden ${focusRing} ${isDark ? "border-white/15 bg-white/5 hover:bg-white/10" : "border-black/[0.06] bg-zinc-50 hover:bg-zinc-100"}`}>
               {mobileMenuOpen ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
             </button>

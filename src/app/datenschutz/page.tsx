@@ -1,77 +1,50 @@
-import { Metadata } from 'next';
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
+import type { Metadata } from "next";
+import { connection } from "next/server";
+import LegalLayout from "@/components/LegalLayout";
+import CompanyAddress from "@/components/CompanyAddress";
+import { getCompanyDetails } from "@/lib/company";
 
 export const metadata: Metadata = {
-  title: 'Datenschutz | StampNow',
-  description: 'Datenschutzerklärung der StampNow GmbH.',
+  title: "Datenschutz | StampNow",
+  description: "Datenschutzhinweise zur Website, zum Betriebs-Login und zur Verarbeitung von Stempelkarten-Daten.",
 };
 
-export default function DatenschutzPage() {
+export default async function DatenschutzPage() {
+  await connection();
+  const company = getCompanyDetails();
   return (
-    <div className="min-h-screen bg-canvas text-[#111] selection:bg-brand-500 selection:text-white">
-      <Navigation />
-      
-      <main className="pt-40 lg:pt-52 pb-32 px-6 max-w-[800px] mx-auto font-sans">
-        <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-16">
-          Datenschutz.
-        </h1>
-        
-        <div className="space-y-16 text-lg md:text-xl text-black/60 font-medium leading-relaxed">
-          <section>
-            <h2 className="text-3xl text-[#111] font-bold tracking-tight mb-6">1. Datenschutz auf einen Blick</h2>
-            <h3 className="text-xl text-[#111] font-bold tracking-tight mb-4 mt-8">Allgemeine Hinweise</h3>
-            <p className="mb-4">
-              Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.
-            </p>
-            <h3 className="text-xl text-[#111] font-bold tracking-tight mb-4 mt-8">Datenerfassung auf dieser Website</h3>
-            <p className="mb-2"><strong>Wer ist verantwortlich für die Datenerfassung auf dieser Website?</strong></p>
-            <p className="mb-4">Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Abschnitt „Hinweis zur Verantwortlichen Stelle“ in dieser Datenschutzerklärung entnehmen.</p>
-          </section>
-
-          <section>
-            <h2 className="text-3xl text-[#111] font-bold tracking-tight mb-6">2. Hosting</h2>
-            <p className="mb-4">Wir hosten die Inhalte unserer Website bei folgenden Anbietern:</p>
-            <h3 className="text-xl text-[#111] font-bold tracking-tight mb-4 mt-8">Vercel</h3>
-            <p className="mb-4">Anbieter ist Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA. Wenn Sie unsere Website besuchen, erfasst Vercel verschiedene Logfiles inklusive Ihrer IP-Adressen.</p>
-          </section>
-
-          <section>
-            <h2 className="text-3xl text-[#111] font-bold tracking-tight mb-6">3. Apple Wallet & Google Wallet Integration</h2>
-            <p className="mb-4">
-              Für die Bereitstellung der digitalen Stempelkarte nutzen wir die Schnittstellen von Apple (Apple Wallet) und Google (Google Wallet).
-            </p>
-            <p className="mb-4">
-              Wenn Sie eine Stempelkarte zu Ihrem Wallet hinzufügen, werden die dafür notwendigen Daten (wie die Pass-ID, Punkte/Stempel-Anzahl, Name des Geschäfts) auf den Servern von Apple bzw. Google verarbeitet. Bitte beachten Sie hierzu die Datenschutzbestimmungen der jeweiligen Anbieter.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-3xl text-[#111] font-bold tracking-tight mb-6">4. Ihre Rechte</h2>
-            <p className="mb-4">
-              Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung oder Löschung dieser Daten zu verlangen.
-            </p>
-            <p className="mb-4">
-              Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit an uns wenden.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-3xl text-[#111] font-bold tracking-tight mb-6">5. Kontakt</h2>
-            <p className="mb-4">
-              Bei Fragen zur Erhebung, Verarbeitung oder Nutzung Ihrer personenbezogenen Daten, bei Auskünften, Berichtigung, Sperrung oder Löschung von Daten sowie Widerruf erteilter Einwilligungen wenden Sie sich bitte an:
-            </p>
-            <p className="mt-4">
-              StampNow GmbH (i.G.)<br />
-              Musterstraße 1<br />
-              28195 Bremen<br />
-              E-Mail: <a href="mailto:hallo@stempelkarte.app" className="text-[#111] hover:text-brand-500 transition-colors">hallo@stempelkarte.app</a>
-            </p>
-          </section>
-        </div>
-      </main>
-
-      <Footer />
-    </div>
+    <LegalLayout title="Datenschutzerklärung." complete={company.complete}>
+      <p>Diese Erklärung gilt für diese Website und das Login für Betriebe. Endkunden einer Stempelkarte finden die Hinweise des jeweiligen Betriebs unter dem Link auf ihrer Karte.</p>
+      <section>
+        <h2>1. Verantwortlicher</h2>
+        <CompanyAddress showContact />
+      </section>
+      <section>
+        <h2>2. Aufruf der Website</h2>
+        <p>Beim Aufruf verarbeitet unser Hoster technisch notwendige Daten (IP-Adresse, Zeitpunkt, aufgerufene Seite, Browser), um die Seite auszuliefern und vor Angriffen zu schützen (Art. 6 Abs. 1 lit. f DSGVO). Diese Server-Logs werden nach kurzer Zeit automatisch gelöscht. Wir setzen keine Tracking- oder Werbe-Cookies und keine Analyse-Tools ein.</p>
+      </section>
+      <section>
+        <h2>3. Login für Betriebe</h2>
+        <p>Für eingeloggte Inhaber und Mitarbeitende speichern wir E-Mail, Name, einen verschlüsselten Passwort-Hash und den Zeitpunkt des letzten Logins (Art. 6 Abs. 1 lit. b DSGVO – Vertrag). Das Login verwendet ein technisch notwendiges Sitzungs-Cookie, das nach spätestens 14 Tagen abläuft.</p>
+      </section>
+      <section>
+        <h2>4. Kontakt per E-Mail</h2>
+        <p>Wenn Sie uns schreiben, verwenden wir Ihre Angaben nur zur Bearbeitung der Anfrage (Art. 6 Abs. 1 lit. b bzw. f DSGVO) und löschen sie, wenn sie nicht mehr benötigt werden und keine Aufbewahrungspflichten bestehen.</p>
+      </section>
+      <section>
+        <h2>5. Stempelkarten-Daten</h2>
+        <p>Daten von Endkunden (Name, Handynummer, Besuche) verarbeiten wir ausschließlich im Auftrag des jeweiligen Betriebs (Art. 28 DSGVO). Verantwortlich ist der Betrieb; seine Hinweise sind auf jeder Karte verlinkt.</p>
+      </section>
+      <section>
+        <h2>6. Hosting</h2>
+        <p>Die Website wird bei Vercel gehostet.</p>
+        <p>{company.appHosting ? `Hosting der Anwendung: ${company.appHosting}` : "Die Angaben zum Hosting der Anwendung werden derzeit vervollständigt."}</p>
+        <p>Schriftarten werden von unserem eigenen Server geladen, nicht von Google.</p>
+      </section>
+      <section>
+        <h2>7. Ihre Rechte</h2>
+        <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch (Art. 15–21 DSGVO) sowie auf Beschwerde bei einer Datenschutz-Aufsichtsbehörde, z. B. der Landesbeauftragten für den Datenschutz Niedersachsen.</p>
+      </section>
+    </LegalLayout>
   );
 }

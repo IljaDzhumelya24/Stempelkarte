@@ -1,0 +1,2 @@
+# Preserve the imported ZIP bytes across Windows/Linux checkouts for integrity tests.
+services/stampnow/** -text

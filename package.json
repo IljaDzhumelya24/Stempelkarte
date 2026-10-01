@@ -3,10 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "node scripts/sync-stampnow.mjs",
     "dev": "next dev",
+    "prebuild": "node scripts/sync-stampnow.mjs",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "app:install": "npm ci --prefix services/stampnow",
+    "app:dev": "node scripts/run-stampnow.mjs",
+    "app:test": "npm test --prefix services/stampnow",
+    "test:integration": "node --test tests/stampnow-integration.test.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",

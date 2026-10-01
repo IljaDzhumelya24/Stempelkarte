@@ -1,0 +1,33 @@
+{
+  "name": "stampit-app",
+  "version": "0.2.0",
+  "description": "StampIt – digitale Stempelkarten (Wallet), Mitarbeiter-Scan, Dashboard, Kundenbindung",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/migrate.js && node src/server.js",
+    "dev": "node --env-file=.env --watch src/server.js",
+    "migrate": "node src/migrate.js",
+    "create-business": "node scripts/create-business.js",
+    "seed": "node scripts/seed-demo.js",
+    "test": "node --test \"test/*.test.js\""
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.7.0",
+    "google-auth-library": "^11.1.0",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "jsqr": "^1.4.0",
+    "libphonenumber-js": "^1.13.14",
+    "passkit-generator": "^3.6.1",
+    "pg": "^8.23.0",
+    "qrcode": "^1.5.4"
+  },
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  }
+}

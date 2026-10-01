@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="de"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/icon.svg">
+<link rel="stylesheet" href="/css/app.css">
+<title>Meine Stempelkarte</title>
+</head><body>
+<main class="narrow" id="main">
+  <p class="muted" id="loading">Karte wird geladen …</p>
+  <div id="content" hidden class="stack">
+    <div class="card-preview" id="preview"></div>
+    <section class="panel">
+      <h2>Ins Wallet legen</h2>
+      <p class="muted small">Dann hast du die Karte immer dabei und siehst neue Stempel sofort.</p>
+      <div class="wallet-btns">
+        <a class="btn big" id="appleBtn" hidden>Zu Apple Wallet hinzufügen</a>
+        <a class="btn big secondary" id="googleBtn" hidden>Zu Google Wallet hinzufügen</a>
+      </div>
+      <details>
+        <summary class="small">Kein Wallet? Code direkt zeigen</summary>
+        <div class="qrbox" id="qr"></div>
+        <p class="muted small">Tipp: Diese Seite als Lesezeichen speichern.</p>
+      </details>
+    </section>
+    <section class="panel">
+      <h2>Meine Daten</h2>
+      <label class="check"><input type="checkbox" id="consent"> <span>Angebote &amp; Erinnerungen auf meine Karte bekommen</span></label>
+      <div class="row">
+        <a class="btn secondary" id="exportBtn">Daten herunterladen</a>
+        <a class="btn ghost" id="privacyLink" target="_blank" rel="noopener">Datenschutz</a>
+      </div>
+      <details>
+        <summary class="small">Karte und alle Daten löschen</summary>
+        <div class="stack">
+          <p class="small">Das kann nicht rückgängig gemacht werden. Deine Stempel gehen verloren.</p>
+          <label>Zum Bestätigen LÖSCHEN eingeben <input id="delConfirm" autocomplete="off"></label>
+          <button class="btn danger" id="delBtn" type="button">Endgültig löschen</button>
+        </div>
+      </details>
+    </section>
+  </div>
+  <p class="error" id="err" role="alert" hidden></p>
+</main>
+<script type="module" src="/js/card.js"></script>
+<footer class="app-footer"><a href="/">StampNow</a><a href="/impressum">Impressum</a><a href="/datenschutz">Datenschutz</a></footer>
+</body></html>

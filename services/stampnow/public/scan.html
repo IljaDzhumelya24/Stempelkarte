@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="de"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/icon.svg">
+<link rel="stylesheet" href="/css/app.css">
+<title>StampNow Scanner</title>
+</head><body>
+<header class="topbar">
+  <div class="brandmark"><img src="/brand/stampnow-logo.svg" alt="">StampNow</div>
+  <span class="small" id="who"></span>
+  <span class="spacer"></span>
+  <a href="/dashboard" id="dashLink" hidden>Dashboard</a>
+  <button class="link" id="logout" type="button">Abmelden</button>
+</header>
+<nav class="tabs" aria-label="Bereiche">
+  <button type="button" data-tab="scan" class="active">Scannen</button>
+  <button type="button" data-tab="new">Neue Karte</button>
+  <button type="button" data-tab="resend">Karte vergessen</button>
+</nav>
+
+<main class="scan-wrap">
+  <section id="tab-scan" class="stack">
+    <div class="viewer" id="viewer">
+      <video id="video" playsinline muted></video>
+      <div class="frame" id="frame" hidden></div>
+      <div class="idle" id="idle">
+        <div class="stack">
+          <p>Kamera starten und die Karte des Kunden vor die Kamera halten.</p>
+          <button class="btn gold big" id="startCam" type="button">Kamera starten</button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <select id="camSelect" aria-label="Kamera wählen" hidden></select>
+    </div>
+    <div id="result" aria-live="polite"></div>
+    <p class="muted small">Der Code auf der Kundenkarte ist signiert: ausgedachte oder veränderte Codes und Karten anderer Betriebe werden abgelehnt. Pro Karte gibt es einen Stempel je Besuch (Sperrzeit einstellbar).</p>
+  </section>
+
+  <section id="tab-new" class="stack" hidden>
+    <form class="panel" id="newForm" novalidate>
+      <h2>Kunde am Tresen anmelden</h2>
+      <p class="muted small">Schneller geht es mit dem Poster-QR – dann trägt der Kunde sich selbst ein.</p>
+      <label>Name <input id="nName" maxlength="60" autocomplete="off" required></label>
+      <label>Handynummer <input id="nPhone" type="tel" inputmode="tel" autocomplete="off" required></label>
+      <label class="check"><input type="checkbox" id="nPrivacy"> <span>Kunde wurde auf die Datenschutzhinweise hingewiesen.</span></label>
+      <label class="check"><input type="checkbox" id="nMarketing"> <span>Kunde möchte Angebote &amp; Erinnerungen (ausdrücklich gefragt).</span></label>
+      <p class="error" id="nErr" role="alert" hidden></p>
+      <button class="btn big" type="submit">Karte erstellen</button>
+    </form>
+    <div class="panel" id="newResult" hidden>
+      <h2>Kunde scannt diesen Code mit seinem Handy</h2>
+      <div class="qrbox" id="newQr"></div>
+      <p class="muted small">Auf der Seite, die sich öffnet, legt er die Karte ins Wallet.</p>
+      <button class="btn secondary" id="newAgain" type="button">Nächster Kunde</button>
+    </div>
+  </section>
+
+  <section id="tab-resend" class="stack" hidden>
+    <form class="panel" id="resendForm" novalidate>
+      <h2>Karte erneut aufs Handy</h2>
+      <p class="muted small">Neues Handy oder Karte gelöscht? Nummer eingeben, Person kurz prüfen, Code zeigen.</p>
+      <label>Handynummer <input id="rPhone" type="tel" inputmode="tel" autocomplete="off"></label>
+      <p class="error" id="rErr" role="alert" hidden></p>
+      <button class="btn" type="submit">Suchen</button>
+    </form>
+    <div class="panel" id="resendResult" hidden>
+      <h2 id="rName"></h2>
+      <div class="qrbox" id="rQr"></div>
+    </div>
+  </section>
+</main>
+<script src="/js/jsQR.js"></script>
+<script type="module" src="/js/scan.js"></script>
+<footer class="app-footer"><a href="/">StampNow</a><a href="/impressum">Impressum</a><a href="/datenschutz">Datenschutz</a></footer>
+</body></html>

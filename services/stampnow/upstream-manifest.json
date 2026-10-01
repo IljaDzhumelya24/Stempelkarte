@@ -1,0 +1,144 @@
+{
+  "archive": "stampit-app-main.zip",
+  "archiveSha256": "0c8ed9f98b0d0c693dc2813bb6a2990438d39ca2666b20c5cd457b460375777a",
+  "files": {
+    "src/auth.js": "0d9dcbe9064c2db4f514973070f5a9bcd77a7bef5045ff21c12a9224a796ffda",
+    "src/config.js": "7cdb0ff108751cd6e1bd803d4169a874926db2c76157dc752dbed38b612f7fb7",
+    "src/db.js": "46dd1ebf157da54b180116db16cadddb0f64096be49a0ba498e8809fbf8d2a47",
+    "src/engine/rules.js": "1ac5e7fdc9b9b6df8bcf7a3cb1e0619c627e65415b0a70fe2842d9f9eceef761",
+    "src/engine/runner.js": "d83426077654652181c098beda06b9790ccc83d6f5573fed87d2ad611a50e61f",
+    "src/engine/segments.js": "b6bf6baa3db875a0dffb8040996b422f381e175592bc45474ff647f178b5d934",
+    "src/jobs.js": "dee626ce43e34b817fba009c553c6df32174c439ad84a95b4650a2ffd2e487a6",
+    "src/migrate.js": "2b9a9c53a89b5aedf7b8cd8064c6623e7ec29e3afb3b5720f527de61234816d5",
+    "src/privacy.js": "6cc143214367e04907faae490a9002da6b358b0e91305bff1282b7c23b344196",
+    "src/routes/admin.js": "4feef825229a8e6370a1fefa9d2b6e1638093ad51004e469476b042b5ccb8ff9",
+    "src/routes/apple.js": "7ce349e105e5333732ef4584fcd44804bf686aea708670e67765bd45aabcb2dd",
+    "src/routes/dashboard.js": "855a0d4558cb5703d2ccb11b57aae5191d06c5c0c5feb2a04a0e68375fd5402a",
+    "src/routes/public.js": "964cb15a7e6313ff07452acf2b3d270dea5c52481f7df7e7f47351da63f8264d",
+    "src/routes/staff.js": "2f4a2a60e87f37f5e05782a248d243fe1282aa3e9116e62b0de6a24ac11bc11d",
+    "src/server.js": "0e3343e8f1a666ab5c5ab84303f1f0b616d49a1b19ac35eb8a6ec32b6ca765d1",
+    "src/services.js": "624ea5e9a2a70d15d01492e6dddfcc0cfa3ea676aa6d0c522b2b07415b8c85bb",
+    "src/site.js": "6ffb4547fe6f8efa77591a4ba6448d1a688633981914472f1f0456d74df4dff2",
+    "src/tokens.js": "5677b2b1b98118749ecce07987cf5278e72fa79e29f8205b4786c548425f5bac",
+    "src/wallet/apple.js": "082dc1a3b9ad657750660009277978c017a017fae8a90674f40d483dbbe60ad4",
+    "src/wallet/google.js": "49be3d7eddbb6bdbd2d166a2a23ff1677b01719344698b5a83491bd449d4cd76",
+    "src/wallet/index.js": "7fcce85a8b92e3304c77ca739c66c4a9440ee9df3265fda11a1890ba4ae7b7ca",
+    "src/wallet/view.js": "8678e34902ef8aa73741cb2137733c551efcca0cac821b8bc77c53d96b3a4e2a",
+    "public/js/api.js": "d68e32a09ad91b02df7357e4e2e4123b86b69dff15fe641bad9e1222a0b80317",
+    "public/js/card.js": "bb751e82926878911642fee354b0cb0e2d01c93e3c318c05f47c4179c81bb29f",
+    "public/js/dashboard.js": "eaebf8eb6f2480f37c9e64bb225c592a2b0f817fe96fe429af5df77eb010ffca",
+    "public/js/join.js": "276b4738c5ced27c3178470b4710e8da81871fec9f84d75f53cb03a7a37fc923",
+    "public/js/jsQR.js": "bc40c8a15196236b2314db0856f72ca0b49980cd5413b8c852a7349f5fee0859",
+    "public/js/login.js": "7196ec34eccf34495ddc40f8beaddf0cfd2e04eb95517ca697ecd6c16b5937fd",
+    "public/js/scan.js": "c3793753e7cd204e54e1fec233528013643f615d1e644229b32e3ed4d9093947",
+    "scripts/create-business.js": "c3726f354662de591746b47e42b9ab90fbc712f6be414580aa0c500933c7552f",
+    "scripts/seed-demo.js": "699eb6c051b1788a5d40165820904756095d48e9f23b72a9130139968604b71e",
+    "test/apple.test.js": "59b2aaf5bca5a6378efec4db890716512132aee0482fa549d88b87b741b7d9e4",
+    "test/e2e.test.js": "bf9694f22d09834a1ac20564593b32e96c46680b7feebab31eb6bd1e28e1a49e",
+    "test/engine.test.js": "a944e44390291c8c312b18895a6f78aaca420ae0cc2a3e5d2687ba03429e7b05",
+    "test/tokens.test.js": "4e6a4627b9157996080131a7070f84859e5964214d94d5715f6cb81be9b66f3d",
+    "package.json": "bc08975d3bf5c3e021f9c240609784d5ffca41def87cab224e119dcfb2d2901f",
+    "package-lock.json": "e7c76d8d6dd985c855dc10b1c5062c291fe7eab39f3215627a17da1f883d1edc",
+    "railway.json": "32f8d1a26f50bcc2fd6e6234055cf9f3418e301cf5d173d65e7824b836c4b064"
+  },
+  "pages": {
+    "login": {
+      "ids": [
+        "f",
+        "email",
+        "password",
+        "err",
+        "go"
+      ],
+      "scripts": [
+        "/js/login.js"
+      ]
+    },
+    "dashboard": {
+      "ids": [
+        "bizName",
+        "logout",
+        "view",
+        "drawerRoot",
+        "poster"
+      ],
+      "scripts": [
+        "/js/dashboard.js"
+      ]
+    },
+    "scan": {
+      "ids": [
+        "who",
+        "dashLink",
+        "logout",
+        "tab-scan",
+        "viewer",
+        "video",
+        "frame",
+        "idle",
+        "startCam",
+        "camSelect",
+        "result",
+        "tab-new",
+        "newForm",
+        "nName",
+        "nPhone",
+        "nPrivacy",
+        "nMarketing",
+        "nErr",
+        "newResult",
+        "newQr",
+        "newAgain",
+        "tab-resend",
+        "resendForm",
+        "rPhone",
+        "rErr",
+        "resendResult",
+        "rName",
+        "rQr"
+      ],
+      "scripts": [
+        "/js/jsQR.js",
+        "/js/scan.js"
+      ]
+    },
+    "join": {
+      "ids": [
+        "preview",
+        "f",
+        "title",
+        "sub",
+        "name",
+        "phone",
+        "privacy",
+        "privacyLink",
+        "marketing",
+        "err",
+        "go"
+      ],
+      "scripts": [
+        "/js/join.js"
+      ]
+    },
+    "card": {
+      "ids": [
+        "main",
+        "loading",
+        "content",
+        "preview",
+        "appleBtn",
+        "googleBtn",
+        "qr",
+        "consent",
+        "exportBtn",
+        "privacyLink",
+        "delConfirm",
+        "delBtn",
+        "err"
+      ],
+      "scripts": [
+        "/js/card.js"
+      ]
+    }
+  }
+}

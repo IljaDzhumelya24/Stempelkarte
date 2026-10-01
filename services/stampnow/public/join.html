@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="de"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/icon.svg">
+<link rel="stylesheet" href="/css/app.css">
+<title>Stempelkarte holen</title>
+</head><body>
+<main class="narrow">
+  <div class="card-preview" id="preview" aria-hidden="true"></div>
+  <form class="panel" id="f" novalidate>
+    <h1 id="title">Deine digitale Stempelkarte</h1>
+    <p class="muted" id="sub">Kostenlos, direkt ins Wallet deines Handys. Keine App nötig.</p>
+    <label>Vorname (und Nachname) <input id="name" autocomplete="name" maxlength="60" required></label>
+    <label>Handynummer <input id="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="0151 23456789" required></label>
+    <label class="check"><input type="checkbox" id="privacy"> <span>Ich habe die <a id="privacyLink" href="#" target="_blank" rel="noopener">Datenschutzhinweise</a> gelesen und möchte die Stempelkarte nutzen.</span></label>
+    <label class="check"><input type="checkbox" id="marketing"> <span><b>Optional:</b> Ich möchte Angebote und Erinnerungen (z.&nbsp;B. doppelte Stempel) auf meine Wallet-Karte bekommen. Dafür werden meine Besuchsabstände ausgewertet. Jederzeit abbestellbar.</span></label>
+    <p class="error" id="err" role="alert" hidden></p>
+    <button class="btn big" id="go" type="submit">Karte erstellen</button>
+  </form>
+</main>
+<script type="module" src="/js/join.js"></script>
+<footer class="app-footer"><a href="/">StampNow</a><a href="/impressum">Impressum</a><a href="/datenschutz">Datenschutz</a></footer>
+</body></html>
