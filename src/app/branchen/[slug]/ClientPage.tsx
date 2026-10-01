@@ -37,14 +37,14 @@ export default function BrancheSubpageClient({ data }: { data: BrancheData }) {
   const opacityPhone = useTransform(heroScroll, [0, 0.8], [1, 0]);
 
   return (
-    <main className="bg-[#fcfcfc] text-[#111] min-h-screen relative selection:bg-amber-500 selection:text-black overflow-x-clip">
+    <main className="bg-canvas text-[#111] min-h-screen relative selection:bg-brand-500 selection:text-white overflow-x-clip">
       <Navigation theme="dark" />
 
       {/* ─── HERO SECTION (Cinematic Dark Mode) ──────────────────── */}
       <section ref={heroRef} className="w-full min-h-dvh flex flex-col justify-center relative bg-[#050505] text-white pt-32 pb-20 overflow-hidden">
         
         {/* Glow */}
-        <div className="absolute top-[30%] left-[60%] w-[80vw] h-[80vw] md:w-[40vw] md:h-[40vw] bg-amber-500/10 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute top-[30%] left-[60%] w-[80vw] h-[80vw] md:w-[40vw] md:h-[40vw] bg-brand-500/10 blur-[120px] rounded-full pointer-events-none" />
 
         <div className="w-full max-w-[1400px] mx-auto px-6 md:px-16 flex flex-col lg:flex-row items-center gap-12 lg:gap-24 relative z-10">
           
@@ -56,7 +56,7 @@ export default function BrancheSubpageClient({ data }: { data: BrancheData }) {
               transition={{ duration: 0.8 }}
               className="inline-flex items-center gap-3 mb-8 px-5 py-2.5 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 w-fit"
             >
-              <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-brand-500 animate-pulse" />
               <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-white/80">
                 Stempelkarte für {data.name}
               </span>
@@ -89,7 +89,7 @@ export default function BrancheSubpageClient({ data }: { data: BrancheData }) {
               transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="relative [perspective:1200px]"
             >
-              <div className="absolute inset-0 bg-amber-500/20 blur-[60px] rounded-full transform scale-90" />
+              <div className="absolute inset-0 bg-brand-500/20 blur-[60px] rounded-full transform scale-90" />
               <WalletCard 
                 businessName={data.businessName}
                 currentStamps={data.currentStamps}
@@ -108,10 +108,10 @@ export default function BrancheSubpageClient({ data }: { data: BrancheData }) {
       </section>
 
       {/* ─── BENEFITS LIST (Massive Editorial Style) ─────────────── */}
-      <section className="w-full py-32 md:py-48 px-6 md:px-16 bg-[#fcfcfc] max-w-[1400px] mx-auto">
+      <section className="w-full py-32 md:py-48 px-6 md:px-16 bg-canvas max-w-[1400px] mx-auto">
         <div className="mb-24 md:mb-32">
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-[#111] max-w-3xl leading-[1.1]">
-            Warum eine Stempelkarte für dein <span className="text-transparent bg-clip-text bg-gradient-to-br from-amber-500 to-amber-700">{data.name}</span>?
+            Warum eine Stempelkarte für dein <span className="text-transparent bg-clip-text bg-gradient-to-br from-brand-500 to-brand-700">{data.name}</span>?
           </h2>
         </div>
 
@@ -137,10 +137,10 @@ export default function BrancheSubpageClient({ data }: { data: BrancheData }) {
       </section>
 
       {/* ─── CTA ──────────────────────────────────────────────────── */}
-      <section className="w-full py-8 px-4 md:px-8 bg-[#f5f5f7]">
+      <section className="w-full py-8 px-4 md:px-8 bg-surface">
         <div className="w-full py-40 md:py-56 bg-black text-white rounded-[3rem] md:rounded-[4rem] flex flex-col items-center justify-center text-center px-6 relative overflow-hidden">
           <h2 className="text-5xl md:text-8xl font-bold tracking-tighter leading-[0.85] relative z-10 max-w-[900px]">
-            Kundenbindung für dein <span className="text-transparent bg-clip-text bg-gradient-to-br from-amber-400 to-amber-600">Geschäft?</span>
+            Kundenbindung für dein <span className="text-transparent bg-clip-text bg-gradient-to-br from-brand-400 to-brand-600">Geschäft?</span>
           </h2>
           <div className="mt-12 flex flex-col sm:flex-row gap-4 sm:gap-5 relative z-10 w-full sm:w-auto">
             <Link href="/demo" className="w-full sm:w-auto bg-white text-black px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest hover:scale-105 transition-transform">

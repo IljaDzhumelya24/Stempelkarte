@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { motion, useScroll, useTransform, useInView, useReducedMotion } from "framer-motion";
 import { Wallet, Palette, BarChart3, Zap } from "lucide-react";
 
 // ─── SCROLL-DRIVEN WORD REVEAL ─────────────────────────────────────
@@ -28,10 +28,11 @@ function ScrollRevealText({ text, className = "" }: { text: string, className?: 
 }
 
 function Word({ word, range, progress }: { word: string, range: [number, number], progress: ReturnType<typeof useScroll>["scrollYProgress"] }) {
+  const prefersReducedMotion = useReducedMotion();
   const opacity = useTransform(progress, range, [0.15, 1]);
   const y = useTransform(progress, range, [8, 0]);
   return (
-    <motion.span style={{ opacity, y }} className="inline-block transition-colors duration-300 text-white">
+    <motion.span style={{ opacity: prefersReducedMotion ? 1 : opacity, y: prefersReducedMotion ? 0 : y }} className="inline-block transition-colors duration-300 text-white">
       {word}
     </motion.span>
   );
@@ -47,7 +48,7 @@ export default function StatementSection() {
     <section ref={ref} className="relative w-full bg-zinc-950 flex flex-col items-center z-20 overflow-hidden rounded-t-[2.5rem] md:rounded-t-[4rem]">
       
       {/* Decorative Glows */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] md:w-[60%] h-[300px] bg-amber-500/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] md:w-[60%] h-[300px] bg-brand-500/10 blur-[120px] rounded-full pointer-events-none" />
 
       {/* SCROLL-DRIVEN WORD REVEAL */}
       <div className="w-full pt-32 pb-20 md:pt-48 md:pb-32 flex justify-center px-6 relative z-10">
@@ -65,11 +66,11 @@ export default function StatementSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="md:col-span-2 relative group overflow-hidden rounded-[2rem] bg-zinc-900/50 border border-white/5 p-8 md:p-12 flex flex-col justify-between min-h-[300px] md:min-h-[360px]"
+          className="brand-card md:col-span-2 relative group overflow-hidden rounded-[2rem] bg-zinc-900/50 border border-white/5 p-8 md:p-12 flex flex-col justify-between min-h-[300px] md:min-h-[360px]"
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
           <div className="relative z-10">
-            <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 mb-8 text-amber-400">
+            <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 mb-8 text-brand-400">
               <Wallet size={28} strokeWidth={1.5} />
             </div>
           </div>
@@ -86,11 +87,11 @@ export default function StatementSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="md:col-span-1 relative group overflow-hidden rounded-[2rem] bg-zinc-900/50 border border-white/5 p-8 md:p-10 flex flex-col justify-between min-h-[300px] md:min-h-[360px]"
+          className="brand-card md:col-span-1 relative group overflow-hidden rounded-[2rem] bg-zinc-900/50 border border-white/5 p-8 md:p-10 flex flex-col justify-between min-h-[300px] md:min-h-[360px]"
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
           <div className="relative z-10">
-            <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 mb-8 text-blue-400">
+            <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 mb-8 text-brand-400">
               <Palette size={24} strokeWidth={1.5} />
             </div>
           </div>
@@ -107,11 +108,11 @@ export default function StatementSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="md:col-span-1 relative group overflow-hidden rounded-[2rem] bg-zinc-900/50 border border-white/5 p-8 md:p-10 flex flex-col justify-between min-h-[300px] md:min-h-[360px]"
+          className="brand-card md:col-span-1 relative group overflow-hidden rounded-[2rem] bg-zinc-900/50 border border-white/5 p-8 md:p-10 flex flex-col justify-between min-h-[300px] md:min-h-[360px]"
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
           <div className="relative z-10">
-            <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 mb-8 text-emerald-400">
+            <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 mb-8 text-brand-400">
               <BarChart3 size={24} strokeWidth={1.5} />
             </div>
           </div>
@@ -128,11 +129,11 @@ export default function StatementSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="md:col-span-2 relative group overflow-hidden rounded-[2rem] bg-zinc-900/50 border border-white/5 p-8 md:p-12 flex flex-col justify-between min-h-[300px] md:min-h-[360px]"
+          className="brand-card md:col-span-2 relative group overflow-hidden rounded-[2rem] bg-zinc-900/50 border border-white/5 p-8 md:p-12 flex flex-col justify-between min-h-[300px] md:min-h-[360px]"
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-violet-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
           <div className="relative z-10">
-            <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 mb-8 text-violet-400">
+            <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 mb-8 text-brand-400">
               <Zap size={28} strokeWidth={1.5} />
             </div>
           </div>

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import GrowthComparison from "@/components/GrowthComparison";
 import { pricingPlan, faqItems } from "@/lib/data";
 
 // ─── CHARACTER REVEAL ──────────────────────────────────────────────
@@ -40,7 +41,7 @@ function CharReveal({ text, className = "", delay = 0 }: { text: string, classNa
 
 // ─── SVG ICONS ───────────────────────────────────────────────────
 const CheckIcon = () => (
-  <svg aria-hidden="true" className="w-5 h-5 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+  <svg aria-hidden="true" className="w-5 h-5 text-brand-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
   </svg>
 );
@@ -78,7 +79,7 @@ export default function PreisePage() {
   const faqs = faqItems.slice(0, 4);
 
   return (
-    <main className="bg-[#fcfcfc] text-[#111] min-h-screen relative selection:bg-amber-500 selection:text-black overflow-x-clip">
+    <main className="bg-canvas text-[#111] min-h-screen relative selection:bg-brand-500 selection:text-white overflow-x-clip">
       <Navigation />
 
       {/* ─── PURE CINEMATIC HERO ───────────────────────────────────── */}
@@ -89,7 +90,7 @@ export default function PreisePage() {
           transition={{ duration: 0.8 }}
           className="inline-flex items-center gap-3 mb-10 md:mb-12 px-5 py-2.5 rounded-full bg-black/5 backdrop-blur-xl border border-black/5 shadow-[0_8px_30px_rgba(0,0,0,0.05)]"
         >
-          <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
+          <span className="w-2 h-2 rounded-full bg-brand-500 animate-pulse" />
           <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#111]">Ein Angebot. Klarer Preis.</span>
         </motion.div>
 
@@ -119,12 +120,12 @@ export default function PreisePage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="relative rounded-[2.5rem] overflow-hidden bg-[#111] text-white border border-amber-500/20 shadow-[0_20px_80px_rgba(0,0,0,0.12)]"
+          className="relative rounded-[2.5rem] overflow-hidden bg-[#111] text-white border border-brand-500/20 shadow-[0_20px_80px_rgba(0,0,0,0.12)]"
         >
-          <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 blur-[100px] rounded-full pointer-events-none" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-brand-500/10 blur-[100px] rounded-full pointer-events-none" />
           <div className="relative z-10 grid md:grid-cols-2">
             <div className="p-6 sm:p-10 lg:p-14">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400 mb-5">Deine digitale Kundenbindung</p>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-400 mb-5">Deine digitale Kundenbindung</p>
               <h2 id="offer-heading" className="text-4xl md:text-5xl font-black tracking-tight mb-4">
                 {pricingPlan.name}
               </h2>
@@ -144,20 +145,20 @@ export default function PreisePage() {
 
               <Link
                 href="/demo"
-                className="inline-block w-full py-5 rounded-full bg-amber-500 text-[#111] font-black text-xs uppercase tracking-widest text-center transition-colors hover:bg-amber-400 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-400"
+                className="brand-button inline-block w-full py-5 rounded-full bg-brand-500 text-white font-black text-xs uppercase tracking-widest text-center transition-colors hover:bg-brand-600 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-400"
               >
                 {pricingPlan.ctaText}
               </Link>
             </div>
 
             <div className="p-6 sm:p-10 lg:p-14 border-t md:border-t-0 md:border-l border-white/10 bg-white/[0.03] flex flex-col justify-center">
-              <h3 className="text-xs font-bold uppercase tracking-widest text-amber-400 mb-7">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-brand-400 mb-7">
                 Das ist enthalten
               </h3>
               <ul className="flex flex-col gap-5">
                 {pricingPlan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-4">
-                    <span className="flex items-center justify-center w-7 h-7 rounded-full shrink-0 bg-amber-500/15">
+                    <span className="flex items-center justify-center w-7 h-7 rounded-full shrink-0 bg-brand-500/15">
                       <CheckIcon />
                     </span>
                     <span className="text-base font-medium leading-relaxed text-white/90">{feature}</span>
@@ -188,7 +189,7 @@ export default function PreisePage() {
               <tr className="border-b border-black/10">
                 <th scope="col" className="w-[28%] pb-6 pr-6 text-xs font-bold uppercase tracking-widest text-black/40">Im Alltag</th>
                 <th scope="col" className="w-[34%] pb-6 px-5 text-sm font-bold text-[#111]">Papierkarte</th>
-                <th scope="col" className="w-[38%] pb-6 px-5 text-sm font-black text-amber-600">StampNow</th>
+                <th scope="col" className="w-[38%] pb-6 px-5 text-sm font-black text-brand-600">StampNow</th>
               </tr>
             </thead>
             <tbody>
@@ -196,7 +197,7 @@ export default function PreisePage() {
                 <tr key={feature.name} className="border-b border-black/5 last:border-0">
                   <th scope="row" className="py-6 pr-6 align-top text-base font-bold text-[#111]">{feature.name}</th>
                   <td className="py-6 px-5 align-top text-sm font-medium leading-relaxed text-black/50">{feature.paper}</td>
-                  <td className="py-6 px-5 align-top text-sm font-bold leading-relaxed text-[#111] bg-amber-500/[0.04]">{feature.stampNow}</td>
+                  <td className="py-6 px-5 align-top text-sm font-bold leading-relaxed text-[#111] bg-brand-500/[0.04]">{feature.stampNow}</td>
                 </tr>
               ))}
             </tbody>
@@ -213,7 +214,7 @@ export default function PreisePage() {
                   <dd className="text-sm font-medium text-black/60 leading-relaxed">{feature.paper}</dd>
                 </div>
                 <div className="pt-4">
-                  <dt className="text-xs font-bold uppercase tracking-widest text-amber-600 mb-2">StampNow</dt>
+                  <dt className="text-xs font-bold uppercase tracking-widest text-brand-600 mb-2">StampNow</dt>
                   <dd className="text-sm font-bold text-[#111] leading-relaxed">{feature.stampNow}</dd>
                 </div>
               </dl>
@@ -222,47 +223,13 @@ export default function PreisePage() {
         </div>
       </section>
       {/* ─── ROI SECTION (CLEAN) ────────────────────────────────────────── */}
-      <section className="w-full py-20 md:py-32 px-6 bg-[#f5f5f7]">
-        <div className="max-w-[1100px] mx-auto flex flex-col md:flex-row items-center gap-16 md:gap-24">
-          <div className="flex-1">
-            <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-[#111] mb-6 leading-[1.1]">
-              Was bringt das deinem Geschäft?
-            </h2>
-            <p className="text-lg text-black/50 font-medium leading-relaxed mb-10">
-              Mit <strong className="text-[#111]">zusätzlichen Besuchen deiner Stammkunden</strong> wächst dein Umsatz. Ob sich StampNow für dich lohnt, hängt von deiner Marge, den Prämien und den tatsächlichen Wiederbesuchen ab.
-            </p>
-            <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-black/40">
-              <span className="w-8 h-[2px] bg-black/20" />
-              Rechenbeispiel, keine Prognose
-            </div>
-          </div>
-          <div className="w-full md:w-[420px] bg-white p-10 md:p-12 rounded-[2.5rem] shadow-[0_20px_60px_rgba(0,0,0,0.03)] border border-black/5 relative overflow-hidden group">
-            {/* Subtle glow */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 blur-[40px] rounded-full group-hover:bg-amber-500/20 transition-colors duration-500" />
-            
-            <div className="space-y-6 relative z-10">
-              <div className="flex justify-between items-center pb-5 border-b border-black/5">
-                <span className="text-black/50 font-medium">Zusätzliche Kunden</span>
-                <span className="font-bold text-lg">+ 3</span>
-              </div>
-              <div className="flex justify-between items-center pb-5 border-b border-black/5">
-                <span className="text-black/50 font-medium">Umsatz pro Kunde</span>
-                <span className="font-bold text-lg">Ø 12 €</span>
-              </div>
-              <div className="flex justify-between items-center pt-2">
-                <span className="text-[#111] font-bold text-base">Zusatzumsatz</span>
-                <span className="text-3xl font-black text-amber-500 tracking-tight">+ 36 €</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <GrowthComparison />
 
       {/* ─── FAQ SECTION ──────────────────────────────────────────── */}
       <section className="w-full py-20 md:py-32 px-6 max-w-[800px] mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-[#111] mb-4">Häufige Fragen</h2>
-          <Link href="/faq" className="text-amber-600 font-bold hover:underline">Alle FAQs ansehen →</Link>
+          <Link href="/faq" className="text-brand-600 font-bold hover:underline">Alle FAQs ansehen →</Link>
         </div>
         
         <div className="space-y-8">
@@ -283,13 +250,13 @@ export default function PreisePage() {
       </section>
 
       {/* ─── CTA ──────────────────────────────────────────────────── */}
-      <section className="w-full py-8 px-4 md:px-8 bg-[#f5f5f7]">
+      <section className="w-full py-8 px-4 md:px-8 bg-surface">
         <div className="w-full py-32 md:py-48 bg-[#111] text-white rounded-[3rem] md:rounded-[4rem] flex flex-col items-center justify-center text-center px-6 relative overflow-hidden">
           <h2 className="text-5xl md:text-8xl font-bold tracking-tighter leading-[0.85] relative z-10 max-w-[900px]">
             Bereit für mehr <span className="text-transparent bg-clip-text bg-gradient-to-br from-zinc-400 to-zinc-600">Stammkunden?</span>
           </h2>
           <div className="mt-10 md:mt-16 relative z-10">
-            <Link href="/demo" className="w-full sm:w-auto bg-amber-500 text-[#111] px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest hover:scale-105 transition-transform inline-block">
+            <Link href="/demo" className="brand-button w-full sm:w-auto bg-brand-500 text-white px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest hover:scale-105 transition-transform inline-block">
               Demo anfragen
             </Link>
           </div>

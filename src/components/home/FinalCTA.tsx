@@ -1,10 +1,11 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { motion, useScroll, useTransform, useInView, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 
 export default function FinalCTA() {
+  const prefersReducedMotion = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-15%" });
   
@@ -13,15 +14,15 @@ export default function FinalCTA() {
     offset: ["start end", "end start"],
   });
 
-  const bgScale = useTransform(scrollYProgress, [0, 0.5], [0.85, 1]);
-  const textY = useTransform(scrollYProgress, [0.2, 0.6], [100, 0]);
+  const bgScale = useTransform(scrollYProgress, [0, 0.5], [0.96, 1]);
+  const textY = useTransform(scrollYProgress, [0.2, 0.6], [40, 0]);
   const textOpacity = useTransform(scrollYProgress, [0.2, 0.5], [0, 1]);
 
   return (
     <section className="relative w-full py-8 px-4 md:px-8 z-30">
       <motion.div 
         ref={ref}
-        style={{ scale: bgScale }}
+        style={{ scale: prefersReducedMotion ? 1 : bgScale }}
         className="relative w-full py-48 md:py-64 bg-[#111] text-white flex flex-col items-center justify-center overflow-hidden rounded-[3rem] md:rounded-[4rem]"
       >
         
@@ -33,7 +34,7 @@ export default function FinalCTA() {
           {[1000, 750, 500, 250].map((size, i) => (
             <motion.div
               key={i}
-              initial={{ scale: 0, opacity: 0 }}
+              initial={prefersReducedMotion ? false : { scale: 0.9, opacity: 0 }}
               animate={isInView ? { scale: 1, opacity: 1 } : {}}
               transition={{ duration: 1.5, delay: 0.1 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/[0.04]"
@@ -44,12 +45,12 @@ export default function FinalCTA() {
 
         {/* Pulsing Orb */}
         <motion.div 
-          animate={{ scale: [1, 1.3, 1], opacity: [0.1, 0.25, 0.1] }}
+          animate={prefersReducedMotion ? { opacity: 0.2 } : { scale: [1, 1.1, 1], opacity: [0.15, 0.25, 0.15] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] md:w-[1200px] h-[700px] md:h-[1200px] bg-amber-500/15 blur-[180px] rounded-full pointer-events-none"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] md:w-[1200px] h-[700px] md:h-[1200px] bg-brand-500/15 blur-[180px] rounded-full pointer-events-none"
         />
 
-        <motion.div style={{ y: textY, opacity: textOpacity }} className="relative z-10 flex flex-col items-center text-center px-6">
+        <motion.div style={{ y: prefersReducedMotion ? 0 : textY, opacity: prefersReducedMotion ? 1 : textOpacity }} className="relative z-10 flex flex-col items-center text-center px-6">
           {/* Stagger Headline */}
           <div className="overflow-hidden">
             <motion.h2 
@@ -66,7 +67,7 @@ export default function FinalCTA() {
               initial={{ y: 120 }}
               animate={isInView ? { y: 0 } : {}}
               transition={{ duration: 1.2, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-              className="text-[9vw] md:text-7xl lg:text-[7rem] font-bold tracking-tighter leading-[1.1] text-transparent bg-clip-text bg-gradient-to-br from-amber-300 via-amber-500 to-orange-600"
+              className="text-[9vw] md:text-7xl lg:text-[7rem] font-bold tracking-tighter leading-[1.1] text-transparent bg-clip-text bg-gradient-to-br from-brand-300 via-brand-500 to-brand-700"
             >
               Deine Stammkunden.
             </motion.h2>
@@ -90,16 +91,16 @@ export default function FinalCTA() {
             {/* Primary CTA with Pulse Ring */}
             <div className="relative group">
               <motion.div 
-                animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0, 0.2] }}
+                animate={prefersReducedMotion ? { opacity: 0.15 } : { scale: [1, 1.1, 1], opacity: [0.15, 0.05, 0.15] }}
                 transition={{ duration: 2.5, repeat: Infinity }}
-                className="absolute inset-0 bg-amber-500 rounded-full blur-lg"
+                className="absolute inset-0 bg-brand-500 rounded-full blur-lg"
               />
               <motion.div 
-                animate={{ scale: [1, 1.4, 1], opacity: [0.1, 0, 0.1] }}
+                animate={prefersReducedMotion ? { opacity: 0.1 } : { scale: [1, 1.15, 1], opacity: [0.1, 0.05, 0.1] }}
                 transition={{ duration: 2.5, repeat: Infinity, delay: 0.3 }}
-                className="absolute inset-0 bg-amber-500 rounded-full blur-xl"
+                className="absolute inset-0 bg-brand-500 rounded-full blur-xl"
               />
-              <Link href="/demo" className="relative flex bg-amber-500 text-black px-12 py-6 rounded-full font-bold uppercase tracking-[0.2em] text-xs hover:bg-white hover:scale-110 transition-all duration-500 shadow-[0_0_80px_rgba(245,158,11,0.4)]">
+              <Link href="/demo" className="brand-button relative flex bg-brand-500 text-white px-12 py-6 rounded-full font-bold uppercase tracking-[0.2em] text-xs hover:bg-brand-600">
                 Demo anfragen
               </Link>
             </div>

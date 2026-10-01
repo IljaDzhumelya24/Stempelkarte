@@ -37,10 +37,10 @@ function FaqAccordionItem({ item, isOpen, onClick }: { item: FAQItem, isOpen: bo
         onClick={onClick}
         className="w-full py-8 flex justify-between items-center text-left group"
       >
-        <h3 className="text-2xl md:text-4xl font-bold tracking-tight text-[#111] group-hover:text-amber-500 transition-colors pr-8">
+        <h3 className="text-2xl md:text-4xl font-bold tracking-tight text-[#111] group-hover:text-brand-500 transition-colors pr-8">
           {item.question}
         </h3>
-        <div className="relative w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-full bg-black/5 group-hover:bg-amber-500/10 transition-colors">
+        <div className="relative w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-full bg-black/5 group-hover:bg-brand-500/10 transition-colors">
           <motion.div 
             animate={{ rotate: isOpen ? 180 : 0 }}
             className="w-4 h-[2px] bg-[#111] absolute"
@@ -73,7 +73,7 @@ export default function ClientFaqPage() {
   const [openIndex, setOpenIndex] = useState<number>(0);
 
   return (
-    <main className="bg-[#fcfcfc] text-[#111] min-h-screen selection:bg-amber-500 selection:text-black">
+    <main className="bg-canvas text-[#111] min-h-screen selection:bg-brand-500 selection:text-white">
       <Navigation />
       
       {/* ─── HERO ─────────────────────────────────────────────────── */}
@@ -113,7 +113,7 @@ export default function ClientFaqPage() {
       <section className="px-6 pb-32 max-w-[1400px] mx-auto">
         <div className="bg-[#111] text-white rounded-[3rem] p-12 md:p-24 text-center relative overflow-hidden flex flex-col items-center">
           {/* Ambient light inside card */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-amber-500/10 blur-[100px] rounded-full pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-500/10 blur-[100px] rounded-full pointer-events-none" />
           
           <h2 className="text-5xl md:text-7xl font-bold tracking-tighter relative z-10">Noch Fragen offen?</h2>
           <p className="mt-6 text-xl text-white/40 font-medium max-w-xl relative z-10">

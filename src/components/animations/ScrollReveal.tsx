@@ -8,7 +8,7 @@ export default function ScrollReveal({
   children,
   direction = "up",
   delay = 0,
-  duration = 0.8,
+  duration = 0.65,
   className = ""
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -24,10 +24,10 @@ export default function ScrollReveal({
     }
     
     switch (direction) {
-      case "up": return { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } };
-      case "down": return { hidden: { opacity: 0, y: -40 }, visible: { opacity: 1, y: 0 } };
-      case "left": return { hidden: { opacity: 0, x: 40 }, visible: { opacity: 1, x: 0 } };
-      case "right": return { hidden: { opacity: 0, x: -40 }, visible: { opacity: 1, x: 0 } };
+      case "up": return { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
+      case "down": return { hidden: { opacity: 0, y: -24 }, visible: { opacity: 1, y: 0 } };
+      case "left": return { hidden: { opacity: 0, x: 24 }, visible: { opacity: 1, x: 0 } };
+      case "right": return { hidden: { opacity: 0, x: -24 }, visible: { opacity: 1, x: 0 } };
     }
   };
 
@@ -36,11 +36,11 @@ export default function ScrollReveal({
       ref={ref}
       className={className}
       variants={getVariants()}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
+      initial={prefersReducedMotion ? false : "hidden"}
+      animate={prefersReducedMotion || isInView ? "visible" : "hidden"}
       transition={{
-        duration,
-        delay,
+        duration: prefersReducedMotion ? 0 : duration,
+        delay: prefersReducedMotion ? 0 : delay,
         ease: [0.22, 1, 0.36, 1]
       }}
     >

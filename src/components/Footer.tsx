@@ -39,7 +39,7 @@ const columns = [
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#111111] text-white border-t border-black/10 relative z-30">
+    <footer className="brand-footer w-full bg-[#111111] text-white border-t border-brand-400/15 relative z-30">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 pt-24 md:pt-32 pb-12">
         
         {/* ─── TOP SECTION: BRAND & LINKS ─── */}

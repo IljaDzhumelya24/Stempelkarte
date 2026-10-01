@@ -27,7 +27,7 @@ function CharReveal({ text, className = "", delay = 0 }: { text: string, classNa
 
 export default function ClientKontaktPage() {
   return (
-    <main className="bg-[#fcfcfc] text-[#111] min-h-screen selection:bg-amber-500 selection:text-black font-sans overflow-x-clip relative">
+    <main className="bg-canvas text-[#111] min-h-screen selection:bg-brand-500 selection:text-white font-sans overflow-x-clip relative">
       <Navigation />
 
       {/* Decorative Blur */}
@@ -43,7 +43,7 @@ export default function ClientKontaktPage() {
             transition={{ duration: 0.8 }}
             className="inline-flex items-center gap-3 mb-8 px-5 py-2.5 rounded-full bg-black/5 border border-black/5 w-fit"
           >
-            <span className="w-2 h-2 rounded-full bg-amber-500" />
+            <span className="w-2 h-2 rounded-full bg-brand-500" />
             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#111]">Kontakt</span>
           </motion.div>
 
@@ -63,14 +63,14 @@ export default function ClientKontaktPage() {
           >
             <div>
               <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-black/30 mb-3">E-Mail</h4>
-              <a href="mailto:hallo@stempelkarte.app" className="text-3xl font-bold tracking-tight text-[#111] hover:text-amber-500 transition-colors">
+              <a href="mailto:hallo@stempelkarte.app" className="text-3xl font-bold tracking-tight text-[#111] hover:text-brand-500 transition-colors">
                 hallo@stempelkarte.app
               </a>
             </div>
             
             <div>
               <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-black/30 mb-3">Telefon</h4>
-              <a href="tel:+49123456789" className="text-3xl font-bold tracking-tight text-[#111] hover:text-amber-500 transition-colors">
+              <a href="tel:+49123456789" className="text-3xl font-bold tracking-tight text-[#111] hover:text-brand-500 transition-colors">
                 +49 (0) 123 456 789
               </a>
             </div>
@@ -99,14 +99,14 @@ export default function ClientKontaktPage() {
                   <label htmlFor="name" className="text-[10px] font-bold uppercase tracking-widest text-black/40 pl-4">Name</label>
                   <input 
                     type="text" id="name" required placeholder="Dein Name"
-                    className="w-full bg-black/[0.03] border border-black/5 focus:border-amber-500/50 focus:bg-white rounded-2xl px-6 py-4 text-[#111] outline-none transition-all placeholder:text-black/20 font-medium"
+                    className="w-full bg-black/[0.03] border border-black/5 focus:border-brand-500/50 focus:bg-white rounded-2xl px-6 py-4 text-[#111] outline-none transition-all placeholder:text-black/20 font-medium"
                   />
                 </div>
                 <div className="flex flex-col gap-2">
                   <label htmlFor="company" className="text-[10px] font-bold uppercase tracking-widest text-black/40 pl-4">Unternehmen</label>
                   <input 
                     type="text" id="company" placeholder="Optional"
-                    className="w-full bg-black/[0.03] border border-black/5 focus:border-amber-500/50 focus:bg-white rounded-2xl px-6 py-4 text-[#111] outline-none transition-all placeholder:text-black/20 font-medium"
+                    className="w-full bg-black/[0.03] border border-black/5 focus:border-brand-500/50 focus:bg-white rounded-2xl px-6 py-4 text-[#111] outline-none transition-all placeholder:text-black/20 font-medium"
                   />
                 </div>
               </div>
@@ -115,7 +115,7 @@ export default function ClientKontaktPage() {
                 <label htmlFor="email" className="text-[10px] font-bold uppercase tracking-widest text-black/40 pl-4">E-Mail Adresse</label>
                 <input 
                   type="email" id="email" required placeholder="hallo@beispiel.de"
-                  className="w-full bg-black/[0.03] border border-black/5 focus:border-amber-500/50 focus:bg-white rounded-2xl px-6 py-4 text-[#111] outline-none transition-all placeholder:text-black/20 font-medium"
+                  className="w-full bg-black/[0.03] border border-black/5 focus:border-brand-500/50 focus:bg-white rounded-2xl px-6 py-4 text-[#111] outline-none transition-all placeholder:text-black/20 font-medium"
                 />
               </div>
 
@@ -123,13 +123,13 @@ export default function ClientKontaktPage() {
                 <label htmlFor="message" className="text-[10px] font-bold uppercase tracking-widest text-black/40 pl-4">Nachricht</label>
                 <textarea 
                   id="message" rows={5} required placeholder="Was möchtest du in deinem Geschäft mit der Stempelkarte erreichen?"
-                  className="w-full bg-black/[0.03] border border-black/5 focus:border-amber-500/50 focus:bg-white rounded-2xl px-6 py-4 text-[#111] outline-none transition-all resize-none placeholder:text-black/20 font-medium"
+                  className="w-full bg-black/[0.03] border border-black/5 focus:border-brand-500/50 focus:bg-white rounded-2xl px-6 py-4 text-[#111] outline-none transition-all resize-none placeholder:text-black/20 font-medium"
                 />
               </div>
 
               <button 
                 type="submit"
-                className="mt-4 w-full py-5 rounded-2xl font-bold text-sm uppercase tracking-widest text-center transition-all duration-300 bg-[#111] text-white hover:bg-amber-500 hover:text-black hover:scale-[1.02] shadow-lg"
+                className="mt-4 w-full py-5 rounded-2xl font-bold text-sm uppercase tracking-widest text-center transition-all duration-300 bg-[#111] text-white hover:bg-brand-500 hover:text-white hover:scale-[1.02] shadow-lg"
               >
                 Nachricht Senden
               </button>

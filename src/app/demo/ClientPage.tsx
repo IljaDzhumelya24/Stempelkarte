@@ -43,23 +43,23 @@ export default function DemoPage() {
   const complete = stamps === 10;
 
   return (
-    <main className="min-h-screen overflow-x-clip bg-[#fcfcfc] text-[#111] selection:bg-amber-400 selection:text-zinc-950">
+    <main className="min-h-screen overflow-x-clip bg-canvas text-[#111] selection:bg-brand-500 selection:text-white">
       <Navigation />
 
       <section className="relative px-5 pb-20 pt-32 sm:px-8 sm:pt-40 lg:pb-28 lg:pt-44">
         <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-[700px] overflow-hidden">
-          <div className="absolute -right-48 -top-64 size-[640px] rounded-full bg-amber-100/50 blur-[110px]" />
+          <div className="absolute -right-48 -top-64 size-[640px] rounded-full bg-brand-100/50 blur-[110px]" />
         </div>
 
         <div className="relative mx-auto grid max-w-7xl gap-y-10 lg:grid-cols-[1fr_1.05fr] lg:items-start lg:gap-x-14 lg:gap-y-12 xl:gap-x-20">
           <div className="min-w-0 lg:col-start-1 lg:row-start-1">
             <p className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-black/5 bg-white px-4 py-2 text-[10px] font-bold uppercase tracking-[0.18em] shadow-sm sm:text-xs">
-              <span className="size-2 rounded-full bg-amber-500" aria-hidden="true" />
+              <span className="size-2 rounded-full bg-brand-500" aria-hidden="true" />
               StampNow kennenlernen
             </p>
             <h1 className="text-[clamp(2.75rem,6.5vw,5.75rem)] font-extrabold leading-[0.97] tracking-[-0.065em]">
               Dein Geschäft.
-              <span className="mt-2 block bg-gradient-to-br from-amber-400 via-amber-500 to-amber-600 bg-clip-text pb-2 text-transparent">
+              <span className="mt-2 block bg-gradient-to-br from-brand-400 via-brand-500 to-brand-600 bg-clip-text pb-2 text-transparent">
                 Live erleben.
               </span>
             </h1>
@@ -69,7 +69,7 @@ export default function DemoPage() {
             <ul className="mt-7 flex flex-wrap gap-x-5 gap-y-3 text-xs font-semibold text-zinc-600 sm:text-sm">
               {["Unverbindlich", "Für deinen Betrieb", "Deutschlandweit"].map((benefit) => (
                 <li key={benefit} className="flex items-center gap-2">
-                  <Check className="size-4 text-amber-600" aria-hidden="true" />
+                  <Check className="size-4 text-brand-600" aria-hidden="true" />
                   {benefit}
                 </li>
               ))}
@@ -81,15 +81,15 @@ export default function DemoPage() {
           </div>
 
           <div className="min-w-0 lg:col-start-1 lg:row-start-2">
-            <div className="relative isolate rounded-[2rem] border border-black/[0.06] bg-[#f2f2ef] px-4 pb-5 pt-6 sm:rounded-[2.5rem] sm:px-7 sm:pb-7">
+            <div className="relative isolate rounded-[2rem] border border-black/[0.06] bg-surface px-4 pb-5 pt-6 sm:rounded-[2.5rem] sm:px-7 sm:pb-7">
               <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden rounded-[inherit]">
                 <div className="absolute inset-0 bg-grid-pattern opacity-50" />
-                <div className="absolute left-1/2 top-24 size-72 -translate-x-1/2 rounded-full border-[40px] border-amber-300/25 sm:size-96" />
+                <div className="absolute left-1/2 top-24 size-72 -translate-x-1/2 rounded-full border-[40px] border-brand-300/25 sm:size-96" />
               </div>
               <div className="mb-7 flex flex-wrap items-center justify-between gap-3 px-1">
                 <h2 className="text-sm font-bold tracking-tight">Deine Karte. Dein Look.</h2>
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-zinc-500">
-                  <span className="size-1.5 rounded-full bg-amber-500" aria-hidden="true" />
+                  <span className="size-1.5 rounded-full bg-brand-500" aria-hidden="true" />
                   Vorschau
                 </span>
               </div>
@@ -100,11 +100,11 @@ export default function DemoPage() {
                   currentStamps={stamps}
                   totalStamps={10}
                   reward={example.reward}
-                  colorFrom="#f59e0b"
-                  colorTo="#b45309"
+                  colorFrom="#3058ff"
+                  colorTo="#203ab5"
                   size="sm"
                   interactive={false}
-                  className="w-full border border-white/30 shadow-[0_20px_45px_-15px_rgba(180,83,9,0.45)]"
+                  className="w-full border border-white/30 shadow-[0_20px_45px_-15px_rgba(48,88,255,0.45)]"
                 />
               </div>
 
@@ -115,9 +115,9 @@ export default function DemoPage() {
                 <button
                   type="button"
                   onClick={() => setStamps((current) => current === 10 ? 7 : current + 1)}
-                  className="group flex min-h-12 w-full items-center justify-center gap-3 rounded-xl bg-zinc-950 px-4 py-3 text-sm font-bold text-white transition-colors hover:bg-zinc-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-500"
+                  className="group flex min-h-12 w-full items-center justify-center gap-3 rounded-xl bg-zinc-950 px-4 py-3 text-sm font-bold text-white transition-colors hover:bg-zinc-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-500"
                 >
-                  {complete ? <RotateCcw className="size-4" aria-hidden="true" /> : <ScanLine className="size-4 text-amber-400" aria-hidden="true" />}
+                  {complete ? <RotateCcw className="size-4" aria-hidden="true" /> : <ScanLine className="size-4 text-brand-400" aria-hidden="true" />}
                   {complete ? "Noch einmal testen" : "Stempel testen"}
                 </button>
               </div>
@@ -133,7 +133,7 @@ export default function DemoPage() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-10 flex flex-col gap-4 md:mb-14 md:flex-row md:items-end md:justify-between md:gap-10">
             <div>
-              <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.2em] text-amber-600">Das erwartet dich</p>
+              <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.2em] text-brand-600">Das erwartet dich</p>
               <h2 id="demo-content-heading" className="text-3xl font-bold tracking-[-0.045em] sm:text-5xl">
                 Weniger Theorie. Mehr Ausprobieren.
               </h2>
@@ -145,9 +145,9 @@ export default function DemoPage() {
 
           <div className="grid gap-4 md:grid-cols-3 md:gap-6">
             {demoSteps.map(({ icon: Icon, title, text }, index) => (
-              <article key={title} className="group rounded-[1.75rem] border border-black/5 bg-[#fafaf9] p-6 transition-colors hover:border-amber-200 hover:bg-amber-50/50 sm:p-8">
+              <article key={title} className="group rounded-[1.75rem] border border-black/5 bg-canvas p-6 transition-colors hover:border-brand-200 hover:bg-brand-50/50 sm:p-8">
                 <div className="mb-8 flex items-center justify-between">
-                  <span className="flex size-12 items-center justify-center rounded-2xl border border-amber-200/60 bg-amber-100/60 text-amber-700">
+                  <span className="flex size-12 items-center justify-center rounded-2xl border border-brand-200/60 bg-brand-100/60 text-brand-700">
                     <Icon className="size-5" aria-hidden="true" />
                   </span>
                   <span className="text-sm font-semibold tabular-nums text-zinc-300" aria-hidden="true">0{index + 1}</span>
@@ -166,7 +166,7 @@ export default function DemoPage() {
                 <span className="text-sm text-white/70">{pricingPlan.period} + {pricingPlan.setupFee} € einmalige Einrichtung</span>
               </p>
             </div>
-            <Link href="/preise" className="inline-flex min-h-11 shrink-0 items-center gap-3 self-start rounded-full border border-white/15 px-5 py-3 text-xs font-semibold transition-colors hover:border-amber-400 hover:text-amber-400 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-400 md:self-auto">
+            <Link href="/preise" className="inline-flex min-h-11 shrink-0 items-center gap-3 self-start rounded-full border border-white/15 px-5 py-3 text-xs font-semibold transition-colors hover:border-brand-400 hover:text-brand-400 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-400 md:self-auto">
               Alle Leistungen ansehen <ArrowUpRight className="size-4" aria-hidden="true" />
             </Link>
           </div>
