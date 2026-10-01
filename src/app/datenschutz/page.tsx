@@ -37,9 +37,7 @@ export default async function DatenschutzPage() {
       </section>
       <section>
         <h2>6. Hosting</h2>
-        <p>Die Website wird bei Vercel gehostet.</p>
-        <p>{company.appHosting ? `Hosting der Anwendung: ${company.appHosting}` : "Die Angaben zum Hosting der Anwendung werden derzeit vervollständigt."}</p>
-        <p>Schriftarten werden von unserem eigenen Server geladen, nicht von Google.</p>
+        <p>Hosting: {company.appHosting} Schriftarten werden von unserem eigenen Server geladen, nicht von Google.</p>
       </section>
       <section>
         <h2>7. Ihre Rechte</h2>

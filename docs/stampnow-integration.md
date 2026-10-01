@@ -16,8 +16,8 @@ Der Express-Server benötigt eine PostgreSQL-Datenbank und seine vorhandenen Umg
 
 - Bereits vorhandene Datenbank, `APP_SECRET`, `ADMIN_TOKEN` und Wallet-Zugangsdaten beibehalten. Insbesondere würde ein anderes `APP_SECRET` vorhandene Kartenlinks und Sitzungen ungültig machen.
 - `PUBLIC_URL` am App-Server auf die öffentliche Website-Adresse setzen, damit Karten- und Wallet-Links dieselbe Domain verwenden.
-- Betreiberangaben `PROCESSOR_NAME`, `PROCESSOR_ADDRESS`, `CONTACT_EMAIL` und optional `CONTACT_PHONE` in Website und App-Server identisch hinterlegen. `HOSTING_INFO` ergänzt die tatsächlichen Angaben zum App-Hosting auf der Website.
-- Die ZIP enthält keine ausgefüllten Betreiberangaben und keine nutzbare Server- oder Datenbankkonfiguration. Fehlende Angaben werden nicht durch erfundene Firmenangaben ersetzt.
+- Betreiberangaben `PROCESSOR_NAME`, `PROCESSOR_ADDRESS`, `CONTACT_EMAIL` und optional `CONTACT_PHONE` in Website und App-Server identisch hinterlegen. `HOSTING_INFO` enthält den nachgereichten Hosting-Text der Datenschutzerklärung zu Railway, EU (Amsterdam) und Standardvertragsklauseln.
+- Die nachgereichten Betreiberangaben (StampNow – Inh. Joel Noah Janik, Dwoberger Dorfschaftsweg 6, 27753 Delmenhorst, joel@janik-invest.de) sind als Website-Standardwerte und in beiden `.env.example`-Dateien hinterlegt. Die ZIP enthält weiterhin keine nutzbare Server- oder Datenbankkonfiguration.
 
 ## Lokal prüfen
 
