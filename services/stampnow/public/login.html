@@ -5,37 +5,41 @@
 <meta name="robots" content="noindex">
 <link rel="icon" href="/icon.svg">
 <link rel="stylesheet" href="/css/app.css">
+<link rel="stylesheet" href="/css/login.css">
 <title>Anmelden | StampNow</title>
 </head><body class="login-page">
+<a class="login-skip" href="#email">Direkt zur Anmeldung</a>
 <header class="login-nav">
   <a class="brandmark" href="/" aria-label="StampNow – Startseite"><img src="/brand/stampnow-logo.svg" alt="">StampNow</a>
-  <a class="back-link" href="/">Zur Website <span aria-hidden="true">↗</span></a>
+  <a class="back-link" href="/"><span aria-hidden="true">↖</span> Zur Website</a>
 </header>
-<main class="login-layout">
-  <section class="login-intro" aria-labelledby="welcome-heading">
-    <p class="eyebrow">Dein Geschäftsbereich</p>
-    <h1 id="welcome-heading">Dein Geschäft.<br><span>Alles im Blick.</span></h1>
-    <p class="login-lead">Verwalte deine Kundenkarten, belohne treue Kunden und bring dein Team an den Start.</p>
-    <div class="login-features">
-      <div><span class="feature-number">01</span><div><h2>Kunden verstehen.</h2><p>Besuche, Stempel und Prämien in deiner Übersicht.</p></div></div>
-      <div><span class="feature-number">02</span><div><h2>Einfach stempeln.</h2><p>Dein Team scannt die Karte direkt an der Kasse.</p></div></div>
-      <div><span class="feature-number">03</span><div><h2>In Verbindung bleiben.</h2><p>Verwalte deine Aktionen und die Kundenbindung.</p></div></div>
+<main class="login-stage">
+  <div class="login-art" aria-hidden="true">
+    <div class="login-orbit orbit-one"></div><div class="login-orbit orbit-two"></div>
+    <div class="login-wordmark">STAMP<br>NOW.</div>
+    <div class="loyalty-ticket">
+      <div class="ticket-top"><span>GUTE KUNDEN.<br>GUTE AUSSICHTEN.</span><span class="ticket-spark">✳</span></div>
+      <div class="ticket-stamps"><span>✳</span><span>✳</span><span>✳</span><span>✳</span><span>✳</span><span>↗</span></div>
+      <div class="ticket-bottom"><span>Jeder Besuch zählt.</span><span>StampNow ↗</span></div>
     </div>
-  </section>
-  <div class="login-form-wrap">
-    <form class="panel login-form" id="f" novalidate>
-      <p class="eyebrow">Willkommen zurück</p>
-      <h2>Anmelden</h2>
-      <p class="muted">Für Inhaber und Team. Kunden brauchen kein Konto.</p>
+    <div class="login-side-note">Aus Besuchern<br>werden <em>Stammkunden.</em><span>Und du behältst den Überblick.</span></div>
+  </div>
+  <section class="login-hub" aria-labelledby="welcome-heading">
+    <form class="login-form" id="f" novalidate>
+      <div class="login-form-top"><span class="login-kicker">DEIN GESCHÄFTSBEREICH</span><span class="login-arrow" aria-hidden="true">↗</span></div>
+      <div class="login-heading"><h1 id="welcome-heading">Willkommen<br><span>zurück.</span></h1><p>Deine Kunden. Dein Team. Alles an einem Ort.</p></div>
+      <div class="login-fields">
       <label for="email">E-Mail-Adresse <input id="email" type="email" autocomplete="username" placeholder="du@dein-geschaeft.de" required></label>
       <label for="password">Passwort <input id="password" type="password" autocomplete="current-password" placeholder="Dein Passwort" required></label>
+      </div>
       <p class="error" id="err" role="alert" hidden></p>
-      <button class="btn big" id="go" type="submit">Anmelden <span aria-hidden="true">↗</span></button>
-      <p class="login-help">Passwort vergessen? Der Inhaber kann es im Dashboard unter „Team“ zurücksetzen.</p>
+      <button class="btn big" id="go" type="submit">Los geht’s <span class="login-button-arrow" aria-hidden="true">↗</span></button>
+      <details class="login-help"><summary>Passwort vergessen?<span aria-hidden="true">+</span></summary><p>Der Inhaber kann dein Passwort im Dashboard unter „Team“ zurücksetzen.</p></details>
+      <div class="login-new"><span>Noch nicht bei StampNow?</span><a href="/demo">Lerne uns kennen <span aria-hidden="true">↗</span></a></div>
     </form>
-    <p class="login-note">Ein Zugang für deinen Arbeitsalltag — sicher mit deinem persönlichen Passwort.</p>
-  </div>
+    <p class="login-caption"><span aria-hidden="true">✳</span> Weniger Aufwand. Mehr Wiedersehen.</p>
+  </section>
 </main>
-<footer class="app-footer"><span>StampNow</span><a href="/impressum">Impressum</a><a href="/datenschutz">Datenschutz</a></footer>
+<footer class="login-footer"><span>StampNow. Fürs Wiederkommen gemacht.</span><nav aria-label="Rechtliches"><a href="/impressum">Impressum</a><a href="/datenschutz">Datenschutz</a></nav></footer>
 <script type="module" src="/js/login.js"></script>
 </body></html>
