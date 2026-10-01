@@ -21,6 +21,14 @@ Der Express-Server benötigt eine PostgreSQL-Datenbank und seine vorhandenen Umg
 
 ## Lokal prüfen
 
+### Ansichten ohne Datenbank ansehen
+
+`npm run app:preview` startet unter `http://localhost:4100/` eine separate Vorschau. Sie bindet ausschließlich an `127.0.0.1` und wird nicht mit der Website veröffentlicht. Sie verwendet die originalen HTML-Seiten und Browser-Skripte mit dem angepassten Design. Ein eigener, schreibgeschützter Beispieldatensatz stellt die Inhalte für Dashboard, Kundenprofile, Aktionen, Einstellungen, Team und Kundenkarten bereit. Jede Seite trägt einen sichtbaren Vorschau-Hinweis.
+
+Suche, Filter, Tabs, Kundenprofile und die Kartengestaltung lassen sich ansehen. Schreibende Anfragen werden mit HTTP 405 abgewiesen; Datenbank, echte Anmeldung, Wallet-Ausstellung und Nachrichtenversand werden nicht gestartet. Die QR-Codes sind nur für die Vorschau. `npm run test:preview` prüft die Ansichten und diese Trennung. Für den regulären Betrieb gelten weiterhin die folgenden Schritte.
+
+### Mit echtem App-Server
+
 1. `npm ci` und `npm run app:install` installieren die getrennten Abhängigkeiten.
 2. Die vorhandene App-Konfiguration in `services/stampnow/.env` bereitstellen. Für einen lokalen Funktionstest ausschließlich eine Entwicklungsdatenbank verwenden.
 3. In `.env.local` die Backend-Adresse auf `http://127.0.0.1:4001` setzen.

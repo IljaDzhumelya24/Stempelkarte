@@ -1,0 +1,20 @@
+.preview-bar { position: relative; z-index: 20; background: #101936; color: #fff; padding: 12px 24px; font: 13px/1.5 'Figtree', sans-serif; }
+.preview-bar > div { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.preview-bar strong { background: #3058ff; border-radius: 6px; padding: 3px 8px; font-size: 10px; letter-spacing: .12em; }
+.preview-bar nav { display: flex; flex-wrap: wrap; gap: 6px 22px; margin-top: 8px; }
+.preview-bar a { color: #c5d3ff; text-decoration: none; min-height: 32px; display: inline-flex; align-items: center; }
+.preview-bar a:hover { color: #fff; text-decoration: underline; }
+.preview-index { max-width: 1180px; margin: 0 auto; padding: 48px 24px 64px; }
+.preview-index .brandmark { margin-bottom: 48px; }
+.preview-eyebrow { color: #3058ff; font-size: 11px; font-weight: 700; letter-spacing: .16em; }
+.preview-index h1 { font-size: clamp(40px, 7vw, 80px); letter-spacing: -.06em; margin: 12px 0 20px; }
+.preview-lead { max-width: 720px; font-size: 18px; color: #606777; line-height: 1.7; }
+.preview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 18px; margin-top: 40px; }
+.preview-grid > a { display: grid; align-content: start; gap: 16px; border: 1px solid #e2e7f0; background: #fff; border-radius: 24px; padding: 28px; color: #111; text-decoration: none; transition: border-color .2s, box-shadow .2s; }
+.preview-grid > a:hover { border-color: #3058ff; box-shadow: 0 12px 30px -20px #3058ff; }
+.preview-grid span { color: #3058ff; font-size: 10px; font-weight: 700; letter-spacing: .1em; }
+.preview-grid h2 { font-size: 24px; }
+.preview-grid p, .preview-explainer { font-size: 14px; color: #606777; line-height: 1.7; }
+.preview-explainer { margin-top: 32px; max-width: 780px; }
+.preview-notice { position: fixed; z-index: 100; bottom: 24px; left: 50%; transform: translateX(-50%); width: min(560px, calc(100% - 32px)); padding: 20px 24px; background: #101936; color: #fff; border: 1px solid #829dff; border-radius: 18px; box-shadow: 0 12px 40px #10193640; font: 14px/1.5 'Figtree', sans-serif; }
+@media print { .preview-bar { display: none; } }

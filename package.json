@@ -11,6 +11,8 @@
     "lint": "eslint",
     "app:install": "npm ci --prefix services/stampnow",
     "app:dev": "node scripts/run-stampnow.mjs",
+    "app:preview": "node scripts/preview/server.mjs",
+    "test:preview": "node --test tests/stampnow-preview.test.mjs",
     "app:test": "npm test --prefix services/stampnow",
     "test:integration": "node --test tests/stampnow-integration.test.mjs"
   },
